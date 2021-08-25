@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">SaveUs</string>
+
+    <string name="on_boarding_head_1">פרטיות ובטחון</string>
+    <string name="on_boarding_body_1">
+        מניעת התפשטות הקורונה היא
+        <b>המטרה של כולנו\n\n</b>
+        עכשיו תוכלו לסייע באופן אקטיבי\n
+        <b>ובלי חשש לפגיעה בפרטיותכם</b>
+    </string>
+    <string name="on_boarding_head_2">פשוט ומהיר</string>
+    <string name="on_boarding_head_3">התראות ועדכונים</string>
+    <string name="on_boarding_body_3">
+        <b>התראה בזמן אמת </b>תתקבל במצב בו דיווחתם על מיקומכם הנוכחי ויש עליו מידע מעודכן כאזור נגוע\n\n<b>התראה מתעדכנת </b>תתקבל כאשר אחד מהמקומות שדיווחתם עליהם, בזמן אמת או בדיעבד, ידווח כאזור נגוע
+    </string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+</resources>
