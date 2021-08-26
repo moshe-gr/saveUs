@@ -1,6 +1,5 @@
 package com.example.saveus
 
-import OnBoarding
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler

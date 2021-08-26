@@ -1,18 +1,10 @@
 package com.example.saveus
 
-import OnBoarding
-import android.content.Context
-import android.content.res.Configuration
 import android.os.Bundle
-import android.text.Html
-import android.util.AttributeSet
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.Animation
-import android.widget.Toast
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
