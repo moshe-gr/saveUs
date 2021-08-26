@@ -24,9 +24,7 @@ class MainActivity : AppCompatActivity() {
         sharedPreferences.edit().putBoolean(used, false).apply()
 
         Handler(Looper.myLooper()!!).postDelayed({
-            if(!sharedPreferences.getBoolean(used, false)){
-                startActivity(onboardingIntent)
-            }
+            if(!sharedPreferences.getBoolean(used, false)) startActivity(onboardingIntent)
             else startActivity(loginIntent)
         }, 2000)
     }

@@ -13,7 +13,7 @@ class OnboardingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_onboarding)
-
+        
         val viewPager = findViewById<ViewPager>(R.id.viewPager)
         viewPager.adapter = PageAdapter(supportFragmentManager)
 
@@ -38,9 +38,7 @@ class OnboardingActivity : AppCompatActivity() {
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
             }
             override fun onPageSelected(position: Int) {
-                if(position == 2) {
-                    myHandler.postDelayed(r, 3000)
-                }
+                if(position == 2) myHandler.postDelayed(r, 3000)
                 else myHandler.removeCallbacks(r)
             }
 
