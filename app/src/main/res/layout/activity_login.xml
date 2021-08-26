@@ -30,7 +30,7 @@
                     android:layout_width="0dp"
                     android:layout_height="35dp"
                     android:layout_weight="1"
-                    android:tint="#00b2ab"
+                    app:tint="#00b2ab"
                     android:layout_marginRight="5dp"
                     android:src="@drawable/group_1" />
 
