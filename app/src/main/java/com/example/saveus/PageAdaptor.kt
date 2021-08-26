@@ -4,7 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 
-class PageAdapter(fm:FragmentManager, val used: OnBoarding) : FragmentPagerAdapter(fm) {
+class PageAdapter(fm:FragmentManager) : FragmentPagerAdapter(fm) {
 
     override fun getCount(): Int {
         return 3;
@@ -19,7 +19,7 @@ class PageAdapter(fm:FragmentManager, val used: OnBoarding) : FragmentPagerAdapt
                 return OnBoarding2()
             }
             2 -> {
-                return  OnBoarding3(used)
+                return  OnBoarding3()
             }
             else -> {
                 return OnBoarding1()

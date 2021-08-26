@@ -4,28 +4,35 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
 
-class OnboardingActivity : AppCompatActivity(), OnBoarding {
+class OnboardingActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_onboarding)
 
         val viewPager = findViewById<ViewPager>(R.id.viewPager)
-        viewPager.adapter = PageAdapter(supportFragmentManager, this)
+        viewPager.adapter = PageAdapter(supportFragmentManager)
 
         val tabLayout = findViewById<TabLayout>(R.id.tabLayout)
         tabLayout.setupWithViewPager(viewPager)
 
         val loginIntent = Intent(this, LoginActivity::class.java)
 
-        val moveOn = Handler(Looper.myLooper()!!).postDelayed({
-            startActivity(loginIntent)
-        }, 3000)
+        val r = Runnable {
+            run{
+                val shared_prefs = "sharedPrefs"
+                val sharedPreferences = getSharedPreferences(shared_prefs, MODE_PRIVATE)
+                var used = "used"
+                sharedPreferences.edit().putBoolean(used, true).apply()
+                startActivity(loginIntent)
+            }
+        }
+
+        val myHandler = Handler(Looper.myLooper()!!)
 
         viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
 
@@ -36,23 +43,12 @@ class OnboardingActivity : AppCompatActivity(), OnBoarding {
             }
             override fun onPageSelected(position: Int) {
                 if(position == 2) {
-                    moveOn
+                    myHandler.postDelayed(r, 3000)
                 }
-                else{
-//                  Handler().removeCallbacks(moveOn)
-                }
+                else myHandler.removeCallbacks(r)
             }
 
         })
 
     }
-
-    override fun used(position: Int) {
-        val shared_prefs = "sharedPrefs"
-        val sharedPreferences = getSharedPreferences(shared_prefs, MODE_PRIVATE)
-        var used = "used"
-        Toast.makeText(this, "number $position", Toast.LENGTH_SHORT).show()
-        sharedPreferences.edit().putBoolean(used, true).apply()
-    }
 }
-
