@@ -20,15 +20,11 @@ class OnboardingActivity : AppCompatActivity() {
         val tabLayout = findViewById<TabLayout>(R.id.tabLayout)
         tabLayout.setupWithViewPager(viewPager)
 
-        val loginIntent = Intent(this, LoginActivity::class.java)
-
         val r = Runnable {
             run{
-                val shared_prefs = "sharedPrefs"
-                val sharedPreferences = getSharedPreferences(shared_prefs, MODE_PRIVATE)
-                var used = "used"
-                sharedPreferences.edit().putBoolean(used, true).apply()
-                startActivity(loginIntent)
+                getSharedPreferences("sharedPrefs", MODE_PRIVATE)
+                    .edit().putBoolean("used", true).apply()
+                finish()
             }
         }
 
