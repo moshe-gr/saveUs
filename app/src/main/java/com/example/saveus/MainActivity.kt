@@ -19,7 +19,6 @@ class MainActivity : AppCompatActivity() {
         val sharedPreferences = getSharedPreferences(sharedPrefs, MODE_PRIVATE)
         var used = "used"
 
-
         //sharedPreferences.edit().putBoolean(used, false).apply()
 
         Handler(Looper.myLooper()!!).postDelayed({
