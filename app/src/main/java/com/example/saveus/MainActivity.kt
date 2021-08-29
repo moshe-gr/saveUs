@@ -15,17 +15,18 @@ class MainActivity : AppCompatActivity() {
         val unplashIntent = Intent(this, UnplashActivity::class.java)
         val onboardingIntent = Intent(this, OnboardingActivity::class.java)
         val loginIntent = Intent(this, LoginActivity::class.java)
-        val shared_prefs = "sharedPrefs"
-        val sharedPreferences = getSharedPreferences(shared_prefs, MODE_PRIVATE)
+        val sharedPrefs = "sharedPrefs"
+        val sharedPreferences = getSharedPreferences(sharedPrefs, MODE_PRIVATE)
         var used = "used"
 
-        startActivity(unplashIntent)
 
-        sharedPreferences.edit().putBoolean(used, false).apply()
+        //sharedPreferences.edit().putBoolean(used, false).apply()
 
         Handler(Looper.myLooper()!!).postDelayed({
+            startActivity(loginIntent)
             if(!sharedPreferences.getBoolean(used, false)) startActivity(onboardingIntent)
-            else startActivity(loginIntent)
         }, 2000)
+
+        startActivity(unplashIntent)
     }
 }
