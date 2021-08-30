@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">SaveUs</string>
 
+    <string name="top_bar_title">SAVEUS</string>
+
     <string name="on_boarding_head_1">פרטיות ובטחון</string>
     <string name="on_boarding_body_1">
         מניעת התפשטות הקורונה היא
