@@ -4,19 +4,19 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/group_1"
+        android:icon="@drawable/un_splash"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/group_1"
+        android:roundIcon="@drawable/un_splash"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" >
         <activity
             android:name=".LoginActivity"
             android:exported="true" />
         <activity
-            android:name=".OnboardingActivity"
+            android:name=".OnBoardingActivity"
             android:exported="true" />
         <activity
-            android:name=".UnplashActivity"
+            android:name=".UnSplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

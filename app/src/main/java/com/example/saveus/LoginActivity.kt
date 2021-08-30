@@ -11,5 +11,8 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         setSupportActionBar(findViewById(R.id.my_toolbar))
+
+        supportActionBar!!.setDisplayShowTitleEnabled(false)
+
     }
 }

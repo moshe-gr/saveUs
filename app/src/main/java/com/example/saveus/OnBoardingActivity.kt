@@ -4,20 +4,21 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
-import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 
-class OnboardingActivity : AppCompatActivity() {
+class OnBoardingActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_onboarding)
 
-        val viewPager = findViewById<ViewPager>(R.id.viewPager)
-        viewPager.adapter = PageAdapter(supportFragmentManager)
+        val viewPager = findViewById<ViewPager2>(R.id.viewPager)
+        viewPager.adapter = PageAdapter(supportFragmentManager, lifecycle)
 
         val tabLayout = findViewById<TabLayout>(R.id.tabLayout)
-        tabLayout.setupWithViewPager(viewPager)
+        TabLayoutMediator(tabLayout, viewPager) {tab, position -> }.attach()
 
         val r = Runnable {
             run{
@@ -29,7 +30,7 @@ class OnboardingActivity : AppCompatActivity() {
 
         val myHandler = Handler(Looper.myLooper()!!)
 
-        viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+        viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
 
             override fun onPageScrollStateChanged(state: Int) {
             }
