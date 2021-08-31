@@ -1,8 +1,6 @@
 <resources>
     <string name="app_name">SaveUs</string>
 
-    <string name="top_bar_title">SAVEUS</string>
-
     <string name="on_boarding_head_1">פרטיות ובטחון</string>
     <string name="on_boarding_body_1">
         מניעת התפשטות הקורונה היא
@@ -15,13 +13,16 @@
     <string name="on_boarding_body_3">
         <b>התראה בזמן אמת </b>תתקבל במצב בו דיווחתם על מיקומכם הנוכחי ויש עליו מידע מעודכן כאזור נגוע\n\n<b>התראה מתעדכנת </b>תתקבל כאשר אחד מהמקומות שדיווחתם עליהם, בזמן אמת או בדיעבד, ידווח כאזור נגוע
     </string>
-    <string name="title_activity_login">LoginActivity</string>
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome !"</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
+
+    <string name="prompt_email">דואר אלקטרוני</string>
+    <string name="prompt_name">שם</string>
+    <string name="prompt_phone_number">מספר טלפון</string>
+    <string name="action_sign_in">הרשמה</string>
+    <string name="action_sign_in_skip">דלג</string>
+    <string name="welcome">ברוכים הבאים</string>
+    <string name="login_accept_1">אני מאשר את </string>
+    <string name="login_accept_2"><u>התקנון</u></string>
+    <string name="login_accept_3"> ואת </string>
+    <string name="login_accept_4"><u>תנאי השימוש</u></string>
+    <string name="login_desc">הבריאות והבטחון שלכם נמצאים בעדיפות עליונה,\nאנחנו כאן לעזור לכם לעקוב אחרי הפעילות ולתעד אותה.\n<b>כל המידע אנונימי לחלוטין, אין מה לחשוש.</b></string>
 </resources>

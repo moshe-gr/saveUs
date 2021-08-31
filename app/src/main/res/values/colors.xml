@@ -7,4 +7,9 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="turquoise">#00b2ab</color>
+    <color name="on_boarding_text">#454e6c</color>
+    <color name="login_text">#051549</color>
+    <color name="login_background">#fafbfc</color>
+    <color name="login_hint">#b0b0b0</color>
 </resources>

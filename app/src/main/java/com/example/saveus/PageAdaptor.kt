@@ -30,19 +30,4 @@ class PageAdapter(fm:FragmentManager, lc:Lifecycle) : FragmentStateAdapter(fm, l
         }
     }
 
-//    override fun getPageTitle(position: Int): CharSequence? {
-//        when(position) {
-//            0 -> {
-//                return "Tab 1"
-//            }
-//            1 -> {
-//                return "Tab 2"
-//            }
-//            2 -> {
-//                return "Tab 3"
-//            }
-//        }
-//        return super.getPageTitle(position)
-//    }
-
 }

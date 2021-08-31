@@ -46,7 +46,7 @@
                 android:textSize="40sp"
                 android:paddingHorizontal="30dp"
                 android:text="@string/on_boarding_head_2"
-                android:textColor="#00b2ab" />
+                android:textColor="@color/turquoise" />
 
         </LinearLayout>
 

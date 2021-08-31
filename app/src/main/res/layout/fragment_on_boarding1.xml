@@ -46,7 +46,7 @@
                 android:textSize="40sp"
                 android:paddingHorizontal="50dp"
                 android:text="@string/on_boarding_head_1"
-                android:textColor="#00b2ab" />
+                android:textColor="@color/turquoise" />
 
 
             <TextView
@@ -57,7 +57,7 @@
                 android:textDirection="rtl"
                 android:textSize="16sp"
                 android:text="@string/on_boarding_body_1"
-                android:textColor="#454e6c"/>
+                android:textColor="@color/on_boarding_text"/>
 
         </LinearLayout>
 
