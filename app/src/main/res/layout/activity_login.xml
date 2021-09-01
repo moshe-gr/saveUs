@@ -45,6 +45,7 @@
         android:background="@color/turquoise"
         android:text="@string/welcome"
         android:textSize="22sp"
+        android:fontFamily="@font/assistant"
         android:textAlignment="center"
         android:gravity="center"
         android:layout_weight="2"
@@ -60,6 +61,7 @@
         android:layout_height="0dp"
         android:text="@string/login_desc"
         android:textSize="16sp"
+        android:fontFamily="@font/assistant"
         android:lineHeight="21sp"
         android:lineSpacingExtra="5sp"
         android:textColor="@color/login_text"
@@ -91,6 +93,7 @@
                 android:layout_height="0dp"
                 android:textColorHint="@color/login_hint"
                 android:textSize="17sp"
+                android:fontFamily="@font/assistant"
                 android:layout_weight="1"
                 android:hint="@string/prompt_name"/>
 
@@ -99,6 +102,7 @@
                 android:layout_height="0dp"
                 android:textColorHint="@color/login_hint"
                 android:textSize="17sp"
+                android:fontFamily="@font/assistant"
                 android:layout_weight="1"
                 android:hint="@string/prompt_email"/>
 
@@ -107,6 +111,7 @@
                 android:layout_height="0dp"
                 android:textColorHint="@color/login_hint"
                 android:textSize="17sp"
+                android:fontFamily="@font/assistant"
                 android:layout_weight="1"
                 android:hint="@string/prompt_phone_number"/>
 
@@ -136,13 +141,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="13sp"
+            android:fontFamily="@font/assistant"
             android:textColor="@color/login_hint"
             android:text="@string/login_accept_1"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/regulations"
             android:textSize="13sp"
+            android:fontFamily="@font/assistant"
             android:textColor="@color/turquoise"
             android:text="@string/login_accept_2"/>
 
@@ -150,13 +158,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="13sp"
+            android:fontFamily="@font/assistant"
             android:textColor="@color/login_hint"
             android:text="@string/login_accept_3"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/terms_of_use"
             android:textSize="13sp"
+            android:fontFamily="@font/assistant"
             android:textColor="@color/turquoise"
             android:text="@string/login_accept_4"/>
 
