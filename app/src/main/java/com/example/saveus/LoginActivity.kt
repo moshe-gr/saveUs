@@ -1,8 +1,10 @@
 package com.example.saveus
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import androidx.appcompat.widget.Toolbar
 
 class LoginActivity : AppCompatActivity() {
@@ -14,5 +16,14 @@ class LoginActivity : AppCompatActivity() {
 
         supportActionBar!!.setDisplayShowTitleEnabled(false)
 
+        findViewById<Button>(R.id.sign_in).setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
+
+        findViewById<Button>(R.id.skip_sign_in).setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
+
     }
+
 }

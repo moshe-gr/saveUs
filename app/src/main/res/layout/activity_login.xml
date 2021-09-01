@@ -25,14 +25,14 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="5dp"
+                android:layout_marginHorizontal="16dp"
                 android:src="@drawable/toolbar_logo" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
-                android:layout_marginRight="5dp"
+                android:paddingRight="16dp"
                 android:src="@drawable/account" />
 
         </androidx.appcompat.widget.Toolbar>
@@ -67,41 +67,70 @@
         android:background="@color/login_background"
         android:layout_weight="1.42"/>
 
-    <EditText
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:textColorHint="@color/login_hint"
-        android:textSize="17sp"
-        android:layout_weight="1"
-        android:layout_marginHorizontal="40dp"
-        android:hint="@string/prompt_name"/>
+        android:orientation="horizontal"
+        android:layout_weight="3"
+        android:weightSum="9">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:textColorHint="@color/login_hint"
-        android:textSize="17sp"
-        android:layout_weight="1"
-        android:layout_marginHorizontal="40dp"
-        android:hint="@string/prompt_email"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
 
-    <EditText
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="7"
+            android:orientation="vertical"
+            android:weightSum="3">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:textColorHint="@color/login_hint"
+                android:textSize="17sp"
+                android:layout_weight="1"
+                android:hint="@string/prompt_name"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:textColorHint="@color/login_hint"
+                android:textSize="17sp"
+                android:layout_weight="1"
+                android:hint="@string/prompt_email"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:textColorHint="@color/login_hint"
+                android:textSize="17sp"
+                android:layout_weight="1"
+                android:hint="@string/prompt_phone_number"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <View
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:textColorHint="@color/login_hint"
-        android:textSize="17sp"
-        android:layout_weight="1"
-        android:layout_marginHorizontal="40dp"
-        android:hint="@string/prompt_phone_number"/>
+        android:layout_weight="0.18"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:orientation="horizontal"
         android:layout_gravity="center"
-        android:layout_marginTop="15dp"
         android:layoutDirection="rtl"
-        android:layout_weight="1.7">
+        android:layout_weight="1.52">
 
         <TextView
             android:layout_width="wrap_content"
@@ -137,29 +166,46 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        android:weightSum="2"
+        android:weightSum="9"
         android:layoutDirection="ltr"
-        android:layout_weight="1.7"
-        android:layout_marginHorizontal="40dp">
+        android:layout_weight="1.7">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
 
         <Button
-            android:layout_width="wrap_content"
+            android:id="@+id/sign_in"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="3.35"
             android:background="@drawable/sign_in_background"
+            android:fontFamily="@font/assistant_semibold"
+            android:text="@string/action_sign_in"
             android:textColor="@color/white"
-            android:textSize="17sp"
-            android:layout_marginRight="13dp"
-            android:layout_weight="1"
-            android:text="@string/action_sign_in"/>
+            android:textSize="17sp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"/>
 
         <Button
-            android:layout_width="wrap_content"
+            android:id="@+id/skip_sign_in"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="3.35"
             android:background="@drawable/skip_sign_in_background"
-            android:textColor="#b0b0b0"
-            android:textSize="17sp"
-            android:layout_weight="1"
-            android:text="@string/action_sign_in_skip"/>
+            android:fontFamily="@font/assistant_semibold"
+            android:text="@string/action_sign_in_skip"
+            android:textColor="@color/login_hint"
+            android:textSize="17sp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
 
     </LinearLayout>
 
