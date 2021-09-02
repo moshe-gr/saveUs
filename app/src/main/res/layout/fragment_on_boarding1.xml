@@ -22,12 +22,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:src="@drawable/onboarding1"/>
+                android:src="@drawable/on_boarding_1"/>
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="vertical"
             android:layout_weight="5"
@@ -39,12 +39,12 @@
                 android:layout_weight="1.5"/>
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="2.5"
                 android:textDirection="rtl"
                 android:textSize="40sp"
-                android:paddingHorizontal="40sp"
+                android:textAlignment="center"
                 android:text="@string/on_boarding_head_1"
                 android:fontFamily="@font/assistant_semibold"
                 android:textColor="@color/turquoise" />

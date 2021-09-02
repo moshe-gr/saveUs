@@ -38,8 +38,8 @@ class OnBoardingActivity : AppCompatActivity() {
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
             }
             override fun onPageSelected(position: Int) {
-                if(position == 2) myHandler.postDelayed(r, 3000)
-                else myHandler.removeCallbacks(r)
+//                if(position == 2) myHandler.postDelayed(r, 3000)
+//                else myHandler.removeCallbacks(r)
             }
 
         })
