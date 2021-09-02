@@ -42,12 +42,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="2.5"
-                android:textDirection="rtl"
-                android:textSize="40sp"
-                android:textAlignment="center"
-                android:text="@string/on_boarding_head_1"
                 android:fontFamily="@font/assistant_semibold"
-                android:textColor="@color/turquoise" />
+                android:text="@string/on_boarding_head_1"
+                android:textAlignment="center"
+                android:textColor="@color/turquoise"
+                android:textDirection="rtl"
+                android:textSize="40sp" />
 
 
             <TextView

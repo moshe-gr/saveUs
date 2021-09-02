@@ -11,17 +11,17 @@ class UnSplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_un_splash)
 
-        val onboardingIntent = Intent(this, OnBoardingActivity::class.java)
+        val onBoardingIntent = Intent(this, OnBoardingActivity::class.java)
         val loginIntent = Intent(this, LoginActivity::class.java)
         val sharedPrefs = "sharedPrefs"
         val sharedPreferences = getSharedPreferences(sharedPrefs, MODE_PRIVATE)
-        var used = "used"
+        val used = "used"
 
         sharedPreferences.edit().putBoolean(used, false).apply()
 
         Handler(Looper.myLooper()!!).postDelayed({
             startActivity(loginIntent)
-            if(!sharedPreferences.getBoolean(used, false)) startActivity(onboardingIntent)
+            if(!sharedPreferences.getBoolean(used, false)) startActivity(onBoardingIntent)
         }, 2000)
     }
 }

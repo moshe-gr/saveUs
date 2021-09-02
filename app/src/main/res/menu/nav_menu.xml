@@ -3,15 +3,15 @@
     <item
         android:id="@+id/main"
         android:icon="@drawable/main"
-        android:title="ראשי"/>
+        android:title="@string/nav_bar_main"/>
 
     <item
         android:id="@+id/my_places"
         android:icon="@drawable/my_places"
-        android:title="המקומות שלי"/>
+        android:title="@string/nav_bar_my_places"/>
 
     <item
         android:id="@+id/alerts"
         android:icon="@drawable/alerts"
-        android:title="התראות" />
+        android:title="@string/nav_bar_alerts" />
 </menu>

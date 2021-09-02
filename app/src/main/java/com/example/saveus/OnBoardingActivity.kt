@@ -18,7 +18,7 @@ class OnBoardingActivity : AppCompatActivity() {
         viewPager.adapter = PageAdapter(supportFragmentManager, lifecycle)
 
         val tabLayout = findViewById<TabLayout>(R.id.tabLayout)
-        TabLayoutMediator(tabLayout, viewPager) {tab, position -> }.attach()
+        TabLayoutMediator(tabLayout, viewPager) { _, _ -> }.attach()
 
         val r = Runnable {
             run{
@@ -38,8 +38,8 @@ class OnBoardingActivity : AppCompatActivity() {
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
             }
             override fun onPageSelected(position: Int) {
-//                if(position == 2) myHandler.postDelayed(r, 3000)
-//                else myHandler.removeCallbacks(r)
+                if(position == 2) myHandler.postDelayed(r, 3000)
+                else myHandler.removeCallbacks(r)
             }
 
         })

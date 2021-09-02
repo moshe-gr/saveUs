@@ -10,7 +10,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@color/white"
-        app:itemTextColor="@color/login_text"
+        app:itemTextAppearanceInactive="@style/my_nav_bar"
+        app:itemTextAppearanceActive="@style/active_nav_bar"
         app:menu="@menu/nav_menu"/>
 
 </RelativeLayout>

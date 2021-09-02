@@ -21,8 +21,11 @@
     <string name="action_sign_in_skip">דלג</string>
     <string name="welcome">ברוכים הבאים</string>
     <string name="login_accept_1">אני מאשר את&#160;</string>
-    <string name="login_accept_2"><a href="#">התקנון</a></string>
+    <string name="login_accept_2"><u>התקנון</u></string>
     <string name="login_accept_3">&#160;ואת&#160;</string>
-    <string name="login_accept_4"><a href="#">תנאי השימוש</a></string>
+    <string name="login_accept_4"><u>תנאי השימוש</u></string>
     <string name="login_desc">הבריאות והבטחון שלכם נמצאים בעדיפות עליונה,\nאנחנו כאן לעזור לכם לעקוב אחרי הפעילות ולתעד אותה.\n<b>כל המידע אנונימי לחלוטין, אין מה לחשוש.</b></string>
+    <string name="nav_bar_main">ראשי</string>
+    <string name="nav_bar_my_places">המקומות שלי</string>
+    <string name="nav_bar_alerts">התראות</string>
 </resources>

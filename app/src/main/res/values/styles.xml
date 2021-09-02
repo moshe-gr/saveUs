@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="my_nav_bar">
+        <item name="fontFamily">@font/assistant</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/login_text</item>
+    </style>
+    <style name="active_nav_bar">
+        <item name="fontFamily">@font/assistant_bold</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/login_text</item>
+    </style>
+</resources>
