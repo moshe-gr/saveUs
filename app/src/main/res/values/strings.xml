@@ -28,4 +28,6 @@
     <string name="nav_bar_main">ראשי</string>
     <string name="nav_bar_my_places">המקומות שלי</string>
     <string name="nav_bar_alerts">התראות</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

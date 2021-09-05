@@ -4,6 +4,8 @@
     package="com.example.saveus"
     tools:ignore="ImpliedTouchscreenHardware,MissingLeanbackLauncher,MissingLeanbackSupport">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/un_splash"
@@ -11,6 +13,7 @@
         android:roundIcon="@drawable/un_splash"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+
         <activity
             android:name=".LoginActivity"
             android:exported="true" />
@@ -28,17 +31,14 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true" >
-        </activity>
+            android:exported="true" />
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="${MAPS_API_KEY}" />
-
     </application>
 
 </manifest>
