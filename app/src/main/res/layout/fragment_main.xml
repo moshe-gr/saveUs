@@ -5,11 +5,11 @@
     android:layout_height="match_parent"
     tools:context=".MainFragment">
 
-    <androidx.fragment.app.FragmentContainerView
+    <fragment
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/map"
-        tools:context=".MainActivity"
+        tools:context=".MainFragment"
         android:name="com.google.android.gms.maps.SupportMapFragment" />
 
 </FrameLayout>
