@@ -48,8 +48,7 @@ class MainFragment : Fragment(), GoogleMap.OnMyLocationButtonClickListener,
     override fun onMyLocationClick(p0: Location) {
 
     }
-
-    @SuppressLint("MissingPermission")
+    
     override fun onMapReady(googleMap: GoogleMap?) {
         map = googleMap ?: return
         googleMap.setOnMyLocationButtonClickListener(this)
