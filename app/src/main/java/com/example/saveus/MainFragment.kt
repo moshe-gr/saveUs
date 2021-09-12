@@ -11,10 +11,12 @@ import android.view.ViewGroup
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
 
 
 class MainFragment : Fragment(), GoogleMap.OnMyLocationButtonClickListener,
@@ -41,12 +43,15 @@ class MainFragment : Fragment(), GoogleMap.OnMyLocationButtonClickListener,
 
     }
 
+    @SuppressLint("MissingPermission")
     override fun onMapReady(googleMap: GoogleMap?) {
         map = googleMap ?: return
+        LocationServices.getFusedLocationProviderClient(requireContext()).lastLocation.addOnSuccessListener {
+            googleMap.moveCamera(CameraUpdateFactory.newLatLng(LatLng(it.latitude, it.longitude)))
+        }
         googleMap.setOnMyLocationButtonClickListener(this)
         googleMap.setOnMyLocationClickListener(this)
         enableMyLocation()
-        onMyLocationButtonClick()
     }
 
     @SuppressLint("MissingPermission")
