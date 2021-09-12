@@ -66,7 +66,8 @@
                 android:fontFamily="@font/assistant"
                 android:layout_weight="1"
                 android:inputType="text"
-                android:hint="@string/prompt_name"/>
+                android:hint="@string/prompt_name"
+                android:autofillHints="name" />
 
             <EditText
                 android:layout_width="match_parent"
@@ -76,7 +77,8 @@
                 android:fontFamily="@font/assistant"
                 android:layout_weight="1"
                 android:inputType="textEmailAddress"
-                android:hint="@string/prompt_email"/>
+                android:hint="@string/prompt_email"
+                android:autofillHints="emailAddress"/>
 
             <EditText
                 android:layout_width="match_parent"
@@ -86,7 +88,9 @@
                 android:fontFamily="@font/assistant"
                 android:layout_weight="1"
                 android:inputType="phone"
-                android:hint="@string/prompt_phone_number"/>
+                android:hint="@string/prompt_phone_number"
+                android:gravity="right"
+                android:autofillHints="phone"/>
 
         </LinearLayout>
 

@@ -11,18 +11,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        makeCurrentFragment(MainFragment.newInstance())
+
         val navBar = findViewById<NavigationBarView>(R.id.nav_bar)
         navBar.itemIconTintList = null
         navBar.setOnItemSelectedListener {
             when (it.itemId){
-                R.id.main -> makeCurrentFragment(MainFragment())
-                R.id.my_places -> makeCurrentFragment(MyPlacesFragment())
-                R.id.alerts -> makeCurrentFragment(NotificationsFragment())
+                R.id.main -> makeCurrentFragment(MainFragment.newInstance())
+                R.id.my_places -> makeCurrentFragment(MyPlacesFragment.newInstance())
+                R.id.alerts -> makeCurrentFragment(NotificationsFragment.newInstance())
             }
             true
         }
-
-        makeCurrentFragment(MainFragment())
 
     }
 

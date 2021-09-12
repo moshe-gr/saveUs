@@ -20,10 +20,16 @@ import com.google.android.gms.maps.model.LatLng
 
 
 class MainFragment : Fragment(), GoogleMap.OnMyLocationButtonClickListener,
-    GoogleMap.OnMyLocationClickListener, OnMapReadyCallback,
-    ActivityCompat.OnRequestPermissionsResultCallback {
+    GoogleMap.OnMyLocationClickListener, OnMapReadyCallback {
 
     private lateinit var map: GoogleMap
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -76,6 +82,15 @@ class MainFragment : Fragment(), GoogleMap.OnMyLocationButtonClickListener,
          * @see .onRequestPermissionsResult
          */
         private const val LOCATION_PERMISSION_REQUEST_CODE = 1
+
+        @JvmStatic
+        fun newInstance() =
+            MainFragment().apply {
+                arguments = Bundle().apply {
+//                    putString(ARG_PARAM1, param1)
+//                    putString(ARG_PARAM2, param2)
+                }
+            }
     }
 
 }
