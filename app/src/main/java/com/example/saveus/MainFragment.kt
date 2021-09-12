@@ -18,7 +18,6 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 
-
 class MainFragment : Fragment(), GoogleMap.OnMyLocationButtonClickListener,
     GoogleMap.OnMyLocationClickListener, OnMapReadyCallback {
 
@@ -48,7 +47,7 @@ class MainFragment : Fragment(), GoogleMap.OnMyLocationButtonClickListener,
     override fun onMyLocationClick(p0: Location) {
 
     }
-    
+
     override fun onMapReady(googleMap: GoogleMap?) {
         map = googleMap ?: return
         googleMap.setOnMyLocationButtonClickListener(this)
@@ -86,8 +85,7 @@ class MainFragment : Fragment(), GoogleMap.OnMyLocationButtonClickListener,
         fun newInstance() =
             MainFragment().apply {
                 arguments = Bundle().apply {
-//                    putString(ARG_PARAM1, param1)
-//                    putString(ARG_PARAM2, param2)
+
                 }
             }
     }
