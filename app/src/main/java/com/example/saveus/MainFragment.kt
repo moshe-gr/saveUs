@@ -52,9 +52,6 @@ class MainFragment : Fragment(), GoogleMap.OnMyLocationButtonClickListener,
     @SuppressLint("MissingPermission")
     override fun onMapReady(googleMap: GoogleMap?) {
         map = googleMap ?: return
-        LocationServices.getFusedLocationProviderClient(requireContext()).lastLocation.addOnSuccessListener {
-            googleMap.moveCamera(CameraUpdateFactory.newLatLng(LatLng(it.latitude, it.longitude)))
-        }
         googleMap.setOnMyLocationButtonClickListener(this)
         googleMap.setOnMyLocationClickListener(this)
         enableMyLocation()
@@ -66,6 +63,9 @@ class MainFragment : Fragment(), GoogleMap.OnMyLocationButtonClickListener,
         if (ContextCompat.checkSelfPermission(this.requireActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
             == PackageManager.PERMISSION_GRANTED) {
             map.isMyLocationEnabled = true
+            LocationServices.getFusedLocationProviderClient(requireContext()).lastLocation.addOnSuccessListener {
+                map.moveCamera(CameraUpdateFactory.newLatLng(LatLng(it.latitude, it.longitude)))
+            }
         } else {
             // Permission to access the location is missing. Show rationale and request permission
             ActivityCompat.requestPermissions(this.requireActivity(),
