@@ -6,7 +6,7 @@
     android:weightSum="10"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".OnBoarding2">
+    tools:context=".fragments.OnBoarding2">
 
     <LinearLayout
         android:layout_width="wrap_content"
