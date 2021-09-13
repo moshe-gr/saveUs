@@ -63,6 +63,7 @@ class MainFragment : Fragment(), GoogleMap.OnMyLocationButtonClickListener,
             map.isMyLocationEnabled = true
             LocationServices.getFusedLocationProviderClient(requireContext()).lastLocation.addOnSuccessListener {
                 map.moveCamera(CameraUpdateFactory.newLatLng(LatLng(it.latitude, it.longitude)))
+                map.setMinZoomPreference(15F)
             }
         } else {
             // Permission to access the location is missing. Show rationale and request permission
