@@ -3,6 +3,9 @@ package com.example.saveus
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.saveus.fragments.MainFragment
+import com.example.saveus.fragments.MyPlacesFragment
+import com.example.saveus.fragments.NotificationsFragment
 import com.google.android.material.navigation.NavigationBarView
 
 class MainActivity : AppCompatActivity() {
@@ -19,7 +22,7 @@ class MainActivity : AppCompatActivity() {
             when (it.itemId){
                 R.id.main -> makeCurrentFragment(MainFragment.newInstance())
                 R.id.my_places -> makeCurrentFragment(MyPlacesFragment.newInstance())
-                R.id.alerts -> makeCurrentFragment(NotificationsFragment.newInstance())
+                R.id.alerts -> makeCurrentFragment(NotificationsFragment())
             }
             true
         }

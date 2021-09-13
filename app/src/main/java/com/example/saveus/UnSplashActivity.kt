@@ -1,10 +1,10 @@
 package com.example.saveus
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import androidx.appcompat.app.AppCompatActivity
 
 class UnSplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,7 +17,7 @@ class UnSplashActivity : AppCompatActivity() {
         val sharedPreferences = getSharedPreferences(sharedPrefs, MODE_PRIVATE)
         val used = "used"
 
-        sharedPreferences.edit().putBoolean(used, false).apply()
+        //sharedPreferences.edit().putBoolean(used, false).apply()
 
         Handler(Looper.myLooper()!!).postDelayed({
             startActivity(loginIntent)
