@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.saveus.R
@@ -33,6 +34,9 @@ class MainFragment : Fragment(), OnMapReadyCallback {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_main, container, false)
+        view.findViewById<ImageView>(R.id.my_location).setOnClickListener {
+            enableMyLocation()
+        }
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(this)
         return view
@@ -48,7 +52,6 @@ class MainFragment : Fragment(), OnMapReadyCallback {
         if (!::map.isInitialized) return
         if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION)
             == PackageManager.PERMISSION_GRANTED) {
-            //map.isMyLocationEnabled = true
             LocationServices.getFusedLocationProviderClient(requireContext()).lastLocation.addOnSuccessListener {
                 map.moveCamera(CameraUpdateFactory.newLatLng(LatLng(it.latitude, it.longitude)))
             }
