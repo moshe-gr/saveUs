@@ -19,10 +19,10 @@ class LoginActivity : AppCompatActivity() {
 
         findViewById<TextView>(R.id.regulations).setOnClickListener {
             val wb = WebView(this)
-            wb.loadUrl("file:///android_asset/regulations.html")
+            wb.loadUrl("https://www.pantai.com.my/privacy-policy")
             setContentView(wb)
         }
-        
+
         findViewById<TextView>(R.id.terms_of_use).setOnClickListener {
             val wb = WebView(this)
             wb.loadUrl("file:///android_asset/terms_of_use.html")
@@ -39,4 +39,9 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
+
+    override fun onBackPressed() {
+        startActivity(Intent(this, LoginActivity::class.java))
+//        super.onBackPressed()
+    }
 }

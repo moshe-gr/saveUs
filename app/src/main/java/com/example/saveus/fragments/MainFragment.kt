@@ -48,7 +48,7 @@ class MainFragment : Fragment(), OnMapReadyCallback {
         if (!::map.isInitialized) return
         if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION)
             == PackageManager.PERMISSION_GRANTED) {
-            map.isMyLocationEnabled = true
+            //map.isMyLocationEnabled = true
             LocationServices.getFusedLocationProviderClient(requireContext()).lastLocation.addOnSuccessListener {
                 map.moveCamera(CameraUpdateFactory.newLatLng(LatLng(it.latitude, it.longitude)))
             }
