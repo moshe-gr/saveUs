@@ -39,13 +39,15 @@ class MainFragment : Fragment(), OnMapReadyCallback {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_main, container, false)
         var start = true
+        val myLocationButton = view.findViewById<ImageView>(R.id.my_location)
         val startStopText = view.findViewById<TextView>(R.id.start_stop_text)
         val startStopTitle = view.findViewById<TextView>(R.id.start_stop_title)
         val chronometer = view.findViewById<Chronometer>(R.id.chronometer)
 
-        view.findViewById<ImageView>(R.id.my_location).setOnClickListener {
+        myLocationButton.setOnClickListener {
             enableMyLocation()
         }
+
         view.findViewById<LinearLayout>(R.id.start_stop_circle).setOnClickListener {
             if(start){
                 it.setBackgroundResource(R.drawable.circle_2)
@@ -63,12 +65,14 @@ class MainFragment : Fragment(), OnMapReadyCallback {
                     }
                 }
                 chronometer.start()
+                myLocationButton.visibility = View.GONE
             }
             else{
                 it.setBackgroundResource(R.drawable.circle_1)
                 startStopText.visibility = View.VISIBLE
                 startStopTitle.setText(R.string.circle_1_title)
                 chronometer.visibility = View.GONE
+                myLocationButton.visibility = View.VISIBLE
             }
             start = !start
         }
