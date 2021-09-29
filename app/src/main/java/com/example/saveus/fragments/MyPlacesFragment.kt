@@ -4,22 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.saveus.R
 
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
 class MyPlacesFragment : Fragment() {
-    private var param1: String? = null
-    private var param2: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+
         }
     }
 
@@ -27,8 +21,18 @@ class MyPlacesFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_my_places, container, false)
+        val view = inflater.inflate(R.layout.fragment_my_places, container, false)
+        val myPlacesButton = view.findViewById<TextView>(R.id.my_places_button)
+        val onMapButton = view.findViewById<TextView>(R.id.on_map_button)
+        myPlacesButton.setOnClickListener {
+            it.setBackgroundResource(R.color.turquoise)
+            onMapButton.setBackgroundResource(R.color.turquoise_55)
+        }
+        onMapButton.setOnClickListener {
+            it.setBackgroundResource(R.color.turquoise)
+            myPlacesButton.setBackgroundResource(R.color.turquoise_55)
+        }
+        return view
     }
 
     companion object {
@@ -36,8 +40,7 @@ class MyPlacesFragment : Fragment() {
         fun newInstance() =
             MyPlacesFragment().apply {
                 arguments = Bundle().apply {
-//                    putString(ARG_PARAM1, param1)
-//                    putString(ARG_PARAM2, param2)
+
                 }
             }
     }

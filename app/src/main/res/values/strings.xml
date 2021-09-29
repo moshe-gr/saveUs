@@ -33,4 +33,6 @@
     <string name="circle_1_text">התחל לרשום</string>
     <string name="circle_2_title">עצור</string>
 
+    <string name="my_places_button">המקומות שלי</string>
+    <string name="on_map_button">על מפה</string>
 </resources>

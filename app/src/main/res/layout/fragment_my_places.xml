@@ -12,28 +12,31 @@
         android:layout_height="0dp"
         android:orientation="horizontal"
         android:weightSum="2"
-        android:background="@color/turquoise"
         android:layoutDirection="rtl"
         android:layout_weight="1">
 
         <TextView
+            android:id="@+id/my_places_button"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:textColor="@color/white"
             android:textSize="22sp"
             android:fontFamily="@font/assistant"
             android:gravity="center"
-            android:text="המקומות שלי"
+            android:text="@string/my_places_button"
+            android:background="@color/turquoise"
             android:layout_weight="1"/>
 
         <TextView
+            android:id="@+id/on_map_button"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:textColor="@color/white"
             android:textSize="22sp"
             android:fontFamily="@font/assistant"
             android:gravity="center"
-            android:text="על מפה"
+            android:text="@string/on_map_button"
+            android:background="@color/turquoise_55"
             android:layout_weight="1"/>
 
     </LinearLayout>
