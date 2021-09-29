@@ -4,10 +4,14 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.os.SystemClock
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Chronometer
 import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.saveus.R
@@ -34,8 +38,39 @@ class MainFragment : Fragment(), OnMapReadyCallback {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_main, container, false)
+        var start = true
+        val startStopText = view.findViewById<TextView>(R.id.start_stop_text)
+        val startStopTitle = view.findViewById<TextView>(R.id.start_stop_title)
+        val chronometer = view.findViewById<Chronometer>(R.id.chronometer)
+
         view.findViewById<ImageView>(R.id.my_location).setOnClickListener {
             enableMyLocation()
+        }
+        view.findViewById<LinearLayout>(R.id.start_stop_circle).setOnClickListener {
+            if(start){
+                it.setBackgroundResource(R.drawable.circle_2)
+                startStopTitle.setText(R.string.circle_2_title)
+                startStopText.visibility = View.GONE
+                chronometer.visibility = View.VISIBLE
+                chronometer.format = "00:%s"
+                chronometer.base = SystemClock.elapsedRealtime()
+                chronometer.setOnChronometerTickListener { cArg ->
+                    val elapsedMillis = SystemClock.elapsedRealtime() - cArg.base
+                    if (elapsedMillis > 3600000L) {
+                        cArg.format = "0%s"
+                    } else {
+                        cArg.format = "00:%s"
+                    }
+                }
+                chronometer.start()
+            }
+            else{
+                it.setBackgroundResource(R.drawable.circle_1)
+                startStopText.visibility = View.VISIBLE
+                startStopTitle.setText(R.string.circle_1_title)
+                chronometer.visibility = View.GONE
+            }
+            start = !start
         }
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(this)
@@ -85,7 +120,6 @@ class MainFragment : Fragment(), OnMapReadyCallback {
         fun newInstance() =
             MainFragment().apply {
                 arguments = Bundle().apply {
-
                 }
             }
     }

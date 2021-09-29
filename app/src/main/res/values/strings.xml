@@ -31,4 +31,6 @@
 
     <string name="circle_1_title">הגעתי</string>
     <string name="circle_1_text">התחל לרשום</string>
+    <string name="circle_2_title">עצור</string>
+    <string name="circle_2_text">00:00:00</string>
 </resources>
