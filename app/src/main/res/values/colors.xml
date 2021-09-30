@@ -13,4 +13,5 @@
     <color name="login_text">#051549</color>
     <color name="login_background">#fafbfc</color>
     <color name="login_hint">#b0b0b0</color>
+    <color name="show_my_places">#ffaa00</color>
 </resources>

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:weightSum="8"
     tools:context=".fragments.MyPlacesFragment">
@@ -38,6 +39,45 @@
             android:text="@string/on_map_button"
             android:background="@color/turquoise_55"
             android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.3"
+        android:background="@color/login_background"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="0.6"
+        android:background="@color/login_background"
+        android:paddingHorizontal="16dp"
+        android:weightSum="1"
+        android:layoutDirection="rtl">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.42"
+            android:background="@drawable/triangle_button"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="0.38"
+            android:layout_height="match_parent"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.2"
+            android:text="@string/show_my_places"
+            android:textSize="16sp"
+            android:fontFamily="@font/assistant"
+            android:textColor="@color/show_my_places"
+            android:background="@drawable/show_my_places"/>
 
     </LinearLayout>
 
