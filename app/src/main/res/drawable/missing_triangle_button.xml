@@ -13,9 +13,10 @@
 
     <item>
         <rotate
-            android:fromDegrees="60"
-            android:pivotX="-10%"
-            android:pivotY="0%">
+            android:fromDegrees="-60"
+            android:toDegrees="60"
+            android:pivotX="60%"
+            android:pivotY="-170%">
             <shape>
                 <solid android:color="@color/login_background"/>
                 <stroke
@@ -27,9 +28,10 @@
 
     <item>
         <rotate
-            android:fromDegrees="-60"
-            android:pivotX="-10%"
-            android:pivotY="100%">
+            android:fromDegrees="60"
+            android:toDegrees="-60"
+            android:pivotX="0%"
+            android:pivotY="200%">
             <shape>
                 <solid android:color="@color/login_background"/>
                 <stroke
