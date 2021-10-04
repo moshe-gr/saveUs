@@ -14,7 +14,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        makeCurrentFragment(MainFragment.newInstance())
+        if(savedInstanceState == null){
+            makeCurrentFragment(MainFragment.newInstance())
+        }
 
         val navBar = findViewById<NavigationBarView>(R.id.nav_bar)
         navBar.itemIconTintList = null

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -57,17 +58,60 @@
         android:weightSum="1"
         android:layoutDirection="rtl">
 
-        <TextView
+        <LinearLayout
+            android:id="@+id/from_date_button"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:orientation="horizontal"
             android:layout_weight="0.42"
-            android:background="@drawable/triangle_button"/>
+            android:layoutDirection="rtl"
+            android:background="@drawable/triangle_button">
 
-        <TextView
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingRight="8dp"
+                android:src="@drawable/calendar_1"
+                app:tint="@color/date_button"/>
+
+            <TextView
+                android:id="@+id/from_date_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="16sp"
+                android:fontFamily="@font/assistant"
+                android:textColor="@color/date_button"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/to_date_button"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:orientation="horizontal"
             android:layout_weight="0.38"
-            android:background="@drawable/missing_triangle_button"/>
+            android:layoutDirection="rtl"
+            android:layout_marginRight="2dp"
+            android:background="@drawable/triangle_button">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingRight="8dp"
+                android:src="@drawable/calendar_1"
+                app:tint="@color/date_button" />
+
+            <TextView
+                android:id="@+id/to_date_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="16sp"
+                android:fontFamily="@font/assistant"
+                android:textColor="@color/date_button"
+                android:gravity="center"/>
+
+        </LinearLayout>
 
         <Button
             android:layout_width="0dp"
