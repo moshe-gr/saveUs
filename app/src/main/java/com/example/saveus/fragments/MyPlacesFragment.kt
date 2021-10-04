@@ -15,8 +15,8 @@ import java.util.*
 
 class MyPlacesFragment : Fragment() {
 
-    private var fromDate = ""
-    private var toDate = ""
+    private var startDate = ""
+    private var endDate = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,14 +34,14 @@ class MyPlacesFragment : Fragment() {
         val myPlacesButton = view.findViewById<TextView>(R.id.my_places_button)
         val onMapButton = view.findViewById<TextView>(R.id.on_map_button)
 
-        val fromDateText = view.findViewById<TextView>(R.id.from_date_text)
-        val toDateText = view.findViewById<TextView>(R.id.to_date_text)
-        val fromDateButton = view.findViewById<LinearLayout>(R.id.from_date_button)
-        val toDateButton = view.findViewById<LinearLayout>(R.id.to_date_button)
+        val startDateTextView = view.findViewById<TextView>(R.id.from_date_text)
+        val endDateTextView = view.findViewById<TextView>(R.id.to_date_text)
+        val startDateButton = view.findViewById<LinearLayout>(R.id.from_date_button)
+        val endDateButton = view.findViewById<LinearLayout>(R.id.to_date_button)
 
-        val day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
-        val month = Calendar.getInstance().get(Calendar.MONTH)
-        val year = Calendar.getInstance().get(Calendar.YEAR)
+        val currentDay = Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
+        val currentMonth = Calendar.getInstance().get(Calendar.MONTH)
+        val currentYear = Calendar.getInstance().get(Calendar.YEAR)
 
         myPlacesButton.setOnClickListener {
             it.setBackgroundResource(R.color.turquoise)
@@ -53,30 +53,30 @@ class MyPlacesFragment : Fragment() {
         }
 
         if(savedInstanceState == null){
-            fromDateText.text = dateToShow(day, month, year)
-            toDateText.text = dateToShow(day, month, year)
+            startDateTextView.text = dateToShow(currentDay, currentMonth, currentYear)
+            endDateTextView.text = dateToShow(currentDay, currentMonth, currentYear)
         }
         else{
-            fromDateText.text = savedInstanceState.getString("fromDate")
-            toDateText.text = savedInstanceState.getString("toDate")
+            startDateTextView.text = savedInstanceState.getString("fromDate")
+            endDateTextView.text = savedInstanceState.getString("toDate")
         }
 
-        val fromPicker = datePickerButton(view.context, fromDateText)
-        val toPicker = datePickerButton(view.context, toDateText)
+        val startDatePicker = datePickerButton(view.context, startDateTextView)
+        val endDatePicker = datePickerButton(view.context, endDateTextView)
 
-        fromDateText.doOnTextChanged { text, _, _, _ ->
-            fromDate = text.toString()
+        startDateTextView.doOnTextChanged { text, _, _, _ ->
+            startDate = text.toString()
         }
 
-        toDateText.doOnTextChanged { text, _, _, _ ->
-            toDate = text.toString()
+        endDateTextView.doOnTextChanged { text, _, _, _ ->
+            endDate = text.toString()
         }
 
-        fromDateButton.setOnClickListener {
-            fromPicker.show()
+        startDateButton.setOnClickListener {
+            startDatePicker.show()
         }
-        toDateButton.setOnClickListener {
-            toPicker.show()
+        endDateButton.setOnClickListener {
+            endDatePicker.show()
         }
 
         return view
@@ -84,8 +84,8 @@ class MyPlacesFragment : Fragment() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putString("fromDate", fromDate)
-        outState.putString("toDate", toDate)
+        outState.putString("fromDate", startDate)
+        outState.putString("toDate", endDate)
     }
 
     private fun datePickerButton(context: Context, textView: TextView): DatePickerDialog {
