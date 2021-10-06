@@ -2,6 +2,7 @@ package com.example.saveus.fragments
 
 import android.app.DatePickerDialog
 import android.content.Context
+import android.location.Address
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,19 +11,19 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import com.example.saveus.R
+import com.example.saveus.SavedPlaceViewModel
 import java.util.*
+import android.location.Geocoder
+
+
+
 
 class MyPlacesFragment : Fragment() {
 
-    private var startDate = ""
-    private var endDate = ""
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-
-        }
+    private val savedPlaceViewModel by lazy {
+        ViewModelProviders.of(requireActivity()).get(SavedPlaceViewModel::class.java)
     }
 
     override fun onCreateView(
@@ -52,24 +53,18 @@ class MyPlacesFragment : Fragment() {
             myPlacesButton.setBackgroundResource(R.color.turquoise_55)
         }
 
-        if(savedInstanceState == null){
-            startDateTextView.text = dateToShow(currentDay, currentMonth, currentYear)
-            endDateTextView.text = dateToShow(currentDay, currentMonth, currentYear)
-        }
-        else{
-            startDateTextView.text = savedInstanceState.getString("fromDate")
-            endDateTextView.text = savedInstanceState.getString("toDate")
-        }
+        startDateTextView.text = dateToShow(currentDay, currentMonth, currentYear)
+        endDateTextView.text = dateToShow(currentDay, currentMonth, currentYear)
 
         val startDatePicker = datePickerButton(view.context, startDateTextView)
         val endDatePicker = datePickerButton(view.context, endDateTextView)
 
         startDateTextView.doOnTextChanged { text, _, _, _ ->
-            startDate = text.toString()
+            startDateTextView.text = text.toString()
         }
 
         endDateTextView.doOnTextChanged { text, _, _, _ ->
-            endDate = text.toString()
+            endDateTextView.text = text.toString()
         }
 
         startDateButton.setOnClickListener {
@@ -79,13 +74,12 @@ class MyPlacesFragment : Fragment() {
             endDatePicker.show()
         }
 
-        return view
-    }
+        view.findViewById<TextView>(R.id.time_start).text = savedPlaceViewModel.timeStart.toString()
+        view.findViewById<TextView>(R.id.time_end).text = savedPlaceViewModel.timeEnd.toString()
+        view.findViewById<TextView>(R.id.address).text = savedPlaceViewModel.address
+        view.findViewById<TextView>(R.id.time_length).text = savedPlaceViewModel.timeLength
 
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putString("fromDate", startDate)
-        outState.putString("toDate", endDate)
+        return view
     }
 
     private fun datePickerButton(context: Context, textView: TextView): DatePickerDialog {
@@ -106,11 +100,6 @@ class MyPlacesFragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance() =
-            MyPlacesFragment().apply {
-                arguments = Bundle().apply {
-
-                }
-            }
+        fun newInstance() = MyPlacesFragment()
     }
 }

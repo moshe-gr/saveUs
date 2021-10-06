@@ -4,6 +4,10 @@
     package="com.example.saveus"
     tools:ignore="ImpliedTouchscreenHardware,MissingLeanbackLauncher,MissingLeanbackSupport">
 
+    <uses-feature
+        android:name="android.hardware.location.gps"
+        android:required="false" />
+
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
@@ -17,13 +21,16 @@
 
         <activity
             android:name=".LoginActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".OnBoardingActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".UnSplashActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -33,7 +40,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:screenOrientation="locked"/>
+            android:screenOrientation="portrait"/>
 
         <meta-data
             android:name="preloaded_fonts"
