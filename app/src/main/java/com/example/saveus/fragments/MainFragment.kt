@@ -79,7 +79,7 @@ class MainFragment : Fragment(), OnMapReadyCallback {
                 val street = addresses[0].thoroughfare
                 val streetNum = addresses[0].subThoroughfare
 
-                savePlace.address = "$street $streetNum, $city"
+                savePlace.address = "$street $streetNum $city"
             }
             else{
                 it.setBackgroundResource(R.drawable.circle_1)
