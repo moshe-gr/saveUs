@@ -15,4 +15,5 @@
     <color name="login_hint">#b0b0b0</color>
     <color name="show_my_places">#ffaa00</color>
     <color name="date_button">#737684</color>
+    <color name="add_place">#ee6777</color>
 </resources>

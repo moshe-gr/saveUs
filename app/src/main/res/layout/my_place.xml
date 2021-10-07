@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layoutDirection="ltr"
+    android:background="@drawable/my_place_background">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="15dp"
+        android:layout_gravity="center">
+
+        <TextView
+            android:id="@+id/time_start_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/date_button"
+            android:fontFamily="@font/assistant"/>
+
+        <TextView
+            android:id="@+id/time_length"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#333333"
+            android:textSize="16sp"
+            android:fontFamily="@font/assistant_semibold"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/address"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:layout_weight="1"
+        android:textColor="@color/login_text"
+        android:fontFamily="@font/assistant"
+        android:layout_gravity="center"
+        android:gravity="right"/>
+
+    <ImageView
+        android:id="@+id/red_dot"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="8dp"
+        android:layout_gravity="center"
+        android:src="@drawable/my_place_dot"/>
+
+</LinearLayout>

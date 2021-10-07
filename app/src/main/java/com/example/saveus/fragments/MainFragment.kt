@@ -16,9 +16,10 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.example.saveus.R
-import com.example.saveus.SavedPlaceViewModel
+import com.example.saveus.SavePlace
+import com.example.saveus.SavedPlacesViewModel
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -31,9 +32,8 @@ import java.util.*
 class MainFragment : Fragment(), OnMapReadyCallback {
 
     private lateinit var map: GoogleMap
-    private val savedPlaceViewModel by lazy {
-        ViewModelProviders.of(requireActivity()).get(SavedPlaceViewModel::class.java)
-    }
+    private lateinit var savedPlacesViewModel: SavedPlacesViewModel
+    private lateinit var savePlace: SavePlace
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,6 +45,7 @@ class MainFragment : Fragment(), OnMapReadyCallback {
         val startStopText = view.findViewById<TextView>(R.id.start_stop_text)
         val startStopTitle = view.findViewById<TextView>(R.id.start_stop_title)
         val chronometer = view.findViewById<Chronometer>(R.id.chronometer)
+        savedPlacesViewModel = ViewModelProvider(requireActivity()).get(SavedPlacesViewModel::class.java)
 
         myLocationButton.setOnClickListener {
             enableMyLocation()
@@ -66,9 +67,18 @@ class MainFragment : Fragment(), OnMapReadyCallback {
                         cArg.format = "00:%s"
                     }
                 }
+
+                savePlace = SavePlace()
                 chronometer.start()
                 myLocationButton.visibility = View.GONE
-                savedPlaceViewModel.timeStart = Time(System.currentTimeMillis())
+                savePlace.timeStart = Time(System.currentTimeMillis())
+
+                val geocoder = Geocoder(activity, Locale.getDefault())
+                val addresses: List<Address> = geocoder.getFromLocation(map.cameraPosition.target.latitude, map.cameraPosition.target.longitude, 1)
+                val city: String = addresses[0].locality
+                val street = addresses[0].subLocality
+
+                savePlace.address = "$street $city"
             }
             else{
                 it.setBackgroundResource(R.drawable.circle_1)
@@ -76,16 +86,10 @@ class MainFragment : Fragment(), OnMapReadyCallback {
                 startStopTitle.setText(R.string.circle_1_title)
                 chronometer.visibility = View.GONE
                 myLocationButton.visibility = View.VISIBLE
-                savedPlaceViewModel.timeEnd = Time(System.currentTimeMillis())
-                savedPlaceViewModel.timeLength = chronometer.text.toString()
-                val geocoder = Geocoder(activity, Locale.getDefault())
+                savePlace.timeEnd = Time(System.currentTimeMillis())
+                savePlace.timeLength = chronometer.text.toString()
+                savedPlacesViewModel.addSavePlaceses(savePlace)
 
-                val addresses: List<Address> = geocoder.getFromLocation(map.cameraPosition.target.latitude, map.cameraPosition.target.longitude, 1)
-                val city: String = addresses[0].locality
-                val state: String = addresses[0].adminArea
-                val country: String = addresses[0].countryName
-
-                savedPlaceViewModel.address = "$city $state $country"
             }
             start = !start
         }
