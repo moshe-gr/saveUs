@@ -37,4 +37,10 @@
     <string name="on_map_button">על מפה</string>
     <string name="show_my_places">הצג</string>
     <string name="add_place">הוסף מיקום</string>
+
+    <string name="my_notifications_title">ההתראות שלי</string>
+    <string name="num_sick">מספר חולים</string>
+    <string name="num_recover">מספר מחלימים</string>
+    <string name="num_dead">מספר מתים</string>
+    <string name="notification">אין עדכונים עד כה עבורך</string>
 </resources>
