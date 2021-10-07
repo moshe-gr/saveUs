@@ -75,10 +75,11 @@ class MainFragment : Fragment(), OnMapReadyCallback {
 
                 val geocoder = Geocoder(activity, Locale.getDefault())
                 val addresses: List<Address> = geocoder.getFromLocation(map.cameraPosition.target.latitude, map.cameraPosition.target.longitude, 1)
-                val city: String = addresses[0].locality
-                val street = addresses[0].subLocality
+                val city = addresses[0].locality
+                val street = addresses[0].thoroughfare
+                val streetNum = addresses[0].subThoroughfare
 
-                savePlace.address = "$street $city"
+                savePlace.address = "$street $streetNum, $city"
             }
             else{
                 it.setBackgroundResource(R.drawable.circle_1)

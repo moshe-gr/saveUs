@@ -36,4 +36,5 @@
     <string name="my_places_button">המקומות שלי</string>
     <string name="on_map_button">על מפה</string>
     <string name="show_my_places">הצג</string>
+    <string name="add_place">הוסף מיקום</string>
 </resources>
