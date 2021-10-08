@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -64,14 +63,6 @@ class MyPlacesFragment : Fragment() {
 
         val startDatePicker = datePickerButton(view.context, startDateTextView)
         val endDatePicker = datePickerButton(view.context, endDateTextView)
-
-        startDateTextView.doOnTextChanged { text, _, _, _ ->
-            startDateTextView.text = text.toString()
-        }
-
-        endDateTextView.doOnTextChanged { text, _, _, _ ->
-            endDateTextView.text = text.toString()
-        }
 
         startDateButton.setOnClickListener {
             startDatePicker.show()
