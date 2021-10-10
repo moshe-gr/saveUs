@@ -107,8 +107,9 @@ class MainFragment : Fragment(), OnMapReadyCallback {
     @SuppressLint("MissingPermission")
     private fun enableMyLocation() {
         if (!::map.isInitialized) return
-        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION)
-            == PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            map.isMyLocationEnabled = true
+            map.isMyLocationEnabled = false
             LocationServices.getFusedLocationProviderClient(requireContext()).lastLocation.addOnSuccessListener {
                 map.moveCamera(CameraUpdateFactory.newLatLng(LatLng(it.latitude, it.longitude)))
             }
