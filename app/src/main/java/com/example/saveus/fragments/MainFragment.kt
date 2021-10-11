@@ -34,6 +34,7 @@ class MainFragment : Fragment(), OnMapReadyCallback {
     private lateinit var savedPlacesViewModel: SavedPlacesViewModel
     private lateinit var savePlace: SavePlace
 
+    @SuppressLint("MissingPermission")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -73,12 +74,14 @@ class MainFragment : Fragment(), OnMapReadyCallback {
                 savePlace.timeStart = System.currentTimeMillis()
 
                 val geocoder = Geocoder(activity, Locale.getDefault())
-                val addresses: List<Address> = geocoder.getFromLocation(map.cameraPosition.target.latitude, map.cameraPosition.target.longitude, 1)
-                val city = addresses[0].locality
-                val street = addresses[0].thoroughfare
-                val streetNum = addresses[0].subThoroughfare
+                LocationServices.getFusedLocationProviderClient(requireContext()).lastLocation.addOnSuccessListener {currentLocation->
+                    val addresses: List<Address> = geocoder.getFromLocation(currentLocation.latitude, currentLocation.longitude, 1)
+                    val city = addresses[0].locality
+                    val street = addresses[0].thoroughfare
+                    val streetNum = addresses[0].subThoroughfare
+                    savePlace.address = "$street $streetNum $city"
+                }
 
-                savePlace.address = "$street $streetNum $city"
             }
             else{
                 it.setBackgroundResource(R.drawable.circle_1)
