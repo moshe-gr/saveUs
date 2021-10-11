@@ -1,14 +1,20 @@
 package com.example.saveus
 
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 
-class SavedPlacesViewModel : ViewModel() {
-    var savedPlaces = MutableLiveData(ArrayList<SavePlace>())
+class SavedPlacesViewModel(application: Application) : AndroidViewModel(application) {
+    private val context = getApplication<Application>().applicationContext
 
-    fun addSavePlaceses(savePlace: SavePlace) {
-        savedPlaces.value?.add(savePlace)
-        savedPlaces.value = savedPlaces.value
+    fun addSavedPlace(savePlace: SavePlace) {
+//        savedPlaces.value?.add(savePlace)
+//        savedPlaces.value = savedPlaces.value
+//        AppDatabase.getInstance()?.insert(savePlace)
+        AppDatabase.getInstance(context)?.insert(savePlace)
+    }
 
+    fun getPlaces(): LiveData<List<SavePlace>>? {
+        return AppDatabase.getInstance(context)?.getAll()
     }
 }

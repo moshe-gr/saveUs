@@ -38,11 +38,16 @@ class ShowMyPlacesFragment : Fragment() {
         val currentYear = Calendar.getInstance().get(Calendar.YEAR)
 
         savedPlacesViewModel = ViewModelProvider(requireActivity()).get(SavedPlacesViewModel::class.java)
-        savedPlacesViewModel.savedPlaces.observe(viewLifecycleOwner, {savedPlaces->
+        savedPlacesViewModel.getPlaces()?.observe(viewLifecycleOwner, { savedPlaces ->
             val adapter = MyPlacesAdapter(savedPlaces)
             recyclerview.adapter = adapter
             recyclerview.layoutManager = LinearLayoutManager(view.context)
         })
+//        savedPlacesViewModel.savedPlaces.observe(viewLifecycleOwner, {savedPlaces->
+//            val adapter = MyPlacesAdapter(savedPlaces)
+//            recyclerview.adapter = adapter
+//            recyclerview.layoutManager = LinearLayoutManager(view.context)
+//        })
 
         startDateTextView.text = dateToShow(currentDay, currentMonth, currentYear)
         endDateTextView.text = dateToShow(currentDay, currentMonth, currentYear)

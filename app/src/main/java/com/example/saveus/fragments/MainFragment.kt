@@ -26,7 +26,6 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
-import java.sql.Time
 import java.util.*
 
 class MainFragment : Fragment(), OnMapReadyCallback {
@@ -34,6 +33,7 @@ class MainFragment : Fragment(), OnMapReadyCallback {
     private lateinit var map: GoogleMap
     private lateinit var savedPlacesViewModel: SavedPlacesViewModel
     private lateinit var savePlace: SavePlace
+    private var pid = 1
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -68,10 +68,10 @@ class MainFragment : Fragment(), OnMapReadyCallback {
                     }
                 }
 
-                savePlace = SavePlace()
+                savePlace = SavePlace(pid++)
                 chronometer.start()
                 myLocationButton.visibility = View.GONE
-                savePlace.timeStart = Time(System.currentTimeMillis())
+                savePlace.timeStart = System.currentTimeMillis()
 
                 val geocoder = Geocoder(activity, Locale.getDefault())
                 val addresses: List<Address> = geocoder.getFromLocation(map.cameraPosition.target.latitude, map.cameraPosition.target.longitude, 1)
@@ -87,9 +87,9 @@ class MainFragment : Fragment(), OnMapReadyCallback {
                 startStopTitle.setText(R.string.circle_1_title)
                 chronometer.visibility = View.GONE
                 myLocationButton.visibility = View.VISIBLE
-                savePlace.timeEnd = Time(System.currentTimeMillis())
+                savePlace.timeEnd = System.currentTimeMillis()
                 savePlace.timeLength = chronometer.text.toString()
-                savedPlacesViewModel.addSavePlaceses(savePlace)
+                savedPlacesViewModel.addSavedPlace(savePlace)
 
             }
             start = !start

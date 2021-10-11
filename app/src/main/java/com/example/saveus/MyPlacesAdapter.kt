@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import java.sql.Time
 
 class MyPlacesAdapter (private val mList: List<SavePlace>) : RecyclerView.Adapter<MyPlacesAdapter.ViewHolder>() {
 
@@ -19,7 +20,7 @@ class MyPlacesAdapter (private val mList: List<SavePlace>) : RecyclerView.Adapte
 
                 val itemsViewModel = mList[position]
 
-                holder.timeStartEnd.text = itemsViewModel.timeStart.toString() + " - " + itemsViewModel.timeEnd.toString()
+                holder.timeStartEnd.text = Time(itemsViewModel.timeStart!!).toString() + " - " + Time(itemsViewModel.timeEnd!!).toString()
                 holder.timeLength.text = itemsViewModel.timeLength
                 holder.address.text = itemsViewModel.address
         }
