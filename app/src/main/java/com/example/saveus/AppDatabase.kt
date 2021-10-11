@@ -14,9 +14,7 @@ abstract class AppDatabase : RoomDatabase() {
         var db: AppDatabase? = null
 
         fun getInstance(context: Context): AppDatabase? {
-
             if (db == null) {
-
                 db = Room.databaseBuilder(
                     context,
                     AppDatabase::class.java, "savedPlaces"
@@ -31,8 +29,8 @@ abstract class AppDatabase : RoomDatabase() {
         Thread {
             Runnable {
                 val placeDao = db!!.placeDao()
-                placeDao.insertAll(savePlace)
-            }
+                placeDao.insert(savePlace)
+            }.run()
         }.start()
     }
 

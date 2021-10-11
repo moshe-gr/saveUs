@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class SavePlace (
-    @PrimaryKey(autoGenerate = true) val pid: Int,
+    @PrimaryKey(autoGenerate = true) val pid: Int = 0,
     @ColumnInfo(name = "address") var address: String? = null,
     @ColumnInfo(name = "time_start") var timeStart: Long? = null,
     @ColumnInfo(name = "time_end") var timeEnd: Long? = null,

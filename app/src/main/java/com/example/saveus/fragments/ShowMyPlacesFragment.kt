@@ -3,12 +3,12 @@ package com.example.saveus.fragments
 import android.app.DatePickerDialog
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -42,12 +42,8 @@ class ShowMyPlacesFragment : Fragment() {
             val adapter = MyPlacesAdapter(savedPlaces)
             recyclerview.adapter = adapter
             recyclerview.layoutManager = LinearLayoutManager(view.context)
+            adapter.notifyDataSetChanged()
         })
-//        savedPlacesViewModel.savedPlaces.observe(viewLifecycleOwner, {savedPlaces->
-//            val adapter = MyPlacesAdapter(savedPlaces)
-//            recyclerview.adapter = adapter
-//            recyclerview.layoutManager = LinearLayoutManager(view.context)
-//        })
 
         startDateTextView.text = dateToShow(currentDay, currentMonth, currentYear)
         endDateTextView.text = dateToShow(currentDay, currentMonth, currentYear)

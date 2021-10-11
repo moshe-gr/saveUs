@@ -8,9 +8,6 @@ class SavedPlacesViewModel(application: Application) : AndroidViewModel(applicat
     private val context = getApplication<Application>().applicationContext
 
     fun addSavedPlace(savePlace: SavePlace) {
-//        savedPlaces.value?.add(savePlace)
-//        savedPlaces.value = savedPlaces.value
-//        AppDatabase.getInstance()?.insert(savePlace)
         AppDatabase.getInstance(context)?.insert(savePlace)
     }
 

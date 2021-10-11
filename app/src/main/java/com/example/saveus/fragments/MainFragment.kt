@@ -33,7 +33,6 @@ class MainFragment : Fragment(), OnMapReadyCallback {
     private lateinit var map: GoogleMap
     private lateinit var savedPlacesViewModel: SavedPlacesViewModel
     private lateinit var savePlace: SavePlace
-    private var pid = 1
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -68,7 +67,7 @@ class MainFragment : Fragment(), OnMapReadyCallback {
                     }
                 }
 
-                savePlace = SavePlace(pid++)
+                savePlace = SavePlace()
                 chronometer.start()
                 myLocationButton.visibility = View.GONE
                 savePlace.timeStart = System.currentTimeMillis()

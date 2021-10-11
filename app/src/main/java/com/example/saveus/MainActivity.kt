@@ -10,20 +10,9 @@ import com.google.android.material.navigation.NavigationBarView
 
 class MainActivity : AppCompatActivity() {
 
-//    private lateinit var savedPlacesViewModel: SavedPlacesViewModel
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-//        val db = Room.databaseBuilder(
-//            applicationContext,
-//            AppDatabase::class.java, "savedPlaces"
-//        ).build()
-//
-//        val placeDao = db.placeDao()
-//        savedPlacesViewModel = ViewModelProvider(this).get(SavedPlacesViewModel::class.java)
-//        savedPlacesViewModel.savedPlaces = MutableLiveData(placeDao.getAll().toCollection(ArrayList()))
 
         if(savedInstanceState == null){
             makeCurrentFragment(MainFragment.newInstance())

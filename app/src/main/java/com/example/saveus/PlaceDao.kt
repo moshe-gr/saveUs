@@ -12,7 +12,7 @@ interface PlaceDao {
     fun getAll(): LiveData<List<SavePlace>>
 
     @Insert
-    fun insertAll(vararg savePlace: SavePlace)
+    fun insert(savePlace: SavePlace)
 
     @Delete
     fun delete(savePlace: SavePlace)
