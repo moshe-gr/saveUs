@@ -57,7 +57,16 @@ class ShowMyPlacesFragment : Fragment() {
             println(a)
             println(b)
             savedPlacesViewModel.getPlacesByDate(a, b)?.observe(viewLifecycleOwner, { savedPlaces ->
-                val adapter = MyPlacesAdapter(savedPlaces)
+                var mList = savedPlaces
+                val finalList: ArrayList<Any> = arrayListOf()
+                mList = mList.sortedBy { savePlace -> savePlace.timeStart }
+                for(i in mList){
+                    if (i.timeStart!! / 1000 / 60 / 60 / 24 !in finalList){
+                        finalList.add(i.timeStart!! / 1000 / 60 / 60 / 24)
+                    }
+                    finalList.add(i)
+                }
+                val adapter = MyPlacesAdapter(finalList)
                 recyclerview.adapter = adapter
                 recyclerview.layoutManager = LinearLayoutManager(view.context)
                 adapter.notifyDataSetChanged()

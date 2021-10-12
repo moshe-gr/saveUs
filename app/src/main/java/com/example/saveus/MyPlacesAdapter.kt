@@ -10,13 +10,10 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
-class MyPlacesAdapter (private var mList: List<SavePlace>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
-        private val dateList = ArrayList<Long>()
-        private var dateListPosition = 0
+class MyPlacesAdapter (private var finalList: ArrayList<Any>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
         override fun getItemViewType(position: Int): Int {
-                if(dateListPosition < dateList.size && mList[position].timeStart!! / 1000 / 60 / 60 / 24 >= dateList[dateListPosition]){
+                if(finalList[position] is Long){
                         return 1
                 }
                 return 2
@@ -36,13 +33,13 @@ class MyPlacesAdapter (private var mList: List<SavePlace>) : RecyclerView.Adapte
         }
 
         override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-
+                var itemsViewModel = finalList[position]
                 if(holder is ViewHolder1){
-                        holder.dateHeader.text = SimpleDateFormat("dd/MM/yyyy").format(Date(dateList[dateListPosition] * 1000 * 60 * 60 * 24))
-                        dateListPosition++
+                        itemsViewModel = itemsViewModel as Long
+                        holder.dateHeader.text = SimpleDateFormat("dd/MM/yyyy").format(Date(itemsViewModel * 1000 * 60 * 60 * 24))
                 }
                 else if(holder is ViewHolder2){
-                        val itemsViewModel = mList[position-dateListPosition]
+                        itemsViewModel = itemsViewModel as SavePlace
                         holder.timeStartEnd.text = Time(itemsViewModel.timeStart!!).toString() + " - " + Time(itemsViewModel.timeEnd!!).toString()
                         holder.timeLength.text = itemsViewModel.timeLength
                         holder.address.text = itemsViewModel.address
@@ -50,15 +47,8 @@ class MyPlacesAdapter (private var mList: List<SavePlace>) : RecyclerView.Adapte
         }
 
         override fun getItemCount(): Int {
-                //mList = mList.sortedBy { savePlace -> savePlace.timeStart }
-                println(mList.size)
-                println(dateList.size)
-                for(i in mList){
-                        if (i.timeStart!! / 1000 / 60 / 60 / 24 !in dateList){
-                                dateList.add(i.timeStart!! / 1000 / 60 / 60 / 24)
-                        }
-                }
-                return mList.size + dateList.size
+                println(finalList.size)
+                return finalList.size
         }
 
         class ViewHolder1(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
