@@ -21,20 +21,16 @@ class MyPlacesAdapter (private var finalList: ArrayList<Any>) : RecyclerView.Ada
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
                 if(viewType == 1){
-                        val view = LayoutInflater.from(parent.context)
-                        .inflate(R.layout.dates_layout, parent, false)
-
-                        return ViewHolder1(view)
+                        val view = LayoutInflater.from(parent.context).inflate(R.layout.dates_layout, parent, false)
+                        return DateViewHolder(view)
                 }
-                val view = LayoutInflater.from(parent.context)
-                        .inflate(R.layout.my_place, parent, false)
-
-                return ViewHolder2(view)
+                val view = LayoutInflater.from(parent.context).inflate(R.layout.my_place, parent, false)
+                return SavedPlaceViewHolder(view)
         }
 
         override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
                 var itemsViewModel = finalList[position]
-                if(holder is ViewHolder1){
+                if(holder is DateViewHolder){
                         itemsViewModel = itemsViewModel as Long
                         holder.dateHeader.text = SimpleDateFormat("dd/MM/yyyy").format(Date(itemsViewModel * 1000 * 60 * 60 * 24))
                         if(System.currentTimeMillis() / 1000 / 60 / 60 /24 == itemsViewModel){
@@ -44,7 +40,7 @@ class MyPlacesAdapter (private var finalList: ArrayList<Any>) : RecyclerView.Ada
                                 holder.dayHeader.text = "אתמול"
                         }
                 }
-                else if(holder is ViewHolder2){
+                else if(holder is SavedPlaceViewHolder){
                         itemsViewModel = itemsViewModel as SavePlace
                         holder.timeStartEnd.text = Time(itemsViewModel.timeStart!!).toString() + " - " + Time(itemsViewModel.timeEnd!!).toString()
                         holder.timeLength.text = itemsViewModel.timeLength
@@ -53,15 +49,14 @@ class MyPlacesAdapter (private var finalList: ArrayList<Any>) : RecyclerView.Ada
         }
 
         override fun getItemCount(): Int {
-                println(finalList.size)
                 return finalList.size
         }
 
-        class ViewHolder1(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
+        class DateViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
                 val dateHeader: TextView = ItemView.findViewById(R.id.date_header)
                 val dayHeader: TextView = ItemView.findViewById(R.id.day_header)
         }
-        class ViewHolder2(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
+        class SavedPlaceViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
                 val timeStartEnd: TextView = ItemView.findViewById(R.id.time_start_end)
                 val timeLength: TextView = ItemView.findViewById(R.id.time_length)
                 val address: TextView = ItemView.findViewById(R.id.address)

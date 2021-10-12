@@ -52,18 +52,14 @@ class ShowMyPlacesFragment : Fragment() {
             endCalendar.set(Calendar.YEAR, endDatePicker.datePicker.year)
             endCalendar.set(Calendar.MONTH, endDatePicker.datePicker.month)
             endCalendar.set(Calendar.DAY_OF_MONTH, endDatePicker.datePicker.dayOfMonth)
-            val a = startCalendar.timeInMillis / 1000 / 60 / 60 / 24
-            val b = endCalendar.timeInMillis / 1000 / 60 / 60 / 24
-            println(a)
-            println(b)
-            savedPlacesViewModel.getPlacesByDate(a, b)?.observe(viewLifecycleOwner, { savedPlaces ->
+            savedPlacesViewModel.getPlacesByDate(msToDays(startCalendar.timeInMillis), msToDays(endCalendar.timeInMillis))?.observe(viewLifecycleOwner, { savedPlaces ->
                 var mList = savedPlaces
                 val finalList: ArrayList<Any> = arrayListOf()
                 mList = mList.sortedBy { savePlace -> savePlace.timeStart }
-                mList = mList.sortedByDescending { savePlace -> savePlace.timeStart!! / 1000 / 60 / 60 / 24 }
+                mList = mList.sortedByDescending { savePlace -> msToDays(savePlace.timeStart!!) }
                 for(i in mList){
-                    if (i.timeStart!! / 1000 / 60 / 60 / 24 !in finalList){
-                        finalList.add(i.timeStart!! / 1000 / 60 / 60 / 24)
+                    if (msToDays(i.timeStart!!) !in finalList){
+                        finalList.add(msToDays(i.timeStart!!))
                     }
                     finalList.add(i)
                 }
@@ -104,6 +100,8 @@ class ShowMyPlacesFragment : Fragment() {
     }
 
     private fun dateToShow(day: Int, month: Int, year: Int) = "$day." + (month + 1) + ".$year"
+
+    private fun msToDays(ms: Long) = ms / 1000 / 60 / 60 / 24
 
     companion object {
         @JvmStatic
