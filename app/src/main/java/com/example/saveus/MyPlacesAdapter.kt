@@ -37,6 +37,12 @@ class MyPlacesAdapter (private var finalList: ArrayList<Any>) : RecyclerView.Ada
                 if(holder is ViewHolder1){
                         itemsViewModel = itemsViewModel as Long
                         holder.dateHeader.text = SimpleDateFormat("dd/MM/yyyy").format(Date(itemsViewModel * 1000 * 60 * 60 * 24))
+                        if(System.currentTimeMillis() / 1000 / 60 / 60 /24 == itemsViewModel){
+                                holder.dayHeader.text = "היום"
+                        }
+                        else if(System.currentTimeMillis() / 1000 / 60 / 60 /24 == itemsViewModel + 1){
+                                holder.dayHeader.text = "אתמול"
+                        }
                 }
                 else if(holder is ViewHolder2){
                         itemsViewModel = itemsViewModel as SavePlace
