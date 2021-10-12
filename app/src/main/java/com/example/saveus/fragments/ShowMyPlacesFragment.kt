@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -32,24 +33,40 @@ class ShowMyPlacesFragment : Fragment() {
         val endDateTextView = view.findViewById<TextView>(R.id.to_date_text)
         val startDateButton = view.findViewById<LinearLayout>(R.id.from_date_button)
         val endDateButton = view.findViewById<LinearLayout>(R.id.to_date_button)
+        val selectDatesButton = view.findViewById<Button>(R.id.select_dates_button)
 
         val currentDay = Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
         val currentMonth = Calendar.getInstance().get(Calendar.MONTH)
         val currentYear = Calendar.getInstance().get(Calendar.YEAR)
 
+        val startDatePicker = datePickerButton(view.context, startDateTextView)
+        val endDatePicker = datePickerButton(view.context, endDateTextView)
+
         savedPlacesViewModel = ViewModelProvider(requireActivity()).get(SavedPlacesViewModel::class.java)
-        savedPlacesViewModel.getPlaces()?.observe(viewLifecycleOwner, { savedPlaces ->
-            val adapter = MyPlacesAdapter(savedPlaces)
-            recyclerview.adapter = adapter
-            recyclerview.layoutManager = LinearLayoutManager(view.context)
-            adapter.notifyDataSetChanged()
-        })
+        selectDatesButton.setOnClickListener {
+            val startCalendar = Calendar.getInstance()
+            startCalendar.set(Calendar.YEAR, startDatePicker.datePicker.year)
+            startCalendar.set(Calendar.MONTH, startDatePicker.datePicker.month)
+            startCalendar.set(Calendar.DAY_OF_MONTH, startDatePicker.datePicker.dayOfMonth)
+            val endCalendar = Calendar.getInstance()
+            endCalendar.set(Calendar.YEAR, endDatePicker.datePicker.year)
+            endCalendar.set(Calendar.MONTH, endDatePicker.datePicker.month)
+            endCalendar.set(Calendar.DAY_OF_MONTH, endDatePicker.datePicker.dayOfMonth)
+            val a = startCalendar.timeInMillis / 1000 / 60 / 60 / 24
+            val b = endCalendar.timeInMillis / 1000 / 60 / 60 / 24
+            println(a)
+            println(b)
+            savedPlacesViewModel.getPlacesByDate(a, b)?.observe(viewLifecycleOwner, { savedPlaces ->
+                val adapter = MyPlacesAdapter(savedPlaces)
+                recyclerview.adapter = adapter
+                recyclerview.layoutManager = LinearLayoutManager(view.context)
+                adapter.notifyDataSetChanged()
+            })
+        }
 
         startDateTextView.text = dateToShow(currentDay, currentMonth, currentYear)
         endDateTextView.text = dateToShow(currentDay, currentMonth, currentYear)
 
-        val startDatePicker = datePickerButton(view.context, startDateTextView)
-        val endDatePicker = datePickerButton(view.context, endDateTextView)
 
         startDateButton.setOnClickListener {
             startDatePicker.show()

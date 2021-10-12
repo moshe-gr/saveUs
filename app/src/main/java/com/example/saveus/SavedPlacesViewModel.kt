@@ -14,4 +14,8 @@ class SavedPlacesViewModel(application: Application) : AndroidViewModel(applicat
     fun getPlaces(): LiveData<List<SavePlace>>? {
         return AppDatabase.getInstance(context)?.getAll()
     }
+
+    fun getPlacesByDate(startDate: Long, endDate: Long): LiveData<List<SavePlace>>? {
+        return AppDatabase.getInstance(context)?.getByDate(startDate, endDate)
+    }
 }
