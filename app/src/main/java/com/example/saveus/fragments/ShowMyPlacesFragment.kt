@@ -60,6 +60,7 @@ class ShowMyPlacesFragment : Fragment() {
                 var mList = savedPlaces
                 val finalList: ArrayList<Any> = arrayListOf()
                 mList = mList.sortedBy { savePlace -> savePlace.timeStart }
+                mList = mList.sortedByDescending { savePlace -> savePlace.timeStart!! / 1000 / 60 / 60 / 24 }
                 for(i in mList){
                     if (i.timeStart!! / 1000 / 60 / 60 / 24 !in finalList){
                         finalList.add(i.timeStart!! / 1000 / 60 / 60 / 24)
