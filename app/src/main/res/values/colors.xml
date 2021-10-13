@@ -16,4 +16,5 @@
     <color name="show_my_places">#ffaa00</color>
     <color name="date_button">#737684</color>
     <color name="add_place">#ee6777</color>
+    <color name="line_divider">#efefef</color>
 </resources>
