@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -110,6 +111,9 @@ class ShowMyPlacesFragment : Fragment(), ShowDate, DateTimeConverter {
                 recyclerview.adapter = adapter
                 recyclerview.layoutManager = LinearLayoutManager(requireContext())
                 adapter.notifyDataSetChanged()
+                if(savedPlaces.isEmpty()){
+                    Toast.makeText(requireContext(), "No events", Toast.LENGTH_SHORT).show()
+                }
             })
         }
     }
