@@ -10,7 +10,7 @@ import java.sql.Time
 import java.text.SimpleDateFormat
 import java.util.*
 
-class MyPlacesAdapter (private var finalList: ArrayList<Any>, private var showDate: ShowDate) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class MyPlacesAdapter (private var finalList: ArrayList<Any>, private var showDate: ShowDate) : RecyclerView.Adapter<RecyclerView.ViewHolder>(), DateTimeConverter {
 
         override fun getItemViewType(position: Int): Int {
                 if(finalList[position] is Long){
@@ -35,11 +35,11 @@ class MyPlacesAdapter (private var finalList: ArrayList<Any>, private var showDa
                         holder.showDay.setOnClickListener {
                                 showDate.showDate(itemsViewModel as Long, position, finalList)
                         }
-                        holder.dateHeader.text = SimpleDateFormat("dd/MM/yyyy").format(Date(itemsViewModel * 1000 * 60 * 60 * 24))
-                        if(System.currentTimeMillis() / 1000 / 60 / 60 /24 == itemsViewModel){
+                        holder.dateHeader.text = SimpleDateFormat("dd/MM/yyyy").format(Date(daysToMs(itemsViewModel)))
+                        if(msToDays(addZoneDstOffset(currentTimeInMs())) == itemsViewModel){
                                 holder.dayHeader.text = "היום"
                         }
-                        else if(System.currentTimeMillis() / 1000 / 60 / 60 /24 == itemsViewModel + 1){
+                        else if(msToDays(addZoneDstOffset(currentTimeInMs())) == itemsViewModel + 1){
                                 holder.dayHeader.text = "אתמול"
                         }
                 }

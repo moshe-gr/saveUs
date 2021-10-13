@@ -3,6 +3,7 @@ package com.example.saveus
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import java.time.ZoneOffset
 
 class SavedPlacesViewModel(application: Application) : AndroidViewModel(application) {
     private val context = getApplication<Application>().applicationContext
@@ -15,7 +16,7 @@ class SavedPlacesViewModel(application: Application) : AndroidViewModel(applicat
         return AppDatabase.getInstance(context)?.getAll()
     }
 
-    fun getPlacesByDate(startDate: Long, endDate: Long): LiveData<List<SavePlace>>? {
-        return AppDatabase.getInstance(context)?.getByDate(startDate, endDate)
+    fun getPlacesByDate(day: Long, zoneOffset: Int): LiveData<List<SavePlace>>? {
+        return AppDatabase.getInstance(context)?.getByDate(day, zoneOffset)
     }
 }

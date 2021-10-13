@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.saveus.*
 import java.util.*
 
-class ShowMyPlacesFragment : Fragment(), ShowDate {
+class ShowMyPlacesFragment : Fragment(), ShowDate, DateTimeConverter {
 
     private lateinit var savedPlacesViewModel: SavedPlacesViewModel
     private lateinit var recyclerview: RecyclerView
@@ -52,8 +52,8 @@ class ShowMyPlacesFragment : Fragment(), ShowDate {
             endCalendar.set(Calendar.MONTH, endDatePicker.datePicker.month)
             endCalendar.set(Calendar.DAY_OF_MONTH, endDatePicker.datePicker.dayOfMonth)
             val dayList: ArrayList<Any> = arrayListOf()
-            var endDay = msToDays(endCalendar.timeInMillis + endCalendar.get(Calendar.ZONE_OFFSET))
-            while (endDay >= msToDays(startCalendar.timeInMillis + startCalendar.get(Calendar.ZONE_OFFSET))){
+            var endDay = msToDays(addZoneDstOffset(endCalendar.timeInMillis))
+            while (endDay >= msToDays(addZoneDstOffset(startCalendar.timeInMillis))){
                 dayList.add(endDay--)
             }
             val adapter = MyPlacesAdapter(dayList, this)
@@ -87,13 +87,11 @@ class ShowMyPlacesFragment : Fragment(), ShowDate {
             myCalendar.get(Calendar.MONTH),
             myCalendar.get(Calendar.DAY_OF_MONTH)
         )
-        datePickerDialog.datePicker.maxDate = System.currentTimeMillis()
+        datePickerDialog.datePicker.maxDate = currentTimeInMs()
         return datePickerDialog
     }
 
     private fun dateToShow(day: Int, month: Int, year: Int) = "$day." + (month + 1) + ".$year"
-
-    private fun msToDays(ms: Long) = ms / 1000 / 60 / 60 / 24
 
     override fun showDate(day: Long, position: Int, dayList: ArrayList<Any>) {
         if(position+1 < dayList.size && dayList[position+1] is SavePlace) {
@@ -106,7 +104,7 @@ class ShowMyPlacesFragment : Fragment(), ShowDate {
             adapter.notifyDataSetChanged()
         }
         else{
-            savedPlacesViewModel.getPlacesByDate(day, day)?.observe(viewLifecycleOwner, { savedPlaces ->
+            savedPlacesViewModel.getPlacesByDate(day, addZoneDstOffset(0).toInt())?.observe(viewLifecycleOwner, { savedPlaces ->
                 dayList.addAll(position + 1, savedPlaces.sortedBy { savePlace -> savePlace.timeStart })
                 val adapter = MyPlacesAdapter(dayList, this)
                 recyclerview.adapter = adapter

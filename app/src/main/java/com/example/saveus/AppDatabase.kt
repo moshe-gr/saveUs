@@ -39,8 +39,8 @@ abstract class AppDatabase : RoomDatabase() {
         return placeDao.getAll()
     }
 
-    fun getByDate(startDate: Long, endDate: Long): LiveData<List<SavePlace>> {
+    fun getByDate(day: Long, zoneOffset: Int): LiveData<List<SavePlace>> {
         val placeDao = db!!.placeDao()
-        return placeDao.getByDate(startDate, endDate)
+        return placeDao.getByDate(day, zoneOffset)
     }
 }

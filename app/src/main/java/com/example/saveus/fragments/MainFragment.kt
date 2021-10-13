@@ -17,6 +17,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.saveus.DateTimeConverter
 import com.example.saveus.R
 import com.example.saveus.SavePlace
 import com.example.saveus.SavedPlacesViewModel
@@ -28,7 +29,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import java.util.*
 
-class MainFragment : Fragment(), OnMapReadyCallback {
+class MainFragment : Fragment(), OnMapReadyCallback, DateTimeConverter {
 
     private lateinit var map: GoogleMap
     private lateinit var savedPlacesViewModel: SavedPlacesViewModel
@@ -71,7 +72,7 @@ class MainFragment : Fragment(), OnMapReadyCallback {
                 savePlace = SavePlace()
                 chronometer.start()
                 myLocationButton.visibility = View.GONE
-                savePlace.timeStart = System.currentTimeMillis()
+                savePlace.timeStart = currentTimeInMs()
 
                 val geocoder = Geocoder(activity, Locale.getDefault())
                 LocationServices.getFusedLocationProviderClient(requireContext()).lastLocation.addOnSuccessListener {currentLocation->
@@ -89,7 +90,7 @@ class MainFragment : Fragment(), OnMapReadyCallback {
                 startStopTitle.setText(R.string.circle_1_title)
                 chronometer.visibility = View.GONE
                 myLocationButton.visibility = View.VISIBLE
-                savePlace.timeEnd = System.currentTimeMillis()
+                savePlace.timeEnd = currentTimeInMs()
                 savePlace.timeLength = chronometer.text.toString()
                 savedPlacesViewModel.addSavedPlace(savePlace)
 
