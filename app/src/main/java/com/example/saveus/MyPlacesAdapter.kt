@@ -42,6 +42,18 @@ class MyPlacesAdapter (private var finalList: ArrayList<Any>, private var showDa
                         else if(msToDays(addZoneDstOffset(currentTimeInMs())) == itemsViewModel + 1){
                                 holder.dayHeader.text = "אתמול"
                         }
+                        else{
+                                holder.dayHeader.text = when(((itemsViewModel % 7)).toInt()){
+                                        0 -> "יום ה"
+                                        1 -> "יום ו"
+                                        2 -> "שבת"
+                                        3 -> "יום א"
+                                        4 -> "יום ב"
+                                        5 -> "יום ג"
+                                        6 -> "יום ד"
+                                        else -> ""
+                                }
+                        }
                 }
                 else if(holder is SavedPlaceViewHolder){
                         itemsViewModel = itemsViewModel as SavePlace
