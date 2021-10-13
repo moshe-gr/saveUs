@@ -1,17 +1,14 @@
 package com.example.saveus
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RelativeLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import java.sql.Time
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
 class MyPlacesAdapter (private var finalList: ArrayList<Any>, private var showDate: ShowDate) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 

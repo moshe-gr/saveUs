@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -53,8 +52,8 @@ class ShowMyPlacesFragment : Fragment(), ShowDate {
             endCalendar.set(Calendar.MONTH, endDatePicker.datePicker.month)
             endCalendar.set(Calendar.DAY_OF_MONTH, endDatePicker.datePicker.dayOfMonth)
             val dayList: ArrayList<Any> = arrayListOf()
-            var endDay = msToDays(endCalendar.timeInMillis)
-            while (endDay >= msToDays(startCalendar.timeInMillis)){
+            var endDay = msToDays(endCalendar.timeInMillis + endCalendar.get(Calendar.ZONE_OFFSET))
+            while (endDay >= msToDays(startCalendar.timeInMillis + startCalendar.get(Calendar.ZONE_OFFSET))){
                 dayList.add(endDay--)
             }
             val adapter = MyPlacesAdapter(dayList, this)
