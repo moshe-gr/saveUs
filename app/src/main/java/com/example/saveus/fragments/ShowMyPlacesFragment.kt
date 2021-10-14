@@ -21,6 +21,7 @@ class ShowMyPlacesFragment : Fragment(), ShowDate, DateTimeConverter {
 
     private lateinit var savedPlacesViewModel: SavedPlacesViewModel
     private lateinit var recyclerview: RecyclerView
+    private lateinit var adapter: MyPlacesAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -57,7 +58,7 @@ class ShowMyPlacesFragment : Fragment(), ShowDate, DateTimeConverter {
             while (endDay >= msToDays(addZoneDstOffset(startCalendar.timeInMillis))){
                 dayList.add(endDay--)
             }
-            val adapter = MyPlacesAdapter(dayList, this)
+            adapter = MyPlacesAdapter(dayList, this)
             recyclerview.adapter = adapter
             recyclerview.layoutManager = LinearLayoutManager(view.context)
             adapter.notifyDataSetChanged()
@@ -99,17 +100,11 @@ class ShowMyPlacesFragment : Fragment(), ShowDate, DateTimeConverter {
             while (position+1 < dayList.size && dayList[position+1] is SavePlace){
                 dayList.removeAt(position+1)
             }
-            val adapter = MyPlacesAdapter(dayList, this)
-            recyclerview.adapter = adapter
-            recyclerview.layoutManager = LinearLayoutManager(requireContext())
             adapter.notifyDataSetChanged()
         }
         else{
             savedPlacesViewModel.getPlacesByDate(day, addZoneDstOffset(0).toInt())?.observe(viewLifecycleOwner, { savedPlaces ->
                 dayList.addAll(position + 1, savedPlaces.sortedBy { savePlace -> savePlace.timeStart })
-                val adapter = MyPlacesAdapter(dayList, this)
-                recyclerview.adapter = adapter
-                recyclerview.layoutManager = LinearLayoutManager(requireContext())
                 adapter.notifyDataSetChanged()
                 if(savedPlaces.isEmpty()){
                     Toast.makeText(requireContext(), "No events", Toast.LENGTH_SHORT).show()
