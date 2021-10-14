@@ -6,17 +6,20 @@
     android:orientation="vertical"
     android:background="@color/login_background"
     android:layout_marginHorizontal="16dp"
+    android:weightSum="1"
     tools:context=".fragments.ProfileFragment">
 
     <LinearLayout
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_width="match_parent"
         android:orientation="horizontal"
+        android:layout_weight="0.127"
         android:layoutDirection="ltr">
 
-        <ImageButton
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:src="@drawable/edit_icon"/>
 
         <TextView
@@ -27,14 +30,16 @@
             android:textSize="24sp"
             android:fontFamily="@font/assistant_semibold"
             android:text="@string/profile_header"
+            android:layout_gravity="center"
             android:gravity="right"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:orientation="horizontal"
+        android:layout_weight="0.08"
         android:layoutDirection="rtl"
         android:weightSum="2">
 
@@ -92,14 +97,24 @@
 
     <View
         android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.032"/>
+
+    <View
+        android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/line_divider"
-        android:layout_marginTop="8dp"/>
+        android:background="@color/line_divider"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.03"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:orientation="horizontal"
+        android:layout_weight="0.08"
         android:layoutDirection="rtl"
         android:weightSum="2">
 
@@ -157,14 +172,24 @@
 
     <View
         android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.032"/>
+
+    <View
+        android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/line_divider"
-        android:layout_marginTop="8dp"/>
+        android:background="@color/line_divider"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.03"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:orientation="horizontal"
+        android:layout_weight="0.08"
         android:layoutDirection="rtl"
         android:weightSum="2">
 
@@ -222,8 +247,171 @@
 
     <View
         android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.032"/>
+
+    <View
+        android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/line_divider"
-        android:layout_marginTop="8dp"/>
+        android:background="@color/line_divider"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.05"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.137"
+        android:orientation="horizontal"
+        android:layoutDirection="rtl"
+        android:weightSum="2">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:background="@drawable/box"
+            android:gravity="center"
+            android:layout_marginLeft="16dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:src="@drawable/group_15"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/profile_how"
+                android:textColor="@color/login_text"
+                android:textSize="15sp"
+                android:fontFamily="@font/assistant_semibold"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:background="@drawable/box"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:src="@drawable/vector"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/profile_terms_of_use"
+                android:textColor="@color/login_text"
+                android:textSize="15sp"
+                android:fontFamily="@font/assistant_semibold"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.027"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.137"
+        android:orientation="horizontal"
+        android:layoutDirection="rtl"
+        android:weightSum="2">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:background="@drawable/box"
+            android:gravity="center"
+            android:layout_marginLeft="16dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:src="@drawable/group_19"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/profile_problem"
+                android:textColor="@color/login_text"
+                android:textSize="15sp"
+                android:fontFamily="@font/assistant_semibold"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:background="@drawable/box"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:src="@drawable/share"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/profile_share"
+                android:textColor="@color/login_text"
+                android:textSize="15sp"
+                android:fontFamily="@font/assistant_semibold"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.027"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.085"
+        android:orientation="horizontal"
+        android:background="@color/add_place">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/group_16"
+            android:layout_gravity="center"
+            android:layout_marginRight="20dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/profile_export"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/assistant_semibold"
+            android:layout_gravity="center"
+            android:gravity="center"/>
+
+    </LinearLayout>
 
 </LinearLayout>

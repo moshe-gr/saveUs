@@ -52,4 +52,9 @@
     <string name="profile_birth_date">תאריך לידה</string>
     <string name="profile_language">שפה</string>
     <string name="profile_allow_notifications">קבלת התראות לנייד</string>
+    <string name="profile_how">איך עובדת האפליקציה?</string>
+    <string name="profile_terms_of_use">תנאי שימוש</string>
+    <string name="profile_problem">דיווח על תקלה</string>
+    <string name="profile_share">שתף עם חברים</string>
+    <string name="profile_export">ייצוא המקומות בהם ביקרתי</string>
 </resources>
