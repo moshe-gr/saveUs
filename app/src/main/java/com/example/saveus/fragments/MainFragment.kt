@@ -76,6 +76,8 @@ class MainFragment : Fragment(), OnMapReadyCallback, DateTimeConverter {
 
                 val geocoder = Geocoder(activity, Locale.getDefault())
                 LocationServices.getFusedLocationProviderClient(requireContext()).lastLocation.addOnSuccessListener {currentLocation->
+                    savePlace.latitude = currentLocation.latitude
+                    savePlace.longitude = currentLocation.longitude
                     val addresses: List<Address> = geocoder.getFromLocation(currentLocation.latitude, currentLocation.longitude, 1)
                     val city = addresses[0].locality
                     val street = addresses[0].thoroughfare
