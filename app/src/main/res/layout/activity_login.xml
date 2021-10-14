@@ -59,6 +59,7 @@
             android:weightSum="3">
 
             <EditText
+                android:id="@+id/login_name"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:textColorHint="@color/login_hint"
@@ -70,6 +71,7 @@
                 android:autofillHints="name" />
 
             <EditText
+                android:id="@+id/login_email"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:textColorHint="@color/login_hint"
@@ -81,6 +83,7 @@
                 android:autofillHints="emailAddress"/>
 
             <EditText
+                android:id="@+id/login_phone_number"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:textColorHint="@color/login_hint"

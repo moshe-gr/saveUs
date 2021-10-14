@@ -22,9 +22,8 @@ class ProfileFragment : Fragment() {
             AppCompatActivity.MODE_PRIVATE)?.getString("personalInfo", "")
         val personalInfo = Gson().fromJson(json, PersonalInfo::class.java)
 
-        if(personalInfo.firstName != null && personalInfo.surName != null) {
-            view.findViewById<TextView>(R.id.profile_name).text =
-                "${personalInfo.firstName} ${personalInfo.surName}"
+        if(personalInfo.fullName != null) {
+            view.findViewById<TextView>(R.id.profile_name).text = personalInfo.fullName
         }
         if(personalInfo.phoneNumber != null) {
             view.findViewById<TextView>(R.id.profile_phone_number).text = personalInfo.phoneNumber
