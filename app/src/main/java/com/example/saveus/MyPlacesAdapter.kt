@@ -3,6 +3,7 @@ package com.example.saveus
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -60,6 +61,7 @@ class MyPlacesAdapter (private var finalList: ArrayList<Any>, private var showDa
                         holder.timeStartEnd.text = Time(itemsViewModel.timeStart!!).toString() + " - " + Time(itemsViewModel.timeEnd!!).toString()
                         holder.timeLength.text = itemsViewModel.timeLength
                         holder.address.text = itemsViewModel.address
+                        holder.myPlace.setOnClickListener {  }
                 }
         }
 
@@ -76,5 +78,6 @@ class MyPlacesAdapter (private var finalList: ArrayList<Any>, private var showDa
                 val timeStartEnd: TextView = ItemView.findViewById(R.id.time_start_end)
                 val timeLength: TextView = ItemView.findViewById(R.id.time_length)
                 val address: TextView = ItemView.findViewById(R.id.address)
+                val myPlace: LinearLayout = ItemView.findViewById(R.id.my_place)
         }
 }

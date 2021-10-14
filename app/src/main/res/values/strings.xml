@@ -57,4 +57,7 @@
     <string name="profile_problem">דיווח על תקלה</string>
     <string name="profile_share">שתף עם חברים</string>
     <string name="profile_export">ייצוא המקומות בהם ביקרתי</string>
+
+    <string name="save">שמירה</string>
+    <string name="edit_place_header">עריכת מיקום</string>
 </resources>
