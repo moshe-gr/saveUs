@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         if(savedInstanceState == null){
             makeCurrentFragment(MainFragment.newInstance())
         }
-        
+
         profileButton.setOnClickListener {
             if(show) {
                 makeCurrentFragment(ProfileFragment.newInstance())

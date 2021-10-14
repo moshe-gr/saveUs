@@ -6,6 +6,7 @@ import android.webkit.WebView
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.google.gson.Gson
 
 
 class LoginActivity : AppCompatActivity() {
@@ -14,8 +15,11 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         setSupportActionBar(findViewById(R.id.my_toolbar))
-
         supportActionBar!!.setDisplayShowTitleEnabled(false)
+
+        val personalInfo = PersonalInfo()
+        getSharedPreferences("sharedPrefs", MODE_PRIVATE)
+            .edit().putString("personalInfo", Gson().toJson(personalInfo)).apply()
 
         findViewById<TextView>(R.id.regulations).setOnClickListener {
             val wb = WebView(this)
@@ -42,6 +46,5 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         startActivity(Intent(this, LoginActivity::class.java))
-//        super.onBackPressed()
     }
 }
