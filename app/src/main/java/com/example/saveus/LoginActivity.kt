@@ -48,8 +48,6 @@ class LoginActivity : AppCompatActivity() {
         }
 
         findViewById<Button>(R.id.skip_sign_in).setOnClickListener {
-            getSharedPreferences("sharedPrefs", MODE_PRIVATE)
-                .edit().putString("personalInfo", Gson().toJson(personalInfo)).apply()
             startActivity(Intent(this, MainActivity::class.java))
         }
 
