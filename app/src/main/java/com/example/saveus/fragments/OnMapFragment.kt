@@ -36,10 +36,7 @@ class OnMapFragment : Fragment(), OnMapReadyCallback, GoogleMap.InfoWindowAdapte
     }
 
     override fun onMapReady(googleMap: GoogleMap?) {
-        var minLat = 0.0
-        var maxLat = 0.0
-        var minLong = 0.0
-        var maxLong = 0.0
+        val builder = LatLngBounds.Builder()
         savedPlacesViewModel.getPlaces()?.observe(viewLifecycleOwner, { savedPlaces ->
             for (savedPlace in savedPlaces) {
                 googleMap?.addMarker(MarkerOptions()
@@ -48,22 +45,11 @@ class OnMapFragment : Fragment(), OnMapReadyCallback, GoogleMap.InfoWindowAdapte
                     .icon(BitmapDescriptorFactory.fromBitmap(AppCompatResources.getDrawable(requireContext(), R.drawable.my_place_dot)!!.toBitmap()))
                     .anchor(0.5f, 0.5f)
                     .snippet("${msToDays(savedPlace.timeStart!!)} ${savedPlace.timeStart}-${savedPlace.timeEnd} ${savedPlace.timeLength}"))
-                if(savedPlace.latitude!! < minLat){
-                    minLat = savedPlace.latitude!!
-                }
-                if(savedPlace.latitude!! > maxLat){
-                    maxLat = savedPlace.latitude!!
-                }
-                if(savedPlace.longitude!! < minLong){
-                    minLong = savedPlace.longitude!!
-                }
-                if(savedPlace.longitude!! > maxLong){
-                    maxLong = savedPlace.longitude!!
-                }
+                builder.include(LatLng(savedPlace.latitude!!, savedPlace.longitude!!))
             }
             googleMap?.setInfoWindowAdapter(this)
             googleMap?.setOnInfoWindowClickListener(this)
-            googleMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLngBounds(LatLng(minLat, minLong), LatLng(maxLat, maxLong)).center, 5f))
+            googleMap?.moveCamera(CameraUpdateFactory.newLatLngBounds(builder.build(), 0))
         })
         map = googleMap ?: return
     }
