@@ -60,4 +60,8 @@
 
     <string name="save">שמירה</string>
     <string name="edit_place_header">עריכת מיקום</string>
+    <string name="edit_place_start">התחלה</string>
+    <string name="edit_place_end">סיום</string>
+    <string name="edit_place_sum">סך הכל</string>
+    <string name="edit_place_delete">מחק דיווח</string>
 </resources>

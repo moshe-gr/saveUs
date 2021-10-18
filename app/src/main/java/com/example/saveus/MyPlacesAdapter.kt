@@ -7,11 +7,12 @@ import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.saveus.fragments.EditSavedPlaceFragment
 import java.sql.Time
 import java.text.SimpleDateFormat
 import java.util.*
 
-class MyPlacesAdapter (private var finalList: ArrayList<Any>, private var showDate: ShowDate) : RecyclerView.Adapter<RecyclerView.ViewHolder>(), DateTimeConverter {
+class MyPlacesAdapter (private val finalList: ArrayList<Any>, private val showDate: ShowDate, private val replaceMyFragment: ReplaceMyFragment) : RecyclerView.Adapter<RecyclerView.ViewHolder>(), DateTimeConverter {
 
         override fun getItemViewType(position: Int): Int {
                 if(finalList[position] is Long){
@@ -61,7 +62,9 @@ class MyPlacesAdapter (private var finalList: ArrayList<Any>, private var showDa
                         holder.timeStartEnd.text = Time(itemsViewModel.timeStart!!).toString() + " - " + Time(itemsViewModel.timeEnd!!).toString()
                         holder.timeLength.text = itemsViewModel.timeLength
                         holder.address.text = itemsViewModel.address
-                        holder.myPlace.setOnClickListener {  }
+                        holder.myPlace.setOnClickListener {
+                                replaceMyFragment.replaceFragment(EditSavedPlaceFragment.newInstance())
+                        }
                 }
         }
 

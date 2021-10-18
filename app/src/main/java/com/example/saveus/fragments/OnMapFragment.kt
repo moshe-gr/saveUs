@@ -61,7 +61,7 @@ class OnMapFragment : Fragment(), OnMapReadyCallback, GoogleMap.InfoWindowAdapte
     }
 
     override fun getInfoWindow(p0: Marker): View? {
-        val view = layoutInflater.inflate(R.layout.show_window, null)
+        val view = layoutInflater.inflate(R.layout.info_window, null)
         view.findViewById<TextView>(R.id.info_window_address).text = p0.title
         view.findViewById<TextView>(R.id.info_window_date).text = p0.snippet.split(" ")[0]
         view.findViewById<TextView>(R.id.info_window_time).text = p0.snippet.split(" ")[1]

@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.saveus.*
 import java.util.*
 
-class ShowMyPlacesFragment : Fragment(), ShowDate, DateTimeConverter {
+class ShowMyPlacesFragment : Fragment(), ShowDate, DateTimeConverter, ReplaceMyFragment {
 
     private lateinit var savedPlacesViewModel: SavedPlacesViewModel
     private lateinit var recyclerview: RecyclerView
@@ -58,7 +58,7 @@ class ShowMyPlacesFragment : Fragment(), ShowDate, DateTimeConverter {
             while (endDay >= msToDays(addZoneDstOffset(startCalendar.timeInMillis))){
                 dayList.add(endDay--)
             }
-            adapter = MyPlacesAdapter(dayList, this)
+            adapter = MyPlacesAdapter(dayList, this, this)
             recyclerview.adapter = adapter
             recyclerview.layoutManager = LinearLayoutManager(view.context)
             adapter.notifyDataSetChanged()
@@ -116,6 +116,14 @@ class ShowMyPlacesFragment : Fragment(), ShowDate, DateTimeConverter {
     companion object {
         @JvmStatic
         fun newInstance() = ShowMyPlacesFragment()
+    }
+
+    override fun replaceFragment(fragment: Fragment) {
+        parentFragmentManager.beginTransaction().apply {
+            replace(R.id.edit_place_wrapper, fragment)
+            addToBackStack(fragment.toString())
+            commit()
+        }
     }
 
 }
