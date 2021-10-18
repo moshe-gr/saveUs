@@ -26,17 +26,19 @@
 
     <TextView
         android:id="@+id/info_window_date"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/login_text"
         android:textSize="16sp"
-        android:fontFamily="@font/assistant_semibold"/>
+        android:fontFamily="@font/assistant_semibold"
+        android:gravity="right"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layoutDirection="ltr">
+        android:layoutDirection="ltr"
+        android:gravity="right">
 
         <TextView
             android:id="@+id/info_window_length"

@@ -9,7 +9,6 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.graphics.drawable.toBitmap
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.saveus.DateTimeConverter
 import com.example.saveus.R
 import com.example.saveus.SavedPlacesViewModel
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -17,9 +16,11 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 class OnMapFragment : Fragment(), OnMapReadyCallback, GoogleMap.InfoWindowAdapter,
-    GoogleMap.OnInfoWindowClickListener, DateTimeConverter {
+    GoogleMap.OnInfoWindowClickListener {
 
     private lateinit var map: GoogleMap
     private lateinit var savedPlacesViewModel: SavedPlacesViewModel
@@ -44,7 +45,7 @@ class OnMapFragment : Fragment(), OnMapReadyCallback, GoogleMap.InfoWindowAdapte
                     .title(savedPlace.address)
                     .icon(BitmapDescriptorFactory.fromBitmap(AppCompatResources.getDrawable(requireContext(), R.drawable.my_place_dot)!!.toBitmap()))
                     .anchor(0.5f, 0.5f)
-                    .snippet("${msToDays(savedPlace.timeStart!!)} ${savedPlace.timeStart}-${savedPlace.timeEnd} ${savedPlace.timeLength}"))
+                    .snippet("${SimpleDateFormat("dd/MM/yyyy").format(Date(savedPlace.timeStart!!))} ${SimpleDateFormat("HH:mm").format(Date(savedPlace.timeStart!!))}-${SimpleDateFormat("HH:mm").format(Date(savedPlace.timeEnd!!))} ${savedPlace.timeLength}"))
                 builder.include(LatLng(savedPlace.latitude!!, savedPlace.longitude!!))
             }
             googleMap?.setInfoWindowAdapter(this)
@@ -62,6 +63,9 @@ class OnMapFragment : Fragment(), OnMapReadyCallback, GoogleMap.InfoWindowAdapte
     override fun getInfoWindow(p0: Marker): View? {
         val view = layoutInflater.inflate(R.layout.show_window, null)
         view.findViewById<TextView>(R.id.info_window_address).text = p0.title
+        view.findViewById<TextView>(R.id.info_window_date).text = p0.snippet.split(" ")[0]
+        view.findViewById<TextView>(R.id.info_window_time).text = p0.snippet.split(" ")[1]
+        view.findViewById<TextView>(R.id.info_window_length).text = p0.snippet.split(" ")[2]
         return view
     }
 

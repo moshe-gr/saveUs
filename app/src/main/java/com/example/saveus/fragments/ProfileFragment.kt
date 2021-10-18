@@ -33,7 +33,7 @@ class ProfileFragment : Fragment() {
         }
         if(personalInfo.birthDate != null) {
             view.findViewById<TextView>(R.id.profile_birthday).text =
-                SimpleDateFormat("dd/MM/yyyy").format(personalInfo.birthDate)
+                SimpleDateFormat("dd/MM/yyyy").format(personalInfo.birthDate!!)
         }
         if(personalInfo.allowNotifications != null) {
             view.findViewById<TextView>(R.id.profile_alerts).text =
