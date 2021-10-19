@@ -72,7 +72,7 @@ class MainFragment : Fragment(), OnMapReadyCallback, DateTimeConverter {
                 savePlace = SavePlace()
                 chronometer.start()
                 myLocationButton.visibility = View.GONE
-                savePlace.timeStart = currentTimeInMs()
+                savePlace.timeStart = getCurrentTimeInMs()
 
                 val geocoder = Geocoder(activity, Locale.getDefault())
                 LocationServices.getFusedLocationProviderClient(requireContext()).lastLocation.addOnSuccessListener {currentLocation->
@@ -92,7 +92,7 @@ class MainFragment : Fragment(), OnMapReadyCallback, DateTimeConverter {
                 startStopTitle.setText(R.string.circle_1_title)
                 chronometer.visibility = View.GONE
                 myLocationButton.visibility = View.VISIBLE
-                savePlace.timeEnd = currentTimeInMs()
+                savePlace.timeEnd = getCurrentTimeInMs()
                 savePlace.timeLength = chronometer.text.toString()
                 savedPlacesViewModel.addSavedPlace(savePlace)
 

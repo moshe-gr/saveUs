@@ -90,11 +90,11 @@ class ShowMyPlacesFragment : Fragment(), ShowDate, DateTimeConverter, ReplaceMyF
             myCalendar.get(Calendar.MONTH),
             myCalendar.get(Calendar.DAY_OF_MONTH)
         )
-        datePickerDialog.datePicker.maxDate = currentTimeInMs()
+        datePickerDialog.datePicker.maxDate = getCurrentTimeInMs()
         return datePickerDialog
     }
 
-    private fun dateToShow(day: Int, month: Int, year: Int) = "$day." + (month + 1) + ".$year"
+    override fun dateToShow(day: Int, month: Int, year: Int) = "$day." + (month + 1) + ".$year"
 
     override fun showDate(day: Long, position: Int, dayList: ArrayList<Any>) {
         if(position+1 < dayList.size && dayList[position+1] is SavePlace) {
@@ -105,11 +105,16 @@ class ShowMyPlacesFragment : Fragment(), ShowDate, DateTimeConverter, ReplaceMyF
         }
         else{
             savedPlacesViewModel.getPlacesByDate(day, addZoneDstOffset(0).toInt())?.observe(viewLifecycleOwner, { savedPlaces ->
-                dayList.addAll(position + 1, savedPlaces.sortedBy { savePlace -> savePlace.timeStart })
-                adapter.notifyDataSetChanged()
                 if(savedPlaces.isEmpty()){
                     Toast.makeText(requireContext(), "No events", Toast.LENGTH_SHORT).show()
                 }
+                while (position + 1 < dayList.size && dayList[position + 1] is SavePlace) {
+                    dayList.removeAt(position + 1)
+                }
+                dayList.addAll(
+                    position + 1,
+                    savedPlaces.sortedBy { savePlace -> savePlace.timeStart })
+                adapter.notifyDataSetChanged()
             })
         }
     }

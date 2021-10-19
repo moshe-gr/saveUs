@@ -16,17 +16,25 @@
         android:orientation="horizontal"
         android:layoutDirection="rtl">
 
-        <TextView
+        <FrameLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/save"
-            android:textSize="18sp"
-            android:textColor="@color/turquoise"
-            android:fontFamily="@font/assistant_bold"
-            android:layout_gravity="center"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:layout_gravity="center">
+
+            <TextView
+                android:id="@+id/edit_place_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/save"
+                android:textSize="18sp"
+                android:textColor="@color/turquoise"
+                android:fontFamily="@font/assistant_bold"/>
+
+        </FrameLayout>
 
         <ImageView
+            android:id="@+id/edit_place_close"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/close_1"
@@ -70,6 +78,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/edit_place_address"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -114,6 +123,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/edit_place_date"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -173,6 +183,7 @@
                     android:layout_gravity="center">
 
                     <TextView
+                        android:id="@+id/edit_place_time_start"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="16sp"
@@ -203,6 +214,7 @@
                     android:layout_gravity="center">
 
                     <TextView
+                        android:id="@+id/edit_place_time_end"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="16sp"
@@ -252,6 +264,7 @@
             android:weightSum="2">
 
             <TextView
+                android:id="@+id/edit_place_length"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -298,15 +311,22 @@
 
         </FrameLayout>
 
-        <TextView
+        <FrameLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="6"
-            android:text="@string/edit_place_delete"
-            android:textSize="18sp"
-            android:textColor="@color/add_place"
-            android:fontFamily="@font/assistant_semibold"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center">
+
+            <TextView
+                android:id="@+id/edit_place_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/edit_place_delete"
+                android:textSize="18sp"
+                android:textColor="@color/add_place"
+                android:fontFamily="@font/assistant_semibold"/>
+
+        </FrameLayout>
 
     </LinearLayout>
 

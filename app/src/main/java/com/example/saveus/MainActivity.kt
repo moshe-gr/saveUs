@@ -19,6 +19,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        setSupportActionBar(findViewById(R.id.my_toolbar))
+        supportActionBar!!.setDisplayShowTitleEnabled(false)
+
         profileButton = findViewById(R.id.profile_button)
 
         if(savedInstanceState == null){

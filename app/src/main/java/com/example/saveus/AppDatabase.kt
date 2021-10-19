@@ -43,4 +43,22 @@ abstract class AppDatabase : RoomDatabase() {
         val placeDao = db!!.placeDao()
         return placeDao.getByDate(day, zoneOffset)
     }
+
+    fun delete(savePlace: SavePlace) {
+        Thread {
+            Runnable {
+                val placeDao = db!!.placeDao()
+                placeDao.delete(savePlace)
+            }.run()
+        }.start()
+    }
+
+    fun update(savePlace: SavePlace) {
+        Thread {
+            Runnable {
+                val placeDao = db!!.placeDao()
+                placeDao.update(savePlace)
+            }.run()
+        }.start()
+    }
 }

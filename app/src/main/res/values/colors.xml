@@ -17,4 +17,5 @@
     <color name="date_button">#737684</color>
     <color name="add_place">#ee6777</color>
     <color name="line_divider">#efefef</color>
+    <color name="time_picker">#e64096</color>
 </resources>

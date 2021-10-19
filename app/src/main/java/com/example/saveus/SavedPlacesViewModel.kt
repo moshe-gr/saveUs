@@ -19,4 +19,12 @@ class SavedPlacesViewModel(application: Application) : AndroidViewModel(applicat
     fun getPlacesByDate(day: Long, zoneOffset: Int): LiveData<List<SavePlace>>? {
         return AppDatabase.getInstance(context)?.getByDate(day, zoneOffset)
     }
+
+    fun deleteSavedPlace(savePlace: SavePlace) {
+        AppDatabase.getInstance(context)?.delete(savePlace)
+    }
+
+    fun updateSavedPlace(savePlace: SavePlace) {
+        AppDatabase.getInstance(context)?.update(savePlace)
+    }
 }

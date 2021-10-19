@@ -38,10 +38,10 @@ class MyPlacesAdapter (private val finalList: ArrayList<Any>, private val showDa
                                 showDate.showDate(itemsViewModel as Long, position, finalList)
                         }
                         holder.dateHeader.text = SimpleDateFormat("dd/MM/yyyy").format(Date(daysToMs(itemsViewModel)))
-                        if(msToDays(addZoneDstOffset(currentTimeInMs())) == itemsViewModel){
+                        if(msToDays(addZoneDstOffset(getCurrentTimeInMs())) == itemsViewModel){
                                 holder.dayHeader.text = "היום"
                         }
-                        else if(msToDays(addZoneDstOffset(currentTimeInMs())) == itemsViewModel + 1){
+                        else if(msToDays(addZoneDstOffset(getCurrentTimeInMs())) == itemsViewModel + 1){
                                 holder.dayHeader.text = "אתמול"
                         }
                         else{
@@ -63,7 +63,7 @@ class MyPlacesAdapter (private val finalList: ArrayList<Any>, private val showDa
                         holder.timeLength.text = itemsViewModel.timeLength
                         holder.address.text = itemsViewModel.address
                         holder.myPlace.setOnClickListener {
-                                replaceMyFragment.replaceFragment(EditSavedPlaceFragment.newInstance())
+                                replaceMyFragment.replaceFragment(EditSavedPlaceFragment.newInstance(itemsViewModel))
                         }
                 }
         }
