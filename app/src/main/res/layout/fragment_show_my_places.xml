@@ -105,34 +105,8 @@
             android:layout_height="wrap_content"
             tools:listitem="@layout/my_place" />
 
-        <LinearLayout
-            android:layout_width="86dp"
-            android:layout_height="61dp"
-            android:orientation="horizontal"
-            android:background="@drawable/add_place_shape"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="30dp"
-            android:gravity="center"
-            android:layoutDirection="ltr"
-            android:weightSum="2">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/add_place"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:fontFamily="@font/assistant_semibold"/>
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:src="@drawable/add_place" />
-
-        </LinearLayout>
+        <include
+            layout="@layout/add_place_button"/>
 
     </RelativeLayout>
 

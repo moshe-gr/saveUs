@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.graphics.drawable.toBitmap
@@ -30,9 +31,21 @@ class OnMapFragment : Fragment(), OnMapReadyCallback, GoogleMap.InfoWindowAdapte
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_on_map, container, false)
+        val addPlaceButton = view.findViewById<LinearLayout>(R.id.add_place_button)
+        
         savedPlacesViewModel = ViewModelProvider(requireActivity()).get(SavedPlacesViewModel::class.java)
+
         val mapFragment = childFragmentManager.findFragmentById(R.id.show_on_map) as SupportMapFragment?
         mapFragment?.getMapAsync(this)
+
+        addPlaceButton.setOnClickListener {
+            val fragment = EditSavedPlaceFragment.newInstance(null)
+            parentFragmentManager.beginTransaction().apply {
+                replace(R.id.edit_place_wrapper, fragment)
+                addToBackStack(fragment.toString())
+                commit()
+            }
+        }
         return view
     }
 

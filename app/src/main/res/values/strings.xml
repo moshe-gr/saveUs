@@ -64,4 +64,8 @@
     <string name="edit_place_end">סיום</string>
     <string name="edit_place_sum">סך הכל</string>
     <string name="edit_place_delete">מחק דיווח</string>
+    <string name="add_place_default">00:00:00</string>
+    <string name="add_place_header">הוספת מיקום</string>
+    <string name="add_place_date">הוספת תאריך</string>
+    <string name="add_place_address">כתובת</string>
 </resources>

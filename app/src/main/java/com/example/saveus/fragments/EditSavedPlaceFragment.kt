@@ -3,11 +3,13 @@ package com.example.saveus.fragments
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Context
+import android.location.Geocoder
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -43,7 +45,8 @@ class EditSavedPlaceFragment : Fragment(), DateTimeConverter {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_edit_saved_place, container, false)
-        val addressView = view.findViewById<TextView>(R.id.edit_place_address)
+        val headerView = view.findViewById<TextView>(R.id.edit_place_header)
+        val addressView = view.findViewById<EditText>(R.id.edit_place_address)
         val dateView = view.findViewById<TextView>(R.id.edit_place_date)
         val startView = view.findViewById<TextView>(R.id.edit_place_time_start)
         val endView = view.findViewById<TextView>(R.id.edit_place_time_end)
@@ -51,28 +54,51 @@ class EditSavedPlaceFragment : Fragment(), DateTimeConverter {
         val saveButton = view.findViewById<TextView>(R.id.edit_place_save)
         val closeButton = view.findViewById<ImageView>(R.id.edit_place_close)
 
-        startCalendar = getCalendarFromMs(savedPlace?.timeStart!!)
-        endCalendar = getCalendarFromMs(savedPlace?.timeEnd!!)
+        val geocoder = Geocoder(activity, Locale.getDefault())
+        var new = false
+
+        savedPlacesViewModel = ViewModelProvider(requireActivity()).get(SavedPlacesViewModel::class.java)
+
+        if(savedPlace == null){
+            savedPlace = SavePlace()
+            new = true
+            startCalendar = getCalendarFromMs(getCurrentTimeInMs())
+            endCalendar = getCalendarFromMs(getCurrentTimeInMs())
+            headerView.setText(R.string.add_place_header)
+            addressView.setText(R.string.add_place_address)
+            dateView.setText(R.string.add_place_date)
+            startView.setText(R.string.add_place_default)
+            endView.setText(R.string.add_place_default)
+            lengthView.setText(R.string.add_place_default)
+            view.findViewById<TextView>(R.id.edit_place_delete).setOnClickListener {
+                parentFragmentManager.popBackStackImmediate()
+            }
+        }
+        else {
+            startCalendar = getCalendarFromMs(savedPlace?.timeStart!!)
+            endCalendar = getCalendarFromMs(savedPlace?.timeEnd!!)
+            headerView.setText(R.string.edit_place_header)
+            addressView.setText(savedPlace?.address)
+            dateView.text = SimpleDateFormat("dd/MM/yyyy")
+                .format(Date(savedPlace?.timeStart!!))
+            startView.text = Time(savedPlace?.timeStart!!).toString()
+            endView.text = Time(savedPlace?.timeEnd!!).toString()
+            lengthView.text = savedPlace?.timeLength
+            view.findViewById<TextView>(R.id.edit_place_delete).setOnClickListener {
+                savedPlace?.let { it1 ->
+                    savedPlacesViewModel.deleteSavedPlace(it1)
+                    Toast.makeText(view.context, "deleted", Toast.LENGTH_SHORT).show()
+                    parentFragmentManager.popBackStackImmediate()
+                }
+            }
+        }
 
         val datePicker = datePickerButton(view.context, dateView)
         val startTimePicker = timePickerButton(view.context, startCalendar, startView, lengthView)
         val endTimePicker = timePickerButton(view.context, endCalendar, endView, lengthView)
 
-        savedPlacesViewModel = ViewModelProvider(requireActivity()).get(SavedPlacesViewModel::class.java)
-
         closeButton.setOnClickListener {
             parentFragmentManager.popBackStackImmediate()
-        }
-        addressView.text = savedPlace?.address
-        dateView.text = SimpleDateFormat("dd/MM/yyyy")
-            .format(Date(savedPlace?.timeStart!!))
-        startView.text = Time(savedPlace?.timeStart!!).toString()
-        endView.text = Time(savedPlace?.timeEnd!!).toString()
-        lengthView.text = savedPlace?.timeLength
-        view.findViewById<TextView>(R.id.edit_place_delete).setOnClickListener {
-            savedPlace?.let { it1 -> savedPlacesViewModel.deleteSavedPlace(it1)
-            Toast.makeText(view.context, "deleted", Toast.LENGTH_SHORT).show()
-                parentFragmentManager.popBackStackImmediate() }
         }
         dateView.setOnClickListener {
             datePicker.show()
@@ -84,10 +110,18 @@ class EditSavedPlaceFragment : Fragment(), DateTimeConverter {
             endTimePicker.show()
         }
         saveButton.setOnClickListener {
+            savedPlace!!.address = addressView.text.toString()
             savedPlace!!.timeStart = startCalendar.timeInMillis
             savedPlace!!.timeEnd = endCalendar.timeInMillis
             savedPlace!!.timeLength = lengthView.text.toString()
-            savedPlacesViewModel.updateSavedPlace(savedPlace!!)
+            savedPlace!!.latitude = geocoder.getFromLocationName(addressView.text.toString(), 1)[0].latitude
+            savedPlace!!.longitude = geocoder.getFromLocationName(addressView.text.toString(), 1)[0].longitude
+            if(new) {
+                savedPlacesViewModel.addSavedPlace(savedPlace!!)
+            }
+            else {
+                savedPlacesViewModel.updateSavedPlace(savedPlace!!)
+            }
             Toast.makeText(view.context, "saved", Toast.LENGTH_SHORT).show()
             parentFragmentManager.popBackStackImmediate()
         }
@@ -142,7 +176,7 @@ class EditSavedPlaceFragment : Fragment(), DateTimeConverter {
 
     companion object {
         @JvmStatic
-        fun newInstance(savedPlace: SavePlace) =
+        fun newInstance(savedPlace: SavePlace?) =
             EditSavedPlaceFragment().apply {
                 arguments = Bundle().apply {
                     putString(SAVED_PLACE, Gson().toJson(savedPlace))

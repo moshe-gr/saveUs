@@ -9,13 +9,11 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.saveus.*
-import com.example.saveus.ReplaceMyFragment
 import java.util.*
 
 class ShowMyPlacesFragment : Fragment(), ShowDate, DateTimeConverter, ReplaceMyFragment {
@@ -36,6 +34,7 @@ class ShowMyPlacesFragment : Fragment(), ShowDate, DateTimeConverter, ReplaceMyF
         val startDateButton = view.findViewById<LinearLayout>(R.id.from_date_button)
         val endDateButton = view.findViewById<LinearLayout>(R.id.to_date_button)
         val selectDatesButton = view.findViewById<Button>(R.id.select_dates_button)
+        val addPlaceButton = view.findViewById<LinearLayout>(R.id.add_place_button)
 
         val currentDay = Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
         val currentMonth = Calendar.getInstance().get(Calendar.MONTH)
@@ -74,6 +73,15 @@ class ShowMyPlacesFragment : Fragment(), ShowDate, DateTimeConverter, ReplaceMyF
         }
         endDateButton.setOnClickListener {
             endDatePicker.show()
+        }
+
+        addPlaceButton.setOnClickListener {
+            val fragment = EditSavedPlaceFragment.newInstance(null)
+            parentFragmentManager.beginTransaction().apply {
+                replace(R.id.edit_place_wrapper, fragment)
+                addToBackStack(fragment.toString())
+                commit()
+            }
         }
 
         return view
