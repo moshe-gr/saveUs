@@ -96,7 +96,14 @@ class ShowMyPlacesFragment : Fragment(), ShowDate, DateTimeConverter, ReplaceMyF
 
     override fun dateToShow(day: Int, month: Int, year: Int) = "$day." + (month + 1) + ".$year"
 
-    override fun showDate(day: Long, position: Int, dayList: ArrayList<Any>) {
+    override fun showDate(day: Long, dayList: ArrayList<Any>) {
+        var position = 0
+        for (i in dayList){
+            if(i == day){
+                position = dayList.indexOf(i)
+                break
+            }
+        }
         if(position+1 < dayList.size && dayList[position+1] is SavePlace) {
             while (position+1 < dayList.size && dayList[position+1] is SavePlace){
                 dayList.removeAt(position+1)
@@ -105,8 +112,11 @@ class ShowMyPlacesFragment : Fragment(), ShowDate, DateTimeConverter, ReplaceMyF
         }
         else{
             savedPlacesViewModel.getPlacesByDate(day, addZoneDstOffset(0).toInt())?.observe(viewLifecycleOwner, { savedPlaces ->
-                if(savedPlaces.isEmpty()){
-                    Toast.makeText(requireContext(), "No events", Toast.LENGTH_SHORT).show()
+                for (i in dayList){
+                    if(i == day){
+                        position = dayList.indexOf(i)
+                        break
+                    }
                 }
                 while (position + 1 < dayList.size && dayList[position + 1] is SavePlace) {
                     dayList.removeAt(position + 1)
