@@ -32,7 +32,7 @@ class OnMapFragment : Fragment(), OnMapReadyCallback, GoogleMap.InfoWindowAdapte
     ): View? {
         val view = inflater.inflate(R.layout.fragment_on_map, container, false)
         val addPlaceButton = view.findViewById<LinearLayout>(R.id.add_place_button)
-        
+
         savedPlacesViewModel = ViewModelProvider(requireActivity()).get(SavedPlacesViewModel::class.java)
 
         val mapFragment = childFragmentManager.findFragmentById(R.id.show_on_map) as SupportMapFragment?
@@ -63,7 +63,7 @@ class OnMapFragment : Fragment(), OnMapReadyCallback, GoogleMap.InfoWindowAdapte
             }
             googleMap?.setInfoWindowAdapter(this)
             googleMap?.setOnInfoWindowClickListener(this)
-            googleMap?.moveCamera(CameraUpdateFactory.newLatLngBounds(builder.build(), 5))
+            googleMap?.moveCamera(CameraUpdateFactory.newLatLngBounds(builder.build(), 30))
         })
         map = googleMap ?: return
     }
