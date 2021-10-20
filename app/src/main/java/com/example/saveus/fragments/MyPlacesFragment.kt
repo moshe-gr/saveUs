@@ -38,7 +38,7 @@ class MyPlacesFragment : Fragment() {
     }
 
     private fun setCurrentFragment(fragment: Fragment){
-        childFragmentManager.beginTransaction().apply {
+        parentFragmentManager.beginTransaction().apply {
             replace(R.id.my_places_fl_wrapper, fragment)
             commit()
         }
