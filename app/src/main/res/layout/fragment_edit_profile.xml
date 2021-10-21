@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1"
+    android:layout_marginHorizontal="16dp"
+    android:background="@color/login_background"
+    tools:context=".fragments.EditProfileFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.135"
+        android:orientation="horizontal"
+        android:layoutDirection="rtl">
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center">
+
+            <TextView
+                android:id="@+id/edit_profile_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/save"
+                android:textSize="18sp"
+                android:textColor="@color/turquoise"
+                android:fontFamily="@font/assistant_bold"/>
+
+        </FrameLayout>
+
+        <ImageView
+            android:id="@+id/edit_profile_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/close_1"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:text="@string/edit_profile_header"
+        android:textColor="@color/login_text"
+        android:textSize="24sp"
+        android:fontFamily="@font/assistant_semibold"/>
+
+    <EditText
+        android:id="@+id/edit_profile_name"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:textColorHint="@color/login_hint"
+        android:textSize="17sp"
+        android:fontFamily="@font/assistant"
+        android:layout_weight="0.11"
+        android:inputType="text"
+        android:hint="@string/prompt_name"
+        android:autofillHints="name" />
+
+    <EditText
+        android:id="@+id/edit_profile_email"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:textColorHint="@color/login_hint"
+        android:textSize="17sp"
+        android:fontFamily="@font/assistant"
+        android:layout_weight="0.11"
+        android:inputType="textEmailAddress"
+        android:hint="@string/prompt_email"
+        android:autofillHints="emailAddress"/>
+
+    <EditText
+        android:id="@+id/edit_profile_phone_number"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:textColorHint="@color/login_hint"
+        android:textSize="17sp"
+        android:fontFamily="@font/assistant"
+        android:layout_weight="0.11"
+        android:inputType="phone"
+        android:hint="@string/prompt_phone_number"
+        android:autofillHints="phone"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.11"
+        android:orientation="horizontal"
+        android:weightSum="4"
+        android:layoutDirection="rtl"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/profile_birth_date"
+            android:textSize="14sp"
+            android:textColor="@color/login_hint"
+            android:fontFamily="@font/assistant_bold"/>
+
+        <TextView
+            android:id="@+id/edit_profile_birthday"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/edit_profile_default"
+            android:textSize="17sp"
+            android:textColor="@color/login_hint"
+            android:fontFamily="@font/assistant"
+            android:textDirection="rtl"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/edit_profile_language"
+            android:textSize="14sp"
+            android:textColor="@color/login_hint"
+            android:fontFamily="@font/assistant_bold"/>
+
+        <Spinner
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/login_text"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line_divider"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.11"
+        android:orientation="horizontal"
+        android:layoutDirection="rtl">
+
+        <CheckBox
+            android:id="@+id/edit_profile_notifications"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:buttonTint="@color/turquoise"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/edit_profile_notifications"
+            android:textColor="@color/login_text"
+            android:textSize="17sp"
+            android:fontFamily="@font/assistant"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.135"
+        android:orientation="horizontal"
+        android:layoutDirection="rtl"
+        android:weightSum="7">
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/delete_1"/>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="6"
+            android:layout_gravity="center">
+
+            <TextView
+                android:id="@+id/edit_profile_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/edit_profile_delete"
+                android:textSize="18sp"
+                android:textColor="@color/add_place"
+                android:fontFamily="@font/assistant_semibold"/>
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

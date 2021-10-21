@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.saveus.PersonalInfo
@@ -18,6 +19,8 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
+        val editProfileButton = view.findViewById<ImageView>(R.id.edit_profile_button)
+
         val json = activity?.getSharedPreferences("sharedPrefs",
             AppCompatActivity.MODE_PRIVATE)?.getString("personalInfo", "")
         val personalInfo = Gson().fromJson(json, PersonalInfo::class.java)
@@ -42,6 +45,14 @@ class ProfileFragment : Fragment() {
                 } else {
                     "לא"
                 }
+        }
+        editProfileButton.setOnClickListener {
+            val fragment = EditProfileFragment.newInstance()
+            parentFragmentManager.beginTransaction().apply {
+                replace(R.id.fl_wrapper, fragment)
+                addToBackStack(fragment.toString())
+                commit()
+            }
         }
         return view
     }

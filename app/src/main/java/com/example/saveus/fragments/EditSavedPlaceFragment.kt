@@ -85,10 +85,19 @@ class EditSavedPlaceFragment : Fragment(), DateTimeConverter {
             endView.text = Time(savedPlace?.timeEnd!!).toString()
             lengthView.text = savedPlace?.timeLength
             view.findViewById<TextView>(R.id.edit_place_delete).setOnClickListener {
-                savedPlace?.let { it1 ->
-                    savedPlacesViewModel.deleteSavedPlace(it1)
-                    Toast.makeText(view.context, "deleted", Toast.LENGTH_SHORT).show()
-                    parentFragmentManager.popBackStackImmediate()
+                if(new){
+                    addressView.setText(R.string.add_place_address)
+                    dateView.setText(R.string.add_place_date)
+                    startView.setText(R.string.add_place_default)
+                    endView.setText(R.string.add_place_default)
+                    lengthView.setText(R.string.add_place_default)
+                }
+                else {
+                    savedPlace?.let { it1 ->
+                        savedPlacesViewModel.deleteSavedPlace(it1)
+                        Toast.makeText(view.context, "deleted", Toast.LENGTH_SHORT).show()
+                        parentFragmentManager.popBackStackImmediate()
+                    }
                 }
             }
         }
@@ -114,8 +123,9 @@ class EditSavedPlaceFragment : Fragment(), DateTimeConverter {
             savedPlace!!.timeStart = startCalendar.timeInMillis
             savedPlace!!.timeEnd = endCalendar.timeInMillis
             savedPlace!!.timeLength = lengthView.text.toString()
-            savedPlace!!.latitude = geocoder.getFromLocationName(addressView.text.toString(), 1)[0].latitude
-            savedPlace!!.longitude = geocoder.getFromLocationName(addressView.text.toString(), 1)[0].longitude
+            val addressPoints = geocoder.getFromLocationName(savedPlace!!.address, 1)[0]
+            savedPlace!!.latitude = addressPoints.latitude
+            savedPlace!!.longitude = addressPoints.longitude
             if(new) {
                 savedPlacesViewModel.addSavedPlace(savedPlace!!)
             }

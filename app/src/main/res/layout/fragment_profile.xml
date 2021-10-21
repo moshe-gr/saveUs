@@ -17,6 +17,7 @@
         android:layoutDirection="ltr">
 
         <ImageView
+            android:id="@+id/edit_profile_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
