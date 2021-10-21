@@ -6,10 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CheckBox
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.saveus.DateTimeConverter
@@ -35,10 +32,25 @@ class EditProfileFragment : Fragment(), DateTimeConverter {
         val birthdateView = view.findViewById<TextView>(R.id.edit_profile_birthday)
         val notificationsView = view.findViewById<CheckBox>(R.id.edit_profile_notifications)
         val deleteButton = view.findViewById<TextView>(R.id.edit_profile_delete)
+        val languageSpinner = view.findViewById<Spinner>(R.id.edit_profile_language_spinner)
 
         val json = activity?.getSharedPreferences("sharedPrefs",
             AppCompatActivity.MODE_PRIVATE)?.getString("personalInfo", "")
         val personalInfo = Gson().fromJson(json, PersonalInfo::class.java)
+
+        val locals = Locale.getAvailableLocales()
+        var languages = arrayOf<String>()
+
+        for(i in locals){
+            if(i.displayLanguage !in languages) {
+                languages = languages.plus(i.displayLanguage)
+            }
+        }
+
+        val adapter = ArrayAdapter(view.context, R.layout.support_simple_spinner_dropdown_item, languages.sortedArray())
+        adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item)
+
+        languageSpinner.adapter = adapter
 
         if(personalInfo.fullName != null) {
             nameView.setText(personalInfo.fullName)
