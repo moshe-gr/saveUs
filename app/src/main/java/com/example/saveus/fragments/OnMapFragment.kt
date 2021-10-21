@@ -67,7 +67,7 @@ class OnMapFragment : Fragment(), OnMapReadyCallback, GoogleMap.InfoWindowAdapte
             }
             googleMap?.setInfoWindowAdapter(this)
             googleMap?.setOnInfoWindowClickListener(this)
-            googleMap?.moveCamera(CameraUpdateFactory.newLatLngBounds(builder.build(), 30))
+            googleMap?.moveCamera(CameraUpdateFactory.newLatLngBounds(builder.build(), resources.displayMetrics.widthPixels, resources.displayMetrics.heightPixels, 30))
         })
         map = googleMap ?: return
     }
