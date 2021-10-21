@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewTreeObserver
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
@@ -35,8 +36,11 @@ class OnMapFragment : Fragment(), OnMapReadyCallback, GoogleMap.InfoWindowAdapte
 
         savedPlacesViewModel = ViewModelProvider(requireActivity()).get(SavedPlacesViewModel::class.java)
 
-        val mapFragment = childFragmentManager.findFragmentById(R.id.show_on_map) as SupportMapFragment?
-        mapFragment?.getMapAsync(this)
+        val mapFragment =
+            childFragmentManager.findFragmentById(R.id.show_on_map) as SupportMapFragment?
+        ViewTreeObserver.OnGlobalLayoutListener {
+            mapFragment?.getMapAsync(this)
+        }.onGlobalLayout()
 
         addPlaceButton.setOnClickListener {
             val fragment = EditSavedPlaceFragment.newInstance(null)
