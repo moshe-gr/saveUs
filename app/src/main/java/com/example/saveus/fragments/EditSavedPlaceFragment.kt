@@ -118,17 +118,21 @@ class EditSavedPlaceFragment : Fragment(), DateTimeConverter {
             savedPlace!!.timeStart = startCalendar.timeInMillis
             savedPlace!!.timeEnd = endCalendar.timeInMillis
             savedPlace!!.timeLength = lengthView.text.toString()
-            val addressPoints = geocoder.getFromLocationName(savedPlace!!.address, 1)[0]
-            savedPlace!!.latitude = addressPoints.latitude
-            savedPlace!!.longitude = addressPoints.longitude
-            if(new) {
-                savedPlacesViewModel.addSavedPlace(savedPlace!!)
+            val addressPoints = geocoder.getFromLocationName(savedPlace!!.address, 1)
+            if(addressPoints.isEmpty()){
+                Toast.makeText(view.context, "invalid address", Toast.LENGTH_SHORT).show()
             }
             else {
-                savedPlacesViewModel.updateSavedPlace(savedPlace!!)
+                savedPlace!!.latitude = addressPoints[0].latitude
+                savedPlace!!.longitude = addressPoints[0].longitude
+                if (new) {
+                    savedPlacesViewModel.addSavedPlace(savedPlace!!)
+                } else {
+                    savedPlacesViewModel.updateSavedPlace(savedPlace!!)
+                }
+                Toast.makeText(view.context, "saved", Toast.LENGTH_SHORT).show()
+                parentFragmentManager.popBackStackImmediate()
             }
-            Toast.makeText(view.context, "saved", Toast.LENGTH_SHORT).show()
-            parentFragmentManager.popBackStackImmediate()
         }
         return view
     }
