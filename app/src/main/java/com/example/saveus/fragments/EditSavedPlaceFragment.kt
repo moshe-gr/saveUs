@@ -71,7 +71,11 @@ class EditSavedPlaceFragment : Fragment(), DateTimeConverter {
             endView.setText(R.string.add_place_default)
             lengthView.setText(R.string.add_place_default)
             view.findViewById<TextView>(R.id.edit_place_delete).setOnClickListener {
-                parentFragmentManager.popBackStackImmediate()
+                addressView.setText(R.string.add_place_address)
+                dateView.setText(R.string.add_place_date)
+                startView.setText(R.string.add_place_default)
+                endView.setText(R.string.add_place_default)
+                lengthView.setText(R.string.add_place_default)
             }
         }
         else {
@@ -85,19 +89,10 @@ class EditSavedPlaceFragment : Fragment(), DateTimeConverter {
             endView.text = Time(savedPlace?.timeEnd!!).toString()
             lengthView.text = savedPlace?.timeLength
             view.findViewById<TextView>(R.id.edit_place_delete).setOnClickListener {
-                if(new){
-                    addressView.setText(R.string.add_place_address)
-                    dateView.setText(R.string.add_place_date)
-                    startView.setText(R.string.add_place_default)
-                    endView.setText(R.string.add_place_default)
-                    lengthView.setText(R.string.add_place_default)
-                }
-                else {
-                    savedPlace?.let { it1 ->
-                        savedPlacesViewModel.deleteSavedPlace(it1)
-                        Toast.makeText(view.context, "deleted", Toast.LENGTH_SHORT).show()
-                        parentFragmentManager.popBackStackImmediate()
-                    }
+                savedPlace?.let { it1 ->
+                    savedPlacesViewModel.deleteSavedPlace(it1)
+                    Toast.makeText(view.context, "deleted", Toast.LENGTH_SHORT).show()
+                    parentFragmentManager.popBackStackImmediate()
                 }
             }
         }
