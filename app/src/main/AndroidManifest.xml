@@ -20,15 +20,15 @@
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
 
         <activity
-            android:name=".LoginActivity"
+            android:name=".activitys.LoginActivity"
             android:exported="true"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".OnBoardingActivity"
+            android:name=".activitys.OnBoardingActivity"
             android:exported="true"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".UnSplashActivity"
+            android:name=".activitys.UnSplashActivity"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -38,7 +38,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".activitys.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait"/>
 

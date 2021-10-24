@@ -20,7 +20,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.saveus.DateTimeConverter
+import com.example.saveus.interfaces.DateTimeConverter
 import com.example.saveus.R
 import com.example.saveus.SavePlace
 import com.example.saveus.SavedPlacesViewModel

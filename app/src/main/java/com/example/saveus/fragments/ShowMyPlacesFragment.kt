@@ -14,6 +14,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.saveus.*
+import com.example.saveus.adapters.MyPlacesAdapter
+import com.example.saveus.interfaces.DateTimeConverter
+import com.example.saveus.interfaces.ReplaceMyFragment
+import com.example.saveus.interfaces.ShowDate
 import java.util.*
 
 class ShowMyPlacesFragment : Fragment(), ShowDate, DateTimeConverter, ReplaceMyFragment {

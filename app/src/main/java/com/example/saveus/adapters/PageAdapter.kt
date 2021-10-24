@@ -1,4 +1,4 @@
-package com.example.saveus
+package com.example.saveus.adapters
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

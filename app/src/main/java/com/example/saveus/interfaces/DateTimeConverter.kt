@@ -1,4 +1,4 @@
-package com.example.saveus
+package com.example.saveus.interfaces
 
 import java.util.*
 

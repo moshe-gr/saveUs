@@ -1,4 +1,4 @@
-package com.example.saveus
+package com.example.saveus.activitys
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +8,8 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.saveus.PersonalInfo
+import com.example.saveus.R
 import com.google.gson.Gson
 
 

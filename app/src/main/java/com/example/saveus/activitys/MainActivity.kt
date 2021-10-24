@@ -1,9 +1,10 @@
-package com.example.saveus
+package com.example.saveus.activitys
 
 import android.os.Bundle
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.saveus.R
 import com.example.saveus.fragments.MainFragment
 import com.example.saveus.fragments.MyPlacesFragment
 import com.example.saveus.fragments.NotificationsFragment

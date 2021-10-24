@@ -1,4 +1,4 @@
-package com.example.saveus
+package com.example.saveus.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,12 +7,18 @@ import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.saveus.R
+import com.example.saveus.SavePlace
 import com.example.saveus.fragments.EditSavedPlaceFragment
+import com.example.saveus.interfaces.DateTimeConverter
+import com.example.saveus.interfaces.ReplaceMyFragment
+import com.example.saveus.interfaces.ShowDate
 import java.sql.Time
 import java.text.SimpleDateFormat
 import java.util.*
 
-class MyPlacesAdapter (private val finalList: ArrayList<Any>, private val showDate: ShowDate, private val replaceMyFragment: ReplaceMyFragment) : RecyclerView.Adapter<RecyclerView.ViewHolder>(), DateTimeConverter {
+class MyPlacesAdapter (private val finalList: ArrayList<Any>, private val showDate: ShowDate, private val replaceMyFragment: ReplaceMyFragment) : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
+    DateTimeConverter {
 
         override fun getItemViewType(position: Int): Int {
                 if(finalList[position] is Long){

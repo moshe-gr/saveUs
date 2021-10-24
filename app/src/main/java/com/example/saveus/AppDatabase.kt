@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.saveus.interfaces.PlaceDao
 
 @Database(entities = arrayOf(SavePlace::class), version = 1)
 abstract class AppDatabase : RoomDatabase() {

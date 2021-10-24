@@ -16,7 +16,7 @@ import android.widget.Toast
 import com.example.saveus.R
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.example.saveus.DateTimeConverter
+import com.example.saveus.interfaces.DateTimeConverter
 import com.example.saveus.SavePlace
 import com.example.saveus.SavedPlacesViewModel
 import com.google.gson.Gson

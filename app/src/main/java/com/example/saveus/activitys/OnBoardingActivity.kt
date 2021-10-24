@@ -1,10 +1,12 @@
-package com.example.saveus
+package com.example.saveus.activitys
 
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
+import com.example.saveus.adapters.PageAdapter
+import com.example.saveus.R
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 

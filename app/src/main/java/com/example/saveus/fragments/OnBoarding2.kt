@@ -9,28 +9,15 @@ import com.example.saveus.R
 
 
 class OnBoarding2 : Fragment() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-
-        }
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_on_boarding2, container, false)
     }
 
     companion object {
         @JvmStatic
-        fun newInstance() =
-            OnBoarding2().apply {
-                arguments = Bundle().apply {
-
-                }
-            }
+        fun newInstance() = OnBoarding2()
     }
 }

@@ -1,7 +1,8 @@
-package com.example.saveus
+package com.example.saveus.interfaces
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.example.saveus.SavePlace
 
 @Dao
 interface PlaceDao {
