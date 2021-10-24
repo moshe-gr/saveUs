@@ -66,6 +66,7 @@ class MainFragment : Fragment(), OnMapReadyCallback, DateTimeConverter {
 
         view.findViewById<LinearLayout>(R.id.start_stop_circle).setOnClickListener {
             if(start){
+                buttonAnimation.duration = 1100
                 it.setBackgroundResource(R.drawable.circle_2)
                 startStopTitle.setText(R.string.circle_2_title)
                 startStopText.visibility = View.GONE
@@ -99,6 +100,7 @@ class MainFragment : Fragment(), OnMapReadyCallback, DateTimeConverter {
 
             }
             else{
+                buttonAnimation.duration = 700
                 it.setBackgroundResource(R.drawable.circle_1)
                 startStopText.visibility = View.VISIBLE
                 startStopTitle.setText(R.string.circle_1_title)
