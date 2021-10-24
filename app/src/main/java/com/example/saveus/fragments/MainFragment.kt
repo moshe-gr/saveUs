@@ -1,6 +1,9 @@
 package com.example.saveus.fragments
 
 import android.Manifest
+import android.animation.ObjectAnimator
+import android.animation.PropertyValuesHolder
+import android.animation.ValueAnimator
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.location.Address
@@ -52,22 +55,33 @@ class MainFragment : Fragment(), OnMapReadyCallback, DateTimeConverter {
         val chronometer = view.findViewById<Chronometer>(R.id.chronometer)
         val startStopButton = view.findViewById<LinearLayout>(R.id.start_stop_circle)
 
+        val startAnimation = ObjectAnimator.ofPropertyValuesHolder(
+            startStopButton,
+            PropertyValuesHolder.ofFloat("scaleX", 1.3f, 1f),
+            PropertyValuesHolder.ofFloat("scaleY", 1.3f, 1f)
+        )
+        startAnimation.duration = 1800
+        startAnimation.repeatMode = ValueAnimator.REVERSE
+        startAnimation.repeatCount = ValueAnimator.INFINITE
+
+        val stopAnimation: Animation = AlphaAnimation(1f, 0.5f)
+        stopAnimation.repeatCount = Animation.INFINITE
+        stopAnimation.repeatMode = Animation.REVERSE
+        stopAnimation.duration = 1100
+
+        startAnimation.start()
+
         savedPlacesViewModel = ViewModelProvider(requireActivity()).get(SavedPlacesViewModel::class.java)
 
         myLocationButton.setOnClickListener {
             enableMyLocation()
         }
 
-        val buttonAnimation: Animation = AlphaAnimation(1f, 0.5f)
-        buttonAnimation.duration = 700
-        buttonAnimation.repeatCount = Animation.INFINITE
-        buttonAnimation.repeatMode = Animation.REVERSE
-        startStopButton.startAnimation(buttonAnimation)
-
-        view.findViewById<LinearLayout>(R.id.start_stop_circle).setOnClickListener {
+        startStopButton.setOnClickListener {
             if(start){
-                buttonAnimation.duration = 1100
                 it.setBackgroundResource(R.drawable.circle_2)
+                startAnimation.end()
+                startStopButton.startAnimation(stopAnimation)
                 startStopTitle.setText(R.string.circle_2_title)
                 startStopText.visibility = View.GONE
                 chronometer.visibility = View.VISIBLE
@@ -100,8 +114,10 @@ class MainFragment : Fragment(), OnMapReadyCallback, DateTimeConverter {
 
             }
             else{
-                buttonAnimation.duration = 700
                 it.setBackgroundResource(R.drawable.circle_1)
+                stopAnimation.cancel()
+                stopAnimation.reset()
+                startAnimation.start()
                 startStopText.visibility = View.VISIBLE
                 startStopTitle.setText(R.string.circle_1_title)
                 chronometer.visibility = View.GONE
