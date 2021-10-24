@@ -13,16 +13,16 @@ import com.google.gson.Gson
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var wb: WebView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        val personalInfo = PersonalInfo()
         wb = WebView(this)
 
         setSupportActionBar(findViewById(R.id.my_toolbar))
         supportActionBar!!.setDisplayShowTitleEnabled(false)
-
-        val personalInfo = PersonalInfo()
 
         findViewById<TextView>(R.id.regulations).setOnClickListener {
             wb.loadUrl("https://www.pantai.com.my/privacy-policy")
@@ -56,10 +56,10 @@ class LoginActivity : AppCompatActivity() {
 
 
     override fun onBackPressed() {
-        if (wb.isInLayout) {
+        if (wb.isLaidOut) {
             startActivity(Intent(this, LoginActivity::class.java))
         } else {
-            super.onBackPressed()
+            finish()
         }
     }
 }

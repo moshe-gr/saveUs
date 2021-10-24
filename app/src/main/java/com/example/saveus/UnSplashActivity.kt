@@ -19,9 +19,11 @@ class UnSplashActivity : AppCompatActivity() {
         val sharedPreferences = getSharedPreferences("sharedPrefs", MODE_PRIVATE)
 
         Handler(Looper.myLooper()!!).postDelayed({
-            startActivity(Intent(this, OnBoardingActivity::class.java))
             if(!sharedPreferences.getBoolean("used", false)) {
                 startActivity(Intent(this, OnBoardingActivity::class.java))
+            }
+            else{
+                startActivity(Intent(this, LoginActivity::class.java))
             }
         }, 2000)
     }
