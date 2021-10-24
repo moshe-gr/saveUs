@@ -41,15 +41,15 @@ class EditProfileFragment : Fragment(), DateTimeConverter {
         val locals = Locale.getAvailableLocales()
         var languages = arrayOf<String>()
 
-        for(i in locals){
-            if(i.displayLanguage !in languages) {
-                languages = languages.plus(i.displayLanguage)
+        for(locale in locals){
+            if(locale.displayLanguage !in languages) {
+                languages = languages.plus(locale.displayLanguage)
             }
         }
+        languages = languages.sortedArray()
 
-        val adapter = ArrayAdapter(view.context, R.layout.support_simple_spinner_dropdown_item, languages.sortedArray())
+        val adapter = ArrayAdapter(view.context, R.layout.support_simple_spinner_dropdown_item, languages)
         adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item)
-
         languageSpinner.adapter = adapter
 
         if(personalInfo.fullName != null) {
@@ -68,6 +68,9 @@ class EditProfileFragment : Fragment(), DateTimeConverter {
         if(personalInfo.allowNotifications != null) {
             notificationsView.isChecked = personalInfo.allowNotifications == true
         }
+        if(personalInfo.language != null){
+            languageSpinner.setSelection(languages.indexOf(personalInfo.language))
+        }
 
         closeButton.setOnClickListener {
             parentFragmentManager.popBackStackImmediate()
@@ -83,6 +86,7 @@ class EditProfileFragment : Fragment(), DateTimeConverter {
             if (birthDateCalendar != null) {
                 personalInfo.birthDate = Date(birthDateCalendar!!.timeInMillis)
             }
+            personalInfo.language = languageSpinner.selectedItem as String?
             activity?.getSharedPreferences("sharedPrefs", AppCompatActivity.MODE_PRIVATE)
                 ?.edit()?.putString("personalInfo", Gson().toJson(personalInfo))?.apply()
             parentFragmentManager.popBackStackImmediate()
@@ -93,6 +97,7 @@ class EditProfileFragment : Fragment(), DateTimeConverter {
             emailView.text.clear()
             birthdateView.setText(R.string.edit_profile_default)
             notificationsView.isChecked = false
+            languageSpinner.setSelection(0)
         }
         return view
     }
