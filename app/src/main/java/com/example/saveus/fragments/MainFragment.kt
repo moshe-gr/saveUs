@@ -29,6 +29,10 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import java.util.*
 
+import android.view.animation.AlphaAnimation
+import android.view.animation.Animation
+
+
 class MainFragment : Fragment(), OnMapReadyCallback, DateTimeConverter {
 
     private lateinit var map: GoogleMap
@@ -46,11 +50,19 @@ class MainFragment : Fragment(), OnMapReadyCallback, DateTimeConverter {
         val startStopText = view.findViewById<TextView>(R.id.start_stop_text)
         val startStopTitle = view.findViewById<TextView>(R.id.start_stop_title)
         val chronometer = view.findViewById<Chronometer>(R.id.chronometer)
+        val startStopButton = view.findViewById<LinearLayout>(R.id.start_stop_circle)
+
         savedPlacesViewModel = ViewModelProvider(requireActivity()).get(SavedPlacesViewModel::class.java)
 
         myLocationButton.setOnClickListener {
             enableMyLocation()
         }
+
+        val buttonAnimation: Animation = AlphaAnimation(1f, 0.5f)
+        buttonAnimation.duration = 700
+        buttonAnimation.repeatCount = Animation.INFINITE
+        buttonAnimation.repeatMode = Animation.REVERSE
+        startStopButton.startAnimation(buttonAnimation)
 
         view.findViewById<LinearLayout>(R.id.start_stop_circle).setOnClickListener {
             if(start){
