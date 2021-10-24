@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/login_text"
         android:textSize="16sp"
-        android:fontFamily="@font/assistant_semibold"
+        android:fontFamily="@font/assistant_semi_bold"
         android:gravity="right"/>
 
     <LinearLayout
@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/date_button"
             android:textSize="14sp"
-            android:fontFamily="@font/assistant_semibold"
+            android:fontFamily="@font/assistant_semi_bold"
             android:layout_marginRight="15dp"/>
 
         <TextView

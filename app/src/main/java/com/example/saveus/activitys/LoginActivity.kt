@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.saveus.PersonalInfo
 import com.example.saveus.R
+import com.example.saveus.fragments.WebViewFragment
 import com.google.gson.Gson
 
 
@@ -27,13 +28,21 @@ class LoginActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayShowTitleEnabled(false)
 
         findViewById<TextView>(R.id.regulations).setOnClickListener {
-            wb.loadUrl("https://www.pantai.com.my/privacy-policy")
-            setContentView(wb)
+            val fragment = WebViewFragment.newInstance("https://www.pantai.com.my/privacy-policy")
+            supportFragmentManager.beginTransaction().apply {
+                replace(R.id.login_fragment_wrapper, fragment)
+                addToBackStack(fragment.toString())
+                commit()
+            }
         }
 
         findViewById<TextView>(R.id.terms_of_use).setOnClickListener {
-            wb.loadUrl("file:///android_asset/terms_of_use.html")
-            setContentView(wb)
+            val fragment = WebViewFragment.newInstance("file:///android_asset/terms_of_use.html")
+                supportFragmentManager.beginTransaction().apply {
+                replace(R.id.login_fragment_wrapper, fragment)
+                addToBackStack(fragment.toString())
+                commit()
+            }
         }
 
         findViewById<Button>(R.id.sign_in).setOnClickListener {
@@ -54,14 +63,5 @@ class LoginActivity : AppCompatActivity() {
             startActivity(Intent(this, MainActivity::class.java))
         }
 
-    }
-
-
-    override fun onBackPressed() {
-        if (wb.isLaidOut) {
-            startActivity(Intent(this, LoginActivity::class.java))
-        } else {
-            finish()
-        }
     }
 }

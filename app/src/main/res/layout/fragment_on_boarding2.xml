@@ -42,7 +42,7 @@
             android:textSize="40sp"
             android:paddingHorizontal="30dp"
             android:text="@string/on_boarding_head_2"
-            android:fontFamily="@font/assistant_semibold"
+            android:fontFamily="@font/assistant_semi_bold"
             android:textColor="@color/turquoise" />
 
     </LinearLayout>

@@ -50,7 +50,7 @@
         android:text="@string/edit_profile_header"
         android:textColor="@color/login_text"
         android:textSize="24sp"
-        android:fontFamily="@font/assistant_semibold"/>
+        android:fontFamily="@font/assistant_semi_bold"/>
 
     <EditText
         android:id="@+id/edit_profile_name"
@@ -200,7 +200,7 @@
                 android:text="@string/edit_profile_delete"
                 android:textSize="18sp"
                 android:textColor="@color/add_place"
-                android:fontFamily="@font/assistant_semibold"/>
+                android:fontFamily="@font/assistant_semi_bold"/>
 
         </FrameLayout>
 

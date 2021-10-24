@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textColor="@color/login_text"
-            android:fontFamily="@font/assistant_semibold"
+            android:fontFamily="@font/assistant_semi_bold"
             android:gravity="right"/>
 
     </LinearLayout>

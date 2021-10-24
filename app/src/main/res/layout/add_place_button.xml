@@ -20,7 +20,7 @@
         android:text="@string/add_place"
         android:textColor="@color/white"
         android:textSize="16sp"
-        android:fontFamily="@font/assistant_semibold"/>
+        android:fontFamily="@font/assistant_semi_bold"/>
 
     <ImageView
         android:layout_width="0dp"
