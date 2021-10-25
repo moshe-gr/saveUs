@@ -2,16 +2,14 @@ package com.example.saveus.fragments
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.webkit.WebView
-import android.webkit.WebViewClient
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.example.saveus.PersonalInfo
 import com.example.saveus.R
 import com.example.saveus.activitys.OnBoardingActivity
@@ -75,6 +73,12 @@ class ProfileFragment : Fragment() {
             }
         }
         return view
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        activity?.findViewById<ImageView>(R.id.profile_button)
+            ?.setImageResource(R.drawable.account)
     }
 
     companion object {
