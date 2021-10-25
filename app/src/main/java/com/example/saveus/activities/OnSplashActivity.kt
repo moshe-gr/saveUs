@@ -13,12 +13,10 @@ class OnSplashActivity : AppCompatActivity() {
     private val myHandler = Handler(Looper.myLooper()!!)
     private val myRunnable = Runnable {
         run {
+            startActivity(Intent(this, LoginActivity::class.java))
             val sharedPreferences = getSharedPreferences("sharedPrefs", MODE_PRIVATE)
             if(!sharedPreferences.getBoolean("used", false)) {
                 startActivity(Intent(this, OnBoardingActivity::class.java))
-            }
-            else{
-                startActivity(Intent(this, LoginActivity::class.java))
             }
         }
     }
