@@ -5,10 +5,12 @@ import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
+import com.example.saveus.PersonalInfo
 import com.example.saveus.adapters.PageAdapter
 import com.example.saveus.R
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import com.google.gson.Gson
 
 class OnBoardingActivity : AppCompatActivity() {
 
@@ -26,6 +28,8 @@ class OnBoardingActivity : AppCompatActivity() {
             run{
                 getSharedPreferences("sharedPrefs", MODE_PRIVATE)
                     .edit().putBoolean("used", true).apply()
+                getSharedPreferences("sharedPrefs", MODE_PRIVATE)
+                    .edit().putString("personalInfo", Gson().toJson(PersonalInfo())).apply()
                 finish()
             }
         }
