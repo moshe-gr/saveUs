@@ -56,18 +56,42 @@ class OnMapFragment : Fragment(), OnMapReadyCallback, GoogleMap.InfoWindowAdapte
     override fun onMapReady(googleMap: GoogleMap?) {
         val builder = LatLngBounds.Builder()
         savedPlacesViewModel.getPlaces()?.observe(viewLifecycleOwner, { savedPlaces ->
-            for (savedPlace in savedPlaces) {
-                googleMap?.addMarker(MarkerOptions()
-                    .position(LatLng(savedPlace.latitude!!, savedPlace.longitude!!))
-                    .title(savedPlace.address)
-                    .icon(BitmapDescriptorFactory.fromBitmap(AppCompatResources.getDrawable(requireContext(), R.drawable.my_place_dot)!!.toBitmap()))
-                    .anchor(0.5f, 0.5f)
-                    .snippet("${SimpleDateFormat("dd/MM/yyyy").format(Date(savedPlace.timeStart!!))} ${SimpleDateFormat("HH:mm").format(Date(savedPlace.timeStart!!))}-${SimpleDateFormat("HH:mm").format(Date(savedPlace.timeEnd!!))} ${savedPlace.timeLength}"))
-                builder.include(LatLng(savedPlace.latitude!!, savedPlace.longitude!!))
+            if(savedPlaces.isNotEmpty()) {
+                for (savedPlace in savedPlaces) {
+                    googleMap?.addMarker(
+                        MarkerOptions()
+                            .position(LatLng(savedPlace.latitude!!, savedPlace.longitude!!))
+                            .title(savedPlace.address)
+                            .icon(
+                                BitmapDescriptorFactory.fromBitmap(
+                                    AppCompatResources.getDrawable(
+                                        requireContext(),
+                                        R.drawable.my_place_dot
+                                    )!!.toBitmap()
+                                )
+                            )
+                            .anchor(0.5f, 0.5f)
+                            .snippet(
+                                "${SimpleDateFormat("dd/MM/yyyy").format(Date(savedPlace.timeStart!!))} ${
+                                    SimpleDateFormat(
+                                        "HH:mm"
+                                    ).format(Date(savedPlace.timeStart!!))
+                                }-${SimpleDateFormat("HH:mm").format(Date(savedPlace.timeEnd!!))} ${savedPlace.timeLength}"
+                            )
+                    )
+                    builder.include(LatLng(savedPlace.latitude!!, savedPlace.longitude!!))
+                }
+                googleMap?.setInfoWindowAdapter(this)
+                googleMap?.setOnInfoWindowClickListener(this)
+                googleMap?.moveCamera(
+                    CameraUpdateFactory.newLatLngBounds(
+                        builder.build(),
+                        resources.displayMetrics.widthPixels,
+                        resources.displayMetrics.heightPixels,
+                        30
+                    )
+                )
             }
-            googleMap?.setInfoWindowAdapter(this)
-            googleMap?.setOnInfoWindowClickListener(this)
-            googleMap?.moveCamera(CameraUpdateFactory.newLatLngBounds(builder.build(), resources.displayMetrics.widthPixels, resources.displayMetrics.heightPixels, 30))
         })
         map = googleMap ?: return
     }

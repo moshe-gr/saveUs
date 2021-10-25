@@ -41,6 +41,8 @@ class MainFragment : Fragment(), OnMapReadyCallback, DateTimeConverter {
     private lateinit var map: GoogleMap
     private lateinit var savedPlacesViewModel: SavedPlacesViewModel
     private lateinit var savePlace: SavePlace
+    private lateinit var startAnimation: ObjectAnimator
+    private var start: Boolean? = null
 
     @SuppressLint("MissingPermission")
     override fun onCreateView(
@@ -48,28 +50,25 @@ class MainFragment : Fragment(), OnMapReadyCallback, DateTimeConverter {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_main, container, false)
-        var start = true
         val myLocationButton = view.findViewById<ImageView>(R.id.my_location)
         val startStopText = view.findViewById<TextView>(R.id.start_stop_text)
         val startStopTitle = view.findViewById<TextView>(R.id.start_stop_title)
         val chronometer = view.findViewById<Chronometer>(R.id.chronometer)
         val startStopButton = view.findViewById<LinearLayout>(R.id.start_stop_circle)
 
-        val startAnimation = ObjectAnimator.ofPropertyValuesHolder(
+        startAnimation = ObjectAnimator.ofPropertyValuesHolder(
             startStopButton,
             PropertyValuesHolder.ofFloat("scaleX", 1.3f, 1f),
             PropertyValuesHolder.ofFloat("scaleY", 1.3f, 1f)
         )
-        startAnimation.duration = 1800
+        startAnimation.duration = 2000
         startAnimation.repeatMode = ValueAnimator.REVERSE
         startAnimation.repeatCount = ValueAnimator.INFINITE
 
-        val stopAnimation: Animation = AlphaAnimation(1f, 0.5f)
+        val stopAnimation: Animation = AlphaAnimation(1f, 0.6f)
         stopAnimation.repeatCount = Animation.INFINITE
         stopAnimation.repeatMode = Animation.REVERSE
-        stopAnimation.duration = 1100
-
-        startAnimation.start()
+        stopAnimation.duration = 1500
 
         savedPlacesViewModel = ViewModelProvider(requireActivity()).get(SavedPlacesViewModel::class.java)
 
@@ -78,56 +77,61 @@ class MainFragment : Fragment(), OnMapReadyCallback, DateTimeConverter {
         }
 
         startStopButton.setOnClickListener {
-            if(start){
-                it.setBackgroundResource(R.drawable.circle_2)
-                startAnimation.end()
-                startStopButton.startAnimation(stopAnimation)
-                startStopTitle.setText(R.string.circle_2_title)
-                startStopText.visibility = View.GONE
-                chronometer.visibility = View.VISIBLE
-                chronometer.format = "00:%s"
-                chronometer.base = SystemClock.elapsedRealtime()
-                chronometer.setOnChronometerTickListener { cArg ->
-                    val elapsedMillis = SystemClock.elapsedRealtime() - cArg.base
-                    if (elapsedMillis > 3600000L) {
-                        cArg.format = "0%s"
-                    } else {
-                        cArg.format = "00:%s"
+            if (start != null) {
+                if (start == true) {
+                    it.setBackgroundResource(R.drawable.circle_2)
+                    startAnimation.end()
+                    startStopButton.startAnimation(stopAnimation)
+                    startStopTitle.setText(R.string.circle_2_title)
+                    startStopText.visibility = View.GONE
+                    chronometer.visibility = View.VISIBLE
+                    chronometer.format = "00:%s"
+                    chronometer.base = SystemClock.elapsedRealtime()
+                    chronometer.setOnChronometerTickListener { cArg ->
+                        val elapsedMillis = SystemClock.elapsedRealtime() - cArg.base
+                        if (elapsedMillis > 3600000L) {
+                            cArg.format = "0%s"
+                        } else {
+                            cArg.format = "00:%s"
+                        }
                     }
+
+                    savePlace = SavePlace()
+                    chronometer.start()
+                    myLocationButton.visibility = View.GONE
+                    savePlace.timeStart = getCurrentTimeInMs()
+
+                    val geocoder = Geocoder(activity, Locale.getDefault())
+                    LocationServices.getFusedLocationProviderClient(requireContext()).lastLocation.addOnSuccessListener { currentLocation ->
+                        savePlace.latitude = currentLocation.latitude
+                        savePlace.longitude = currentLocation.longitude
+                        val addresses: List<Address> = geocoder.getFromLocation(
+                            currentLocation.latitude,
+                            currentLocation.longitude,
+                            1
+                        )
+                        val city = addresses[0].locality
+                        val street = addresses[0].thoroughfare
+                        val streetNum = addresses[0].subThoroughfare
+                        savePlace.address = "$street $streetNum $city"
+                    }
+
+                } else {
+                    it.setBackgroundResource(R.drawable.circle_1)
+                    stopAnimation.cancel()
+                    stopAnimation.reset()
+                    startAnimation.start()
+                    startStopText.visibility = View.VISIBLE
+                    startStopTitle.setText(R.string.circle_1_title)
+                    chronometer.visibility = View.GONE
+                    myLocationButton.visibility = View.VISIBLE
+                    savePlace.timeEnd = getCurrentTimeInMs()
+                    savePlace.timeLength = chronometer.text.toString()
+                    savedPlacesViewModel.addSavedPlace(savePlace)
+
                 }
-
-                savePlace = SavePlace()
-                chronometer.start()
-                myLocationButton.visibility = View.GONE
-                savePlace.timeStart = getCurrentTimeInMs()
-
-                val geocoder = Geocoder(activity, Locale.getDefault())
-                LocationServices.getFusedLocationProviderClient(requireContext()).lastLocation.addOnSuccessListener {currentLocation->
-                    savePlace.latitude = currentLocation.latitude
-                    savePlace.longitude = currentLocation.longitude
-                    val addresses: List<Address> = geocoder.getFromLocation(currentLocation.latitude, currentLocation.longitude, 1)
-                    val city = addresses[0].locality
-                    val street = addresses[0].thoroughfare
-                    val streetNum = addresses[0].subThoroughfare
-                    savePlace.address = "$street $streetNum $city"
-                }
-
+                start = !start!!
             }
-            else{
-                it.setBackgroundResource(R.drawable.circle_1)
-                stopAnimation.cancel()
-                stopAnimation.reset()
-                startAnimation.start()
-                startStopText.visibility = View.VISIBLE
-                startStopTitle.setText(R.string.circle_1_title)
-                chronometer.visibility = View.GONE
-                myLocationButton.visibility = View.VISIBLE
-                savePlace.timeEnd = getCurrentTimeInMs()
-                savePlace.timeLength = chronometer.text.toString()
-                savedPlacesViewModel.addSavedPlace(savePlace)
-
-            }
-            start = !start
         }
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(this)
@@ -149,6 +153,8 @@ class MainFragment : Fragment(), OnMapReadyCallback, DateTimeConverter {
                 map.moveCamera(CameraUpdateFactory.newLatLng(LatLng(it.latitude, it.longitude)))
             }
             map.setMinZoomPreference(15F)
+            startAnimation.start()
+            start = true
         } else {
             requestPermissions(
                 arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
