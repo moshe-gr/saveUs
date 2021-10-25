@@ -12,10 +12,6 @@ import com.example.saveus.fragments.ProfileFragment
 import com.google.android.material.navigation.NavigationBarView
 
 class MainActivity : AppCompatActivity() {
-
-    var show = true
-    lateinit var profileButton: ImageView
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -23,22 +19,21 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.my_toolbar))
         supportActionBar!!.setDisplayShowTitleEnabled(false)
 
-        profileButton = findViewById(R.id.profile_button)
+        val profileButton = findViewById<ImageView>(R.id.profile_button)
+        val profileFragment = ProfileFragment.newInstance()
+
 
         if(savedInstanceState == null){
             makeCurrentFragment(MainFragment.newInstance())
         }
 
         profileButton.setOnClickListener {
-            if(show) {
-                makeCurrentFragment(ProfileFragment.newInstance())
-                profileButton.setImageResource(R.drawable.close_1)
+            if(profileFragment.isResumed) {
+                supportFragmentManager.popBackStackImmediate()
             }
             else{
-                supportFragmentManager.popBackStackImmediate()
-                profileButton.setImageResource(R.drawable.account)
+                makeCurrentFragment(profileFragment)
             }
-            show = !show
         }
 
         val navBar = findViewById<NavigationBarView>(R.id.nav_bar)
@@ -55,10 +50,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun makeCurrentFragment(fragment: Fragment){
-        if(fragment !is ProfileFragment){
-            profileButton.setImageResource(R.drawable.account)
-            show = true
-        }
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.fl_wrapper, fragment)
             addToBackStack(fragment.toString())

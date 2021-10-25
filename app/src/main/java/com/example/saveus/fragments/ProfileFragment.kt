@@ -75,8 +75,14 @@ class ProfileFragment : Fragment() {
         return view
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onStart() {
+        super.onStart()
+        activity?.findViewById<ImageView>(R.id.profile_button)
+            ?.setImageResource(R.drawable.close_1)
+    }
+
+    override fun onStop() {
+        super.onStop()
         activity?.findViewById<ImageView>(R.id.profile_button)
             ?.setImageResource(R.drawable.account)
     }
