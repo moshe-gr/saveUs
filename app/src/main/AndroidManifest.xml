@@ -27,7 +27,7 @@
             android:exported="true"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".activities.UnSplashActivity"
+            android:name=".activities.OnSplashActivity"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
