@@ -1,6 +1,9 @@
 package com.example.saveus.fragments
 
 import android.content.Intent
+import android.content.pm.ApplicationInfo
+import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.saveus.PersonalInfo
 import com.example.saveus.R
-import com.example.saveus.activitys.OnBoardingActivity
+import com.example.saveus.activities.OnBoardingActivity
 import com.google.gson.Gson
 import java.text.SimpleDateFormat
 
@@ -71,6 +74,14 @@ class ProfileFragment : Fragment() {
                 addToBackStack(fragment.toString())
                 commit()
             }
+        }
+        shareButton.setOnClickListener {
+            val pm: PackageManager? = activity?.packageManager
+            val appInfo: ApplicationInfo? = pm?.getApplicationInfo(activity?.packageName!!, PackageManager.GET_META_DATA)
+            val sendBt = Intent(Intent.ACTION_SEND)
+            sendBt.type = "*/*"
+            sendBt.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://" + appInfo?.publicSourceDir))
+            activity?.startActivity(Intent.createChooser(sendBt, "Share it using"))
         }
         return view
     }

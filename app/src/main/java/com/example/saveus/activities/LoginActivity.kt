@@ -1,4 +1,4 @@
-package com.example.saveus.activitys
+package com.example.saveus.activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -60,6 +60,8 @@ class LoginActivity : AppCompatActivity() {
         }
 
         findViewById<Button>(R.id.skip_sign_in).setOnClickListener {
+            getSharedPreferences("sharedPrefs", MODE_PRIVATE)
+                .edit().putString("personalInfo", Gson().toJson(personalInfo)).apply()
             startActivity(Intent(this, MainActivity::class.java))
         }
 

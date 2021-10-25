@@ -1,4 +1,4 @@
-package com.example.saveus.activitys
+package com.example.saveus.activities
 
 import android.os.Bundle
 import android.widget.ImageView

@@ -1,4 +1,4 @@
-package com.example.saveus.activitys
+package com.example.saveus.activities
 
 import android.annotation.SuppressLint
 import android.content.Intent
