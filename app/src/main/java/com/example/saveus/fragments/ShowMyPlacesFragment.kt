@@ -17,10 +17,10 @@ import com.example.saveus.*
 import com.example.saveus.adapters.MyPlacesAdapter
 import com.example.saveus.interfaces.DateTimeConverter
 import com.example.saveus.interfaces.ReplaceMyFragment
-import com.example.saveus.interfaces.ShowDate
+import com.example.saveus.interfaces.ShowDateListener
 import java.util.*
 
-class ShowMyPlacesFragment : Fragment(), ShowDate, DateTimeConverter, ReplaceMyFragment {
+class ShowMyPlacesFragment : Fragment(), ShowDateListener, DateTimeConverter, ReplaceMyFragment {
 
     private lateinit var savedPlacesViewModel: SavedPlacesViewModel
     private lateinit var recyclerview: RecyclerView

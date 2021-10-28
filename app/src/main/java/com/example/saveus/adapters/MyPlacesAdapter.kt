@@ -12,12 +12,12 @@ import com.example.saveus.SavePlace
 import com.example.saveus.fragments.EditSavedPlaceFragment
 import com.example.saveus.interfaces.DateTimeConverter
 import com.example.saveus.interfaces.ReplaceMyFragment
-import com.example.saveus.interfaces.ShowDate
+import com.example.saveus.interfaces.ShowDateListener
 import java.sql.Time
 import java.text.SimpleDateFormat
 import java.util.*
 
-class MyPlacesAdapter (private val finalList: ArrayList<Any>, private val showDate: ShowDate, private val replaceMyFragment: ReplaceMyFragment) : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
+class MyPlacesAdapter (private val finalList: ArrayList<Any>, private val showDateListener: ShowDateListener, private val replaceMyFragment: ReplaceMyFragment) : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
     DateTimeConverter {
 
         override fun getItemViewType(position: Int): Int {
@@ -41,7 +41,7 @@ class MyPlacesAdapter (private val finalList: ArrayList<Any>, private val showDa
                 if(holder is DateViewHolder){
                         itemsViewModel = itemsViewModel as Long
                         holder.showDay.setOnClickListener {
-                                showDate.showDate(itemsViewModel as Long, finalList)
+                                showDateListener.showDate(itemsViewModel as Long, finalList)
                         }
                         holder.dateHeader.text = SimpleDateFormat("dd/MM/yyyy").format(Date(daysToMs(itemsViewModel)))
                         if(msToDays(addZoneDstOffset(getCurrentTimeInMs())) == itemsViewModel){

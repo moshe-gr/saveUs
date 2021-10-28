@@ -2,6 +2,6 @@ package com.example.saveus.interfaces
 
 import java.util.ArrayList
 
-interface ShowDate {
+interface ShowDateListener {
     fun showDate(day: Long, dayList: ArrayList<Any>)
 }
