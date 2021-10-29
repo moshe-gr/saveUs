@@ -65,7 +65,7 @@ class EditSavedPlaceFragment : Fragment(), DateTimeConverter {
             startCalendar = getCalendarFromMs(getCurrentTimeInMs())
             endCalendar = getCalendarFromMs(getCurrentTimeInMs())
             headerView.setText(R.string.add_place_header)
-            addressView.setText(R.string.add_place_address)
+            addressView.setHint(R.string.add_place_address)
             dateView.setText(R.string.add_place_date)
             startView.setText(R.string.add_place_default)
             endView.setText(R.string.add_place_default)
@@ -114,24 +114,25 @@ class EditSavedPlaceFragment : Fragment(), DateTimeConverter {
             endTimePicker.show()
         }
         saveButton.setOnClickListener {
-            savedPlace!!.address = addressView.text.toString()
-            savedPlace!!.timeStart = startCalendar.timeInMillis
-            savedPlace!!.timeEnd = endCalendar.timeInMillis
-            savedPlace!!.timeLength = lengthView.text.toString()
-            val addressPoints = geocoder.getFromLocationName(savedPlace!!.address, 1)
-            if(addressPoints.isEmpty()){
-                Toast.makeText(view.context, "invalid address", Toast.LENGTH_SHORT).show()
-            }
-            else {
-                savedPlace!!.latitude = addressPoints[0].latitude
-                savedPlace!!.longitude = addressPoints[0].longitude
-                if (new) {
-                    savedPlacesViewModel.addSavedPlace(savedPlace!!)
+            if(!addressView.text.isNullOrEmpty()) {
+                savedPlace!!.address = addressView.text.toString()
+                savedPlace!!.timeStart = startCalendar.timeInMillis
+                savedPlace!!.timeEnd = endCalendar.timeInMillis
+                savedPlace!!.timeLength = lengthView.text.toString()
+                val addressPoints = geocoder.getFromLocationName(savedPlace!!.address, 1)
+                if (addressPoints.isEmpty()) {
+                    Toast.makeText(view.context, "invalid address", Toast.LENGTH_SHORT).show()
                 } else {
-                    savedPlacesViewModel.updateSavedPlace(savedPlace!!)
+                    savedPlace!!.latitude = addressPoints[0].latitude
+                    savedPlace!!.longitude = addressPoints[0].longitude
+                    if (new) {
+                        savedPlacesViewModel.addSavedPlace(savedPlace!!)
+                    } else {
+                        savedPlacesViewModel.updateSavedPlace(savedPlace!!)
+                    }
+                    Toast.makeText(view.context, "saved", Toast.LENGTH_SHORT).show()
+                    parentFragmentManager.popBackStackImmediate()
                 }
-                Toast.makeText(view.context, "saved", Toast.LENGTH_SHORT).show()
-                parentFragmentManager.popBackStackImmediate()
             }
         }
         return view
