@@ -24,12 +24,15 @@ class OnBoardingActivity : AppCompatActivity() {
         val tabLayout = findViewById<TabLayout>(R.id.tabLayout)
         TabLayoutMediator(tabLayout, viewPager) { _, _ -> }.attach()
 
+        val sharedPreferences = getSharedPreferences("sharedPrefs", MODE_PRIVATE)
+
         val r = Runnable {
-            run{
-                getSharedPreferences("sharedPrefs", MODE_PRIVATE)
-                    .edit().putBoolean("used", true).apply()
-                getSharedPreferences("sharedPrefs", MODE_PRIVATE)
-                    .edit().putString("personalInfo", Gson().toJson(PersonalInfo())).apply()
+            run {
+                sharedPreferences.edit().putBoolean("used", true).apply()
+                if (sharedPreferences.getString("personalInfo", "") == "") {
+                    sharedPreferences.edit()
+                        .putString("personalInfo", Gson().toJson(PersonalInfo())).apply()
+                }
                 finish()
             }
         }
@@ -41,10 +44,15 @@ class OnBoardingActivity : AppCompatActivity() {
             override fun onPageScrollStateChanged(state: Int) {
             }
 
-            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+            override fun onPageScrolled(
+                position: Int,
+                positionOffset: Float,
+                positionOffsetPixels: Int
+            ) {
             }
+
             override fun onPageSelected(position: Int) {
-                if(position == 2) myHandler.postDelayed(r, 3000)
+                if (position == 2) myHandler.postDelayed(r, 3000)
                 else myHandler.removeCallbacks(r)
             }
 
