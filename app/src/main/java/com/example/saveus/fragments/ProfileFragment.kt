@@ -56,6 +56,9 @@ class ProfileFragment : Fragment() {
                     "לא"
                 }
         }
+        if(personalInfo.language != null){
+            view.findViewById<TextView>(R.id.profile_language).text = personalInfo.language
+        }
         editProfileButton.setOnClickListener {
             val fragment = EditProfileFragment.newInstance()
             parentFragmentManager.beginTransaction().apply {
