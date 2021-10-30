@@ -93,7 +93,6 @@
                 android:layout_weight="1"
                 android:inputType="phone"
                 android:hint="@string/prompt_phone_number"
-                android:gravity="right"
                 android:autofillHints="phone"/>
 
         </LinearLayout>
