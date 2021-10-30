@@ -172,10 +172,9 @@ class EditSavedPlaceFragment : Fragment(), DateTimeConverter {
             context,
             R.style.TimePickerTheme,
             { _, hour, minute ->
-                timeView.text = Time(hourMinuteSecToMs(hour, minute, 0)).toString()
                 calendar.set(Calendar.HOUR_OF_DAY, hour)
                 calendar.set(Calendar.MINUTE, minute)
-                calendar.set(Calendar.SECOND, 0)
+                timeView.text = Time(calendar.timeInMillis).toString()
                 lengthView.text = Time(endCalendar.timeInMillis - startCalendar.timeInMillis).toString()
             },
             calendar.get(Calendar.HOUR_OF_DAY),
