@@ -175,7 +175,7 @@ class EditSavedPlaceFragment : Fragment(), DateTimeConverter {
                 calendar.set(Calendar.HOUR_OF_DAY, hour)
                 calendar.set(Calendar.MINUTE, minute)
                 timeView.text = Time(calendar.timeInMillis).toString()
-                lengthView.text = Time(endCalendar.timeInMillis - startCalendar.timeInMillis).toString()
+                lengthView.text = Time(endCalendar.timeInMillis - startCalendar.timeInMillis - addZoneDstOffset(0)).toString()
             },
             calendar.get(Calendar.HOUR_OF_DAY),
             calendar.get(Calendar.MINUTE),
