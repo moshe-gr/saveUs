@@ -72,7 +72,7 @@ class EditSavedPlaceFragment : Fragment(), DateTimeConverter {
             endView.setText(R.string.add_place_default)
             lengthView.setText(R.string.add_place_default)
             view.findViewById<TextView>(R.id.edit_place_delete).setOnClickListener {
-                addressView.setText(R.string.add_place_address)
+                addressView.setHint(R.string.add_place_address)
                 dateView.setText(R.string.add_place_date)
                 startView.setText(R.string.add_place_default)
                 endView.setText(R.string.add_place_default)
