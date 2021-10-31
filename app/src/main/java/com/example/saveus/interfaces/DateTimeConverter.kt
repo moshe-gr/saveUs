@@ -13,5 +13,4 @@ interface DateTimeConverter {
         myCalendar.timeInMillis = ms
         return myCalendar
     }
-    fun hourMinuteSecToMs(hour: Int, minute: Int, seconds: Int) = (hour * 60 * 60 * 1000L) + (minute * 60 * 1000) + (seconds * 1000)
 }

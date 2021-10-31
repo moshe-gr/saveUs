@@ -57,7 +57,8 @@ class EditSavedPlaceFragment : Fragment(), DateTimeConverter {
         val geocoder = Geocoder(activity, Locale.getDefault())
         var new = false
 
-        savedPlacesViewModel = ViewModelProvider(requireActivity()).get(SavedPlacesViewModel::class.java)
+        savedPlacesViewModel = ViewModelProvider(requireActivity())
+            .get(SavedPlacesViewModel::class.java)
 
         if(savedPlace == null){
             savedPlace = SavePlace()
@@ -167,7 +168,12 @@ class EditSavedPlaceFragment : Fragment(), DateTimeConverter {
         return datePickerDialog
     }
 
-    private fun timePickerButton(context: Context, calendar: Calendar, timeView: TextView, lengthView: TextView): TimePickerDialog {
+    private fun timePickerButton(
+        context: Context,
+        calendar: Calendar,
+        timeView: TextView,
+        lengthView: TextView
+    ): TimePickerDialog {
         return TimePickerDialog(
             context,
             R.style.TimePickerTheme,
@@ -175,7 +181,10 @@ class EditSavedPlaceFragment : Fragment(), DateTimeConverter {
                 calendar.set(Calendar.HOUR_OF_DAY, hour)
                 calendar.set(Calendar.MINUTE, minute)
                 timeView.text = Time(calendar.timeInMillis).toString()
-                lengthView.text = Time(endCalendar.timeInMillis - startCalendar.timeInMillis - addZoneDstOffset(0)).toString()
+                lengthView.text =
+                    Time(
+                        endCalendar.timeInMillis - startCalendar.timeInMillis - addZoneDstOffset(0)
+                    ).toString()
             },
             calendar.get(Calendar.HOUR_OF_DAY),
             calendar.get(Calendar.MINUTE),
