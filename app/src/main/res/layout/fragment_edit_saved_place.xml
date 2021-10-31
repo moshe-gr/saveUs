@@ -57,6 +57,7 @@
         android:layout_height="0dp"
         android:layout_weight="0.11"
         android:orientation="horizontal"
+        android:layoutDirection="rtl"
         android:weightSum="7">
 
         <FrameLayout
@@ -104,6 +105,7 @@
         android:layout_height="0dp"
         android:layout_weight="0.11"
         android:orientation="horizontal"
+        android:layoutDirection="rtl"
         android:weightSum="7">
 
         <FrameLayout
