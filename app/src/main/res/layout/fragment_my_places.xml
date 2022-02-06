@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/edit_place_wrapper"
     android:layout_width="match_parent"
@@ -12,34 +11,34 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="horizontal"
-        android:weightSum="2"
+        android:layout_weight="1"
         android:layoutDirection="rtl"
-        android:layout_weight="1">
+        android:orientation="horizontal"
+        android:weightSum="2">
 
         <TextView
             android:id="@+id/my_places_button"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:textColor="@color/white"
-            android:textSize="22sp"
+            android:layout_weight="1"
+            android:background="@color/turquoise"
             android:fontFamily="@font/assistant"
             android:gravity="center"
             android:text="@string/my_places_button"
-            android:background="@color/turquoise"
-            android:layout_weight="1"/>
+            android:textColor="@color/white"
+            android:textSize="22sp" />
 
         <TextView
             android:id="@+id/on_map_button"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:textColor="@color/white"
-            android:textSize="22sp"
+            android:layout_weight="1"
+            android:background="@color/turquoise_55"
             android:fontFamily="@font/assistant"
             android:gravity="center"
             android:text="@string/on_map_button"
-            android:background="@color/turquoise_55"
-            android:layout_weight="1"/>
+            android:textColor="@color/white"
+            android:textSize="22sp" />
 
     </LinearLayout>
 
@@ -47,6 +46,6 @@
         android:id="@+id/my_places_fl_wrapper"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-    android:layout_weight="7"/>
+        android:layout_weight="7" />
 
 </LinearLayout>

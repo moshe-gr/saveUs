@@ -3,33 +3,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/login_background"
     android:layout_marginHorizontal="16dp"
-    tools:context=".fragments.EditSavedPlaceFragment"
-    android:weightSum="1">
+    android:background="@color/login_background"
+    android:orientation="vertical"
+    android:weightSum="1"
+    tools:context=".fragments.EditSavedPlaceFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.135"
-        android:orientation="horizontal"
-        android:layoutDirection="rtl">
+        android:layoutDirection="rtl"
+        android:orientation="horizontal">
 
         <FrameLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:layout_weight="1">
 
             <TextView
                 android:id="@+id/edit_place_save"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/assistant_bold"
                 android:text="@string/save"
-                android:textSize="18sp"
                 android:textColor="@color/turquoise"
-                android:fontFamily="@font/assistant_bold"/>
+                android:textSize="18sp" />
 
         </FrameLayout>
 
@@ -37,9 +37,9 @@
             android:id="@+id/edit_place_close"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:padding="2dp"
-            android:src="@drawable/close_1"
-            android:layout_gravity="center"/>
+            android:src="@drawable/close_1" />
 
     </LinearLayout>
 
@@ -48,28 +48,28 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.1"
+        android:fontFamily="@font/assistant_semi_bold"
         android:textColor="@color/login_text"
-        android:textSize="24sp"
-        android:fontFamily="@font/assistant_semi_bold"/>
+        android:textSize="24sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.11"
-        android:orientation="horizontal"
         android:layoutDirection="rtl"
+        android:orientation="horizontal"
         android:weightSum="7">
 
         <FrameLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:layout_weight="1">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/address"/>
+                android:src="@drawable/address" />
 
         </FrameLayout>
 
@@ -84,17 +84,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:textSize="17sp"
-                android:textColor="@color/login_hint"
+                android:background="@android:color/transparent"
                 android:fontFamily="@font/assistant"
                 android:gravity="center_vertical"
                 android:inputType="text"
-                android:background="@android:color/transparent"/>
+                android:textColor="@color/login_hint"
+                android:textSize="17sp" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/line_divider"/>
+                android:background="@color/line_divider" />
 
         </LinearLayout>
 
@@ -104,20 +104,20 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.11"
-        android:orientation="horizontal"
         android:layoutDirection="rtl"
+        android:orientation="horizontal"
         android:weightSum="7">
 
         <FrameLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:layout_weight="1">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/calendar_1"/>
+                android:src="@drawable/calendar_1" />
 
         </FrameLayout>
 
@@ -132,15 +132,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:textSize="16sp"
-                android:textColor="@color/login_text"
                 android:fontFamily="@font/assistant_semi_bold"
-                android:gravity="center_vertical"/>
+                android:gravity="center_vertical"
+                android:textColor="@color/login_text"
+                android:textSize="16sp" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/line_divider"/>
+                android:background="@color/line_divider" />
 
         </LinearLayout>
 
@@ -150,20 +150,20 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.11"
-        android:orientation="horizontal"
         android:layoutDirection="rtl"
+        android:orientation="horizontal"
         android:weightSum="7">
 
         <FrameLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:layout_weight="1">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/clock_1"/>
+                android:src="@drawable/clock_1" />
 
         </FrameLayout>
 
@@ -183,56 +183,56 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:layout_gravity="center">
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/edit_place_time_start"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="16sp"
+                        android:fontFamily="@font/assistant_semi_bold"
                         android:textColor="@color/login_text"
-                        android:fontFamily="@font/assistant_semi_bold"/>
+                        android:textSize="16sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/assistant_semi_bold"
                         android:text="@string/edit_place_start"
-                        android:textSize="14sp"
                         android:textColor="@color/login_hint"
-                        android:fontFamily="@font/assistant_semi_bold"/>
+                        android:textSize="14sp" />
 
                 </LinearLayout>
 
                 <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:background="@color/line_divider"/>
+                    android:background="@color/line_divider" />
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
+                    android:layout_gravity="center"
                     android:layout_marginRight="16dp"
-                    android:layout_gravity="center">
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/edit_place_time_end"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="16sp"
+                        android:fontFamily="@font/assistant_semi_bold"
                         android:textColor="@color/login_text"
-                        android:fontFamily="@font/assistant_semi_bold"/>
+                        android:textSize="16sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/assistant_semi_bold"
                         android:text="@string/edit_place_end"
-                        android:textSize="14sp"
                         android:textColor="@color/login_hint"
-                        android:fontFamily="@font/assistant_semi_bold"/>
+                        android:textSize="14sp" />
 
                 </LinearLayout>
 
@@ -241,7 +241,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/line_divider"/>
+                android:background="@color/line_divider" />
 
         </LinearLayout>
 
@@ -251,21 +251,21 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.11"
-        android:orientation="horizontal"
         android:layoutDirection="rtl"
+        android:orientation="horizontal"
         android:weightSum="7">
 
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="6"
-            android:orientation="vertical"
             android:gravity="center_vertical"
+            android:orientation="vertical"
             android:weightSum="2">
 
             <TextView
@@ -273,24 +273,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:textSize="16sp"
-                android:textColor="@color/login_text"
                 android:fontFamily="@font/assistant_semi_bold"
-                android:gravity="bottom"/>
+                android:gravity="bottom"
+                android:textColor="@color/login_text"
+                android:textSize="16sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:fontFamily="@font/assistant_semi_bold"
                 android:text="@string/edit_place_sum"
-                android:textSize="14sp"
                 android:textColor="@color/login_hint"
-                android:fontFamily="@font/assistant_semi_bold"/>
+                android:textSize="14sp" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/line_divider"/>
+                android:background="@color/line_divider" />
 
         </LinearLayout>
 
@@ -300,37 +300,37 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.135"
-        android:orientation="horizontal"
         android:layoutDirection="rtl"
+        android:orientation="horizontal"
         android:weightSum="7">
 
         <FrameLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:layout_weight="1">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/delete_1"/>
+                android:src="@drawable/delete_1" />
 
         </FrameLayout>
 
         <FrameLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="6"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:layout_weight="6">
 
             <TextView
                 android:id="@+id/edit_place_delete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/assistant_semi_bold"
                 android:text="@string/edit_place_delete"
-                android:textSize="18sp"
                 android:textColor="@color/add_place"
-                android:fontFamily="@font/assistant_semi_bold"/>
+                android:textSize="18sp" />
 
         </FrameLayout>
 

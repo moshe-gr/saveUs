@@ -11,7 +11,7 @@
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".fragments.MainFragment" >
+        tools:context=".fragments.MainFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -33,46 +33,46 @@
                 android:id="@+id/start_stop_circle"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_constraintWidth_max="250dp"
-                app:layout_constraintWidth_percent="0.66"
-                app:layout_constraintDimensionRatio="1:1"
+                android:layout_gravity="center"
+                android:background="@drawable/circle_1"
+                android:gravity="center"
+                android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1:1"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:orientation="vertical"
-                android:layout_gravity="center"
-                android:background="@drawable/circle_1"
-                android:gravity="center">
+                app:layout_constraintWidth_max="250dp"
+                app:layout_constraintWidth_percent="0.66">
 
                 <TextView
                     android:id="@+id/start_stop_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/assistant_bold"
-                    android:textSize="40sp"
-                    android:textColor="@color/white"
+                    android:text="@string/circle_1_title"
                     android:textAlignment="center"
-                    android:text="@string/circle_1_title"/>
+                    android:textColor="@color/white"
+                    android:textSize="40sp" />
 
                 <TextView
                     android:id="@+id/start_stop_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/assistant"
-                    android:textSize="20sp"
-                    android:textColor="@color/white"
+                    android:text="@string/circle_1_text"
                     android:textAlignment="center"
-                    android:text="@string/circle_1_text"/>
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
 
                 <Chronometer
                     android:id="@+id/chronometer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/assistant"
-                    android:textSize="20sp"
-                    android:textColor="@color/white"
                     android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
                     android:visibility="gone" />
 
             </LinearLayout>

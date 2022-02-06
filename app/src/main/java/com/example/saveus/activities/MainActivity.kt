@@ -12,6 +12,7 @@ import com.example.saveus.fragments.ProfileFragment
 import com.google.android.material.navigation.NavigationBarView
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -22,16 +23,14 @@ class MainActivity : AppCompatActivity() {
         val profileButton = findViewById<ImageView>(R.id.profile_button)
         val profileFragment = ProfileFragment.newInstance()
 
-
-        if(savedInstanceState == null){
+        if (savedInstanceState == null) {
             makeCurrentFragment(MainFragment.newInstance())
         }
 
         profileButton.setOnClickListener {
-            if(profileFragment.isResumed) {
+            if (profileFragment.isResumed) {
                 supportFragmentManager.popBackStackImmediate()
-            }
-            else{
+            } else {
                 makeCurrentFragment(profileFragment)
             }
         }
@@ -39,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         val navBar = findViewById<NavigationBarView>(R.id.nav_bar)
         navBar.itemIconTintList = null
         navBar.setOnItemSelectedListener {
-            when (it.itemId){
+            when (it.itemId) {
                 R.id.main -> makeCurrentFragment(MainFragment.newInstance())
                 R.id.my_places -> makeCurrentFragment(MyPlacesFragment.newInstance())
                 R.id.alerts -> makeCurrentFragment(NotificationsFragment())
@@ -49,7 +48,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun makeCurrentFragment(fragment: Fragment){
+    private fun makeCurrentFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.fl_wrapper, fragment)
             addToBackStack(fragment.toString())

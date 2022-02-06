@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="10"
     android:gravity="center"
     android:orientation="vertical"
+    android:weightSum="10"
     tools:context=".fragments.OnBoarding1">
 
     <LinearLayout
@@ -18,21 +18,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:src="@drawable/on_boarding_1"/>
+            android:src="@drawable/on_boarding_1" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="vertical"
         android:layout_weight="5"
+        android:orientation="vertical"
         android:weightSum="10">
 
         <View
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1.5"/>
+            android:layout_weight="1.5" />
 
         <TextView
             android:layout_width="match_parent"
@@ -50,12 +50,12 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="6"
-            android:textAlignment="center"
-            android:textDirection="rtl"
-            android:textSize="16sp"
             android:fontFamily="@font/assistant"
             android:text="@string/on_boarding_body_1"
-            android:textColor="@color/on_boarding_text"/>
+            android:textAlignment="center"
+            android:textColor="@color/on_boarding_text"
+            android:textDirection="rtl"
+            android:textSize="16sp" />
 
     </LinearLayout>
 

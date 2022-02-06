@@ -1,53 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:weightSum="7"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:weightSum="7">
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.3"
-        android:background="@color/login_background"/>
+        android:background="@color/login_background" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="horizontal"
         android:layout_weight="0.6"
         android:background="@color/login_background"
+        android:layoutDirection="rtl"
+        android:orientation="horizontal"
         android:paddingHorizontal="16dp"
-        android:weightSum="1"
-        android:layoutDirection="rtl">
+        android:weightSum="1">
 
         <LinearLayout
             android:id="@+id/from_date_button"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
             android:layout_weight="0.42"
+            android:background="@drawable/triangle_button"
             android:layoutDirection="rtl"
-            android:background="@drawable/triangle_button">
+            android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:paddingRight="8dp"
                 android:src="@drawable/calendar_1"
-                app:tint="@color/date_button"/>
+                app:tint="@color/date_button" />
 
             <TextView
                 android:id="@+id/from_date_text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textSize="16sp"
                 android:fontFamily="@font/assistant"
+                android:gravity="center"
                 android:textColor="@color/date_button"
-                android:gravity="center"/>
+                android:textSize="16sp" />
 
         </LinearLayout>
 
@@ -55,11 +54,11 @@
             android:id="@+id/to_date_button"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_weight="0.38"
-            android:layoutDirection="rtl"
             android:layout_marginRight="2dp"
-            android:background="@drawable/triangle_button">
+            android:layout_weight="0.38"
+            android:background="@drawable/triangle_button"
+            android:layoutDirection="rtl"
+            android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -72,10 +71,10 @@
                 android:id="@+id/to_date_text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textSize="16sp"
                 android:fontFamily="@font/assistant"
+                android:gravity="center"
                 android:textColor="@color/date_button"
-                android:gravity="center"/>
+                android:textSize="16sp" />
 
         </LinearLayout>
 
@@ -83,13 +82,13 @@
             android:id="@+id/select_dates_button"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.2"
-            android:text="@string/show_my_places"
-            android:textSize="16sp"
-            android:fontFamily="@font/assistant"
             android:layout_marginRight="5dp"
+            android:layout_weight="0.2"
+            android:background="@drawable/show_my_places"
+            android:fontFamily="@font/assistant"
+            android:text="@string/show_my_places"
             android:textColor="@color/show_my_places"
-            android:background="@drawable/show_my_places"/>
+            android:textSize="16sp" />
 
     </LinearLayout>
 
@@ -105,8 +104,7 @@
             android:layout_height="wrap_content"
             tools:listitem="@layout/my_place" />
 
-        <include
-            layout="@layout/add_place_button"/>
+        <include layout="@layout/add_place_button" />
 
     </RelativeLayout>
 

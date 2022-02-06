@@ -3,33 +3,33 @@
     android:id="@+id/my_place"
     android:layout_width="match_parent"
     android:layout_height="60dp"
-    android:orientation="horizontal"
-    android:layoutDirection="ltr"
+    android:background="@drawable/my_place_background"
     android:elevation="4dp"
-    android:background="@drawable/my_place_background">
+    android:layoutDirection="ltr"
+    android:orientation="horizontal">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_gravity="center"
         android:layout_marginLeft="15dp"
-        android:layout_gravity="center">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/time_start_end"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
+            android:fontFamily="@font/assistant"
             android:textColor="@color/date_button"
-            android:fontFamily="@font/assistant"/>
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/time_length"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/assistant_semi_bold"
             android:textColor="#333333"
-            android:textSize="16sp"
-            android:fontFamily="@font/assistant_semi_bold"/>
+            android:textSize="16sp" />
 
     </LinearLayout>
 
@@ -37,20 +37,20 @@
         android:id="@+id/address"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:layout_weight="1"
-        android:textColor="@color/login_text"
-        android:fontFamily="@font/assistant"
         android:layout_gravity="center"
-        android:gravity="right"/>
+        android:layout_weight="1"
+        android:fontFamily="@font/assistant"
+        android:gravity="right"
+        android:textColor="@color/login_text"
+        android:textSize="18sp" />
 
     <ImageView
         android:id="@+id/red_dot"
         android:layout_width="10dp"
         android:layout_height="10dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginLeft="8dp"
         android:layout_gravity="center"
-        android:src="@drawable/my_place_dot"/>
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="16dp"
+        android:src="@drawable/my_place_dot" />
 
 </LinearLayout>

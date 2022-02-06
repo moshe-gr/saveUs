@@ -1,36 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:weightSum="1"
     android:layout_marginHorizontal="16dp"
     android:background="@color/login_background"
+    android:orientation="vertical"
+    android:weightSum="1"
     tools:context=".fragments.EditProfileFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.135"
-        android:orientation="horizontal"
-        android:layoutDirection="rtl">
+        android:layoutDirection="rtl"
+        android:orientation="horizontal">
 
         <FrameLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:layout_weight="1">
 
             <TextView
                 android:id="@+id/edit_profile_save"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/assistant_bold"
                 android:text="@string/save"
-                android:textSize="18sp"
                 android:textColor="@color/turquoise"
-                android:fontFamily="@font/assistant_bold"/>
+                android:textSize="18sp" />
 
         </FrameLayout>
 
@@ -38,9 +37,9 @@
             android:id="@+id/edit_profile_close"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:padding="2dp"
-            android:src="@drawable/close_1"
-            android:layout_gravity="center"/>
+            android:src="@drawable/close_1" />
 
     </LinearLayout>
 
@@ -48,122 +47,122 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.1"
+        android:fontFamily="@font/assistant_semi_bold"
         android:text="@string/edit_profile_header"
         android:textColor="@color/login_text"
-        android:textSize="24sp"
-        android:fontFamily="@font/assistant_semi_bold"/>
+        android:textSize="24sp" />
 
     <EditText
         android:id="@+id/edit_profile_name"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:textColorHint="@color/login_hint"
-        android:textSize="17sp"
-        android:fontFamily="@font/assistant"
         android:layout_weight="0.11"
-        android:inputType="text"
+        android:autofillHints="name"
+        android:fontFamily="@font/assistant"
         android:hint="@string/prompt_name"
-        android:autofillHints="name" />
+        android:inputType="text"
+        android:textColorHint="@color/login_hint"
+        android:textSize="17sp" />
 
     <EditText
         android:id="@+id/edit_profile_email"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:textColorHint="@color/login_hint"
-        android:textSize="17sp"
-        android:fontFamily="@font/assistant"
         android:layout_weight="0.11"
-        android:inputType="textEmailAddress"
+        android:autofillHints="emailAddress"
+        android:fontFamily="@font/assistant"
         android:hint="@string/prompt_email"
-        android:autofillHints="emailAddress"/>
+        android:inputType="textEmailAddress"
+        android:textColorHint="@color/login_hint"
+        android:textSize="17sp" />
 
     <EditText
         android:id="@+id/edit_profile_phone_number"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:textColorHint="@color/login_hint"
-        android:textSize="17sp"
-        android:fontFamily="@font/assistant"
         android:layout_weight="0.11"
-        android:inputType="phone"
+        android:autofillHints="phone"
+        android:fontFamily="@font/assistant"
         android:hint="@string/prompt_phone_number"
-        android:autofillHints="phone"/>
+        android:inputType="phone"
+        android:textColorHint="@color/login_hint"
+        android:textSize="17sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.11"
-        android:orientation="horizontal"
-        android:weightSum="4"
+        android:gravity="center_vertical"
         android:layoutDirection="rtl"
-        android:gravity="center_vertical">
+        android:orientation="horizontal"
+        android:weightSum="4">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/assistant_bold"
             android:text="@string/profile_birth_date"
-            android:textSize="14sp"
             android:textColor="@color/login_hint"
-            android:fontFamily="@font/assistant_bold"/>
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/edit_profile_birthday"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/edit_profile_default"
-            android:textSize="17sp"
-            android:textColor="@color/login_hint"
             android:fontFamily="@font/assistant"
-            android:textDirection="rtl"/>
+            android:text="@string/edit_profile_default"
+            android:textColor="@color/login_hint"
+            android:textDirection="rtl"
+            android:textSize="17sp" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.75"
+            android:fontFamily="@font/assistant_bold"
             android:text="@string/edit_profile_language"
-            android:textSize="14sp"
             android:textColor="@color/login_hint"
-            android:fontFamily="@font/assistant_bold"/>
+            android:textSize="14sp" />
 
         <Spinner
             android:id="@+id/edit_profile_language_spinner"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1.25"
-            android:backgroundTint="@color/login_text"/>
+            android:backgroundTint="@color/login_text" />
 
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/line_divider"/>
+        android:background="@color/line_divider" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.11"
-        android:orientation="horizontal"
-        android:layoutDirection="rtl">
+        android:layoutDirection="rtl"
+        android:orientation="horizontal">
 
         <CheckBox
             android:id="@+id/edit_profile_notifications"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
+            android:layout_gravity="center"
             android:buttonTint="@color/turquoise"
-            android:layout_gravity="center"/>
+            android:textColor="@color/white" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/assistant"
             android:text="@string/edit_profile_notifications"
             android:textColor="@color/login_text"
-            android:textSize="17sp"
-            android:fontFamily="@font/assistant"
-            android:layout_gravity="center"/>
+            android:textSize="17sp" />
 
     </LinearLayout>
 
@@ -171,37 +170,37 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.135"
-        android:orientation="horizontal"
         android:layoutDirection="rtl"
+        android:orientation="horizontal"
         android:weightSum="7">
 
         <FrameLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:layout_weight="1">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/delete_1"/>
+                android:src="@drawable/delete_1" />
 
         </FrameLayout>
 
         <FrameLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="6"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:layout_weight="6">
 
             <TextView
                 android:id="@+id/edit_profile_delete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/assistant_semi_bold"
                 android:text="@string/edit_profile_delete"
-                android:textSize="18sp"
                 android:textColor="@color/add_place"
-                android:fontFamily="@font/assistant_semi_bold"/>
+                android:textSize="18sp" />
 
         </FrameLayout>
 
